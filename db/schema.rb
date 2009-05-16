@@ -9,7 +9,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090116042821) do
+ActiveRecord::Schema.define(:version => 20090516065646) do
+
+  create_table "food_groups", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "food_item_nutrients", :force => true do |t|
+    t.integer "food_item_id"
+    t.integer "nutrient_id"
+    t.float   "amount"
+  end
+
+  create_table "food_items", :force => true do |t|
+    t.integer "food_group_id"
+    t.string  "long_desc"
+    t.string  "short_desc"
+    t.string  "common_names"
+    t.string  "manufacturer_name"
+    t.string  "scientific_name"
+  end
+
+  create_table "nutrients", :force => true do |t|
+    t.string "unit"
+    t.string "tagname"
+    t.string "description"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
