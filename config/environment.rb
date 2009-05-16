@@ -16,7 +16,8 @@ config.active_record.observers = observers
                            #{RAILS_ROOT}/vendor/plugins/core/app/mailers
                            #{RAILS_ROOT}/app/sweepers
                            #{RAILS_ROOT}/app/observers
-                           #{RAILS_ROOT}/app/mailers)
+                           #{RAILS_ROOT}/app/mailers
+                           #{RAILS_ROOT}/lib)
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
   config.gem 'authlogic'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'

@@ -1,4 +1,5 @@
 require 'fastercsv'
+require 'progress'
 
 class ImportFoodItems < ActiveRecord::Migration
   def self.up
