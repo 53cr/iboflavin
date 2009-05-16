@@ -7,6 +7,16 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
+  observers = Dir.glob("#{RAILS_ROOT}/{vendor/plugins/core/,}app/observers/*.rb").map do |file| 
+  File.basename(file).gsub(".rb","") 
+end
+config.active_record.observers = observers
+  config.load_paths += %W( #{RAILS_ROOT}/vendor/plugins/core/app/sweepers
+                           #{RAILS_ROOT}/vendor/plugins/core/app/observers
+                           #{RAILS_ROOT}/vendor/plugins/core/app/mailers
+                           #{RAILS_ROOT}/app/sweepers
+                           #{RAILS_ROOT}/app/observers
+                           #{RAILS_ROOT}/app/mailers)
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
   config.gem 'authlogic'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
