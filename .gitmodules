@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/core"]
+	path = vendor/plugins/core
+	url = git@github.com:53cr/core.git
