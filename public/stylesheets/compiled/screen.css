@@ -805,9 +805,9 @@ body {
   height: 100%; }
 
 #content {
-  background: white;
+  background: #e8f9f9;
   height: 100%;
-  padding: 18px;
+  padding: 36px 45px 0 45px;
   clear: both; }
 
 #header h1 {
@@ -874,10 +874,9 @@ h3 {
 
 #thequestion h3 {
   text-align: right;
-  font-size: 32px;
   margin-bottom: 0; }
 
 #thequestion input.text {
-  width: 620px;
+  width: 567px;
   height: 36px;
   font-size: 24px; }
