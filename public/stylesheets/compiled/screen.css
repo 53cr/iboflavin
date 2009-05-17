@@ -790,6 +790,9 @@ html {
   background: url(/images/html_back.png) top center repeat-y #cef2f2;
   height: 100%; }
 
+p, li, h1, h2, h3, h4, h5, h6, input {
+  color: #444; }
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: url(/images/leftpanel-top.png) top center no-repeat;
@@ -804,6 +807,7 @@ body {
 #content {
   background: white;
   height: 100%;
+  padding: 18px;
   clear: both; }
 
 #header h1 {
@@ -864,3 +868,16 @@ body {
   position: absolute;
   height: 90px;
   width: 707px; }
+
+h3 {
+  font-size: 24px; }
+
+#thequestion h3 {
+  text-align: right;
+  font-size: 32px;
+  margin-bottom: 0; }
+
+#thequestion input.text {
+  width: 620px;
+  height: 36px;
+  font-size: 24px; }
