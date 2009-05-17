@@ -185,6 +185,7 @@ if __FILE__ == $0
 
   inputs.each do |x|
     puts UserInput.new(x).mark_split
+    # puts "\"#{x}\": \n  \"#{UserInput.new(x).mark_split}\""
   end
   
 end

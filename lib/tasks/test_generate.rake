@@ -16,7 +16,7 @@ EOS
       
       test_cases.each do |input,expected|
         f.print <<EOC
-  def test_#{input.underscore.gsub(" ","_")}
+  def test_#{input.underscore.gsub(/[^a-zA-Z0-9\s]/,'').gsub(' ','_')}
     assert_equal UserInput.new("#{input}").mark_split, "#{expected}"
   end
 EOC
