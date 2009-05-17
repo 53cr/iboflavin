@@ -1,7 +1,22 @@
+require 'forwardable'
+
 module Vocabulary
 
-  class Gram  < Struct.new(:amt); end
-  class Litre < Struct.new(:amt); end
+  class Unit
+    extend Forwardable
+    def_delegators :@num, :inspect, :to_s
+    def initialize(num)
+      @num = num
+    end
+    def method_missing(sym, args)
+      raise NoMethodError unless @num.respond_to?(sym)
+      r=@num.send(sym, args)
+      return (r.is_a? Numeric) ? (self.class.new(r)) : r
+    end
+  end
+  
+  class Gram  < Unit; end
+  class Litre < Unit; end
   
   PREFIXES = {
     "mega"  => 1_000_000,
@@ -15,6 +30,19 @@ module Vocabulary
     "nano"  => 0.000_000_001
   }
 
+  SHORT_PREFIXES = {
+    "M" => 1_000_000,
+    "K" => 1_000,
+    "k" => 1_000,
+    "h" => 100,
+    "D" => 10,
+    "d" => 0.1,
+    "c" => 0.01,
+    "m" => 0.001,
+    "u" => 0.000_001,
+    "n" => 0.000_000_001
+  }
+    
   MODIFIERS = {
     "dozen"     => 12,
     "several"   => 5,
@@ -47,13 +75,24 @@ module Vocabulary
     "can"      => Litre.new(0.335),
     "hogshead" => Litre.new(238.480942),
     "ounce"    => Litre.new(0.029573530),
-    "oz"       => Litre.new(0.029573530),
     "litre"    => Litre.new(1),
     "quart"    => Litre.new(0.946352946),
     "pint"     => Litre.new(0.473176473),
     "gallon"   => Litre.new(3.78541178),
     "cup"      => Litre.new(0.236588236),
     "handful"  => Litre.new(0.059147059)
+  }
+
+  UNIT_ABBREVIATIONS = {
+    "g"   => Gram.new(1),
+    "lb"  => Gram.new(453.59237),
+
+    "oz"  => Litre.new(0.029573530),
+    "l"   => Litre.new(1),
+    "qt"  => Litre.new(0.946352946),
+    "pt"  => Litre.new(0.473176473),
+    "gal" => Litre.new(3.78541178),
+    "c"   => Litre.new(0.236588236),
   }
 
   FILLER = {
