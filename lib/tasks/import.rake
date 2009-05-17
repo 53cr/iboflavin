@@ -6,69 +6,58 @@ namespace :usda do
   namespace :import do
   
     task :food_items => :environment do
+      puts "Importing Food Items..."
       fname = File.join(RAILS_ROOT,"/db/usda_sr21/FOOD_DES.txt")
       csv = FasterCSV.new(File.read(fname),:col_sep => '^', :quote_char => '~')
       FoodItem.transaction do
         csv.each do |row|
-          f=FoodItem.new(:food_group_id => row[1],
-                         :name => row[2],
-                         :common_names => row[4],
-                         :manufacturer_name => row[5])
-          f.id=row[0]
-          f.save!
+          id = row[0]
+          row.each {|item| if item; item.gsub!('"','""'); end}
+          FoodItem.connection.execute "insert into food_items (id,food_group_id,name,common_names,manufacturer_name) values(#{row[0]},#{row[1]},\"#{row[2]}\", \"#{row[4]}\", \"#{row[5]}\")"
         end
       end
     end
   
     task :food_groups => :environment do
+      puts "Importing Food Groups..."
       fname = File.join(RAILS_ROOT,"/db/usda_sr21/FD_GROUP.txt")
       csv = FasterCSV.new(File.read(fname),:col_sep => '^', :quote_char => '~')
       FoodGroup.transaction do
         csv.each do |row|
-          f=FoodGroup.new(:name => row[1])
-          f.id=row[0]
-          f.save!
+          FoodGroup.connection.execute "insert into food_groups (id,name) values(#{row[0]},\"#{row[1]}\")"
         end
       end
     end
   
     task :nutrients => :environment do
+      puts "Importing Nutrients..."
       fname = File.join(RAILS_ROOT,"/db/usda_sr21/NUTR_DEF.txt")
       csv = FasterCSV.new(File.read(fname),:col_sep => '^', :quote_char => '~')
       Nutrient.transaction do
         csv.each do |row|
-          f=Nutrient.new(:unit => row[1],
-                         :tagname => row[2],
-                         :description => row[3])
-          f.id=row[0]
-          f.save!
+          Nutrient.connection.execute "insert into nutrients (id, unit, tagname, description) values (#{row[0]},\"#{row[1]}\",\"#{row[2]}\",\"#{row[3]}\")"
         end
       end
     end
   
     task :food_item_nutrients => :environment do
+      puts "Importing Food Item Nutrients... ~1.5 minutes"
       fname = File.join(RAILS_ROOT,"/db/usda_sr21/NUT_DATA.txt")
       csv = FasterCSV.new(File.read(fname),:col_sep => '^', :quote_char => '~')
       FoodItemNutrient.transaction do
         csv.each do |row|
-          f=FoodItemNutrient.new(:food_item_id => row[0],
-                                 :nutrient_id => row[1],
-                                 :amount => row[2])
-          f.save!
+          FoodItemNutrient.connection.execute "insert into food_item_nutrients (food_item_id, nutrient_id, amount) values(#{row[0]},#{row[1]},#{row[2]})"
         end
       end
     end
 
     task :weights => :environment do
+      puts "Importing Weights"
       fname = File.join(RAILS_ROOT,"/db/usda_sr21/WEIGHT.txt")
       csv = FasterCSV.new(File.read(fname),:col_sep => '^', :quote_char => '~')
       Weight.transaction do 
         csv.each do |row|
-          f=Weight.new(:food_item_id => row[0],
-                                 :amount => row[2],
-                                 :description => row[3],
-                                 :grams => row[4])
-          f.save!
+          Weight.connection.execute "insert into weights (food_item_id,amount,description,grams) values(#{row[0]},#{row[2]},\"#{row[3].gsub('"','""')}\",#{row[4]})"
         end
       end
     end
