@@ -7,6 +7,8 @@ require 'grammar'
 
 class UserInput
 
+  attr_reader :count, :unit, :foodSearch
+  
   def initialize(str)
 
     # Collapse multiple sequential spaces or hyphens to a single one.
