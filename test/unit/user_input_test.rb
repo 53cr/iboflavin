@@ -2,15 +2,7 @@ require 'test_helper'
 require 'user_input'
 
 class UserInputTest < ActiveSupport::TestCase
-  def test_cases
-    {
-      "Two bottles of Heineken" => "Two bottles of:::Heineken",
-      "Five eggs" => "Five:::eggs"
-    }.each do |key,value|
-      self.instance_eval <<-EOS
-         assert_equal UserInput.new("#{key}").mark_split, "#{value}"
-      EOS
-    end
+  def test_two_eggs
+    assert_equal UserInput.new("Two eggs").mark_split, "Two:::eggs"
   end
 end
-
