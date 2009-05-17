@@ -3,21 +3,29 @@ require 'activesupport'
 
 module Vocabulary
 
-  class Unit
+  class Unit < Numeric
     extend Forwardable
-    def_delegators :@num, :inspect, :to_s
+    def_delegators :@num, :inspect, :to_s, :to_f, :to_i
     def initialize(num)
       @num = num
     end
-    def method_missing(sym, args)
+    def coerce(other)
+      if [Fixnum, Float].include?(other.class)
+        return [self.class.new(other), @num]
+      else
+        return [other, @num]
+      end
+    end
+    def method_missing(sym, *args)
       raise NoMethodError unless @num.respond_to?(sym)
-      r=@num.send(sym, args)
+      r=@num.send(sym, *args)
       return (r.is_a? Numeric) ? (self.class.new(r)) : r
     end
   end
   
-  class Gram  < Unit; end
-  class Litre < Unit; end
+  class Gram    < Unit; end
+  class Litre   < Unit; end
+  class Serving < Unit; end
   
   PREFIXES = {
     "mega"  => 1_000_000,
@@ -164,24 +172,39 @@ module Vocabulary
     merge(UNIT_ABBREVIATIONS).
     merge(PREFIXED_UNIT_ABBREVIATIONS)
 
-  def self.allowed_in_quantifier?(word)
+  # Returns the numerical(+unit if applicable) value of this word, or false if
+  # it's not allowed in a quantifier. Non-numerical words return true.
+  def self.quantifier_value(word)
     # Allow numbers.
-    return true if word =~ /^[\d\.]+$/
+    return word.to_f if word =~ /^[\d\.]+$/
 
     sing_word = ActiveSupport::Inflector.singularize(word)
 
     # if it's whitelisted...
-    return true if QUANTIFIER_VOCABULARY.include?(word)
-    return true if QUANTIFIER_VOCABULARY.include?(sing_word)
+    return QUANTIFIER_VOCABULARY[word.downcase]      if QUANTIFIER_VOCABULARY.include?(word.downcase)
+    return QUANTIFIER_VOCABULARY[sing_word.downcase] if QUANTIFIER_VOCABULARY.include?(sing_word.downcase)
 
-    if word =~ /^[\d\.]+\w{0,6}$/ # eg 3.5oz
-      abbrev = word.sub(/[\d\.]+/,'')
-      return true if UNIT_ABBREVIATIONS.include?(abbrev)
-      return true if PREFIXED_UNIT_ABBREVIATIONS.include?(abbrev)
+    # Case is important for some units, and they're the only thing in our
+    # vocabulary that isn't lower case (I hope!), so we'll have an extra check for them
+    return UNIT_ABBREVIATIONS[word]          if UNIT_ABBREVIATIONS.include?(word)
+    return PREFIXED_UNIT_ABBREVIATIONS[word] if PREFIXED_UNIT_ABBREVIATIONS.include?(word)
+
+    # Allow compound expressions of a count and a unit, eg. 3.5oz or 0.2kg
+    if word =~ /^([\d\.]+)(\w{0,6})$/ # eg 3.5oz
+      count  = $1.to_f
+      abbrev = $2
+      abbrev_value = 1
+      if PREFIXED_UNIT_ABBREVIATIONS.include?(abbrev)
+        abbrev_value = PREFIXED_UNIT_ABBREVIATIONS[abbrev]
+      elsif UNIT_ABBREVIATIONS.include?(abbrev)
+        abbrev_value = UNIT_ABBREVIATIONS[abbrev]
+      end
+
+      return count * abbrev_value
     end
 
     return false
+    
   end
-                                  
   
 end
