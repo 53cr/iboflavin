@@ -1,4 +1,7 @@
-require 'pp'
+begin
+  require 'rubygems'
+rescue LoadError;end
+require 'activesupport'
 
 class Gram  < Struct.new(:amt); end
 class Litre < Struct.new(:amt); end
@@ -44,6 +47,8 @@ class UserInput
     "gram"     => Gram.new(1),
     "pound"    => Gram.new(453.59237),
 
+    "bottle"   => Litre.new(0.341),
+    "bottle"   => Litre.new(0.335),
     "hogshead" => Litre.new(238.480942),
     "ounce"    => Litre.new(0.029573530),
     "oz"       => Litre.new(0.029573530),
@@ -59,7 +64,8 @@ class UserInput
     "a"   => true,
     "of"  => true,
     "an"  => true,
-    "and" => true
+    "and" => true,
+    "the" => true
   }
 
   NUMBER_WORDS = {
@@ -167,6 +173,7 @@ class UserInput
   def part_of_quantifier_vocabulary?(word)
     return true if word =~ /^\d+$/
     return true if QUANTIFIER_VOCABULARY.include?(word)
+    return true if QUANTIFIER_VOCABULARY.include?(ActiveSupport::Inflector.singularize(word))
   end
   
 end
