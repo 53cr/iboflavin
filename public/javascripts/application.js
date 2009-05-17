@@ -8,17 +8,17 @@ $(document).ready(function() {
 
   $("#thequestion input.text").
     attr('value', def).
-    focus(function() {
-      if (def == $(this).attr('value'))
-        $(this).
-          attr('value', '').
-          css('color', '#444');
-    }).
-    blur(function() {
-      if ("" == $(this).attr('value'))
-        $(this).
-          attr('value', def).
-          css('color', '#999');
-    });
+      focus(function() {
+        if (def == $(this).attr('value'))
+          $(this).
+            attr('value', '').
+            css('color', '#444');
+      }).
+      blur(function() {
+        if ("" == $(this).attr('value'))
+          $(this).
+            attr('value', def).
+            css('color', '#999');
+      });
 
 });
