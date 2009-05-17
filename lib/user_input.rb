@@ -47,8 +47,9 @@ class UserInput
     "gram"     => Gram.new(1),
     "pound"    => Gram.new(453.59237),
 
+    "glass"    => Litre.new(0.250),
     "bottle"   => Litre.new(0.341),
-    "bottle"   => Litre.new(0.335),
+    "can"      => Litre.new(0.335),
     "hogshead" => Litre.new(238.480942),
     "ounce"    => Litre.new(0.029573530),
     "oz"       => Litre.new(0.029573530),
@@ -171,7 +172,7 @@ class UserInput
   end
 
   def part_of_quantifier_vocabulary?(word)
-    return true if word =~ /^\d+$/
+    return true if word =~ /^[\d\.]+\w{0,4}$/
     return true if QUANTIFIER_VOCABULARY.include?(word)
     return true if QUANTIFIER_VOCABULARY.include?(ActiveSupport::Inflector.singularize(word))
   end
@@ -180,54 +181,10 @@ end
 
 if __FILE__ == $0
 
-  puts UserInput.new("Two-and-a-half german sheperd pies").mark_split
-  puts UserInput.new("asdf").mark_split
-  puts UserInput.new("1 taco").mark_split
-  puts UserInput.new("1 taco").mark_split
-  puts UserInput.new("marzipan").mark_split
-  puts UserInput.new("marzipan").mark_split
-  puts UserInput.new("Diet Pepsi MAX").mark_split
-  puts UserInput.new("Very stale bread").mark_split
-  puts UserInput.new("Bruschetta").mark_split
-  puts UserInput.new("100g of marzipan").mark_split
-  puts UserInput.new("3.5oz of marzipan").mark_split
-  puts UserInput.new("1 glass of orange juice").mark_split
-  puts UserInput.new("oh henry bar").mark_split
-  puts UserInput.new("a coffee").mark_split
-  puts UserInput.new("three donuts").mark_split
-  puts UserInput.new("Nothing.").mark_split
-  puts UserInput.new("Lunch").mark_split
-  puts UserInput.new("subway").mark_split
-  puts UserInput.new("two cookies").mark_split
-  puts UserInput.new("bowl of cereal").mark_split
-  puts UserInput.new("crackers and cottage cheese").mark_split
-  puts UserInput.new("75 kg of a 100 kg bucket of chicken").mark_split
-  puts UserInput.new("goddamn sandwiches").mark_split
-  puts UserInput.new("classic italian sandwich and a mandarin orange and coffee").mark_split
-  puts UserInput.new("cheesecake, toast with jam, orange juice").mark_split
-  puts UserInput.new("Fuze Refresh").mark_split
-  puts UserInput.new("Reeses big cups").mark_split
-  puts UserInput.new("two eggs on toast").mark_split
-  puts UserInput.new("steak").mark_split
-  puts UserInput.new("spaghetti").mark_split
-  puts UserInput.new("tortellini and spaghetti sauce with beef and chicken").mark_split
-  puts UserInput.new("turd monkeys").mark_split
-  puts UserInput.new("a cookie").mark_split
-  puts UserInput.new("oatmeal bar").mark_split
-  puts UserInput.new("a meatball sub").mark_split
-  puts UserInput.new("pork and beans").mark_split
-  puts UserInput.new("pankakes, bacon, eggs, and hashbrowns").mark_split
-  puts UserInput.new("a pound of bacon").mark_split
-  puts UserInput.new("several pounds of bacon").mark_split
-  puts UserInput.new("meatballs and cheese").mark_split
-  puts UserInput.new("eggs").mark_split
-  puts UserInput.new("The number of gumballs that fit in my hat.").mark_split
-  puts UserInput.new("bread").mark_split
-  puts UserInput.new("eggs").mark_split
-  puts UserInput.new("breakfast three times").mark_split
-  puts UserInput.new("Two bottles of Heineken").mark_split
-  puts UserInput.new("food").mark_split
+  inputs = ["asdf", "1 taco", "1 taco", "marzipan", "marzipan", "Diet Pepsi MAX", "Very stale bread", "Bruschetta", "100g of marzipan", "3.5oz of marzipan", "1 glass of orange juice", "oh henry bar", "a coffee", "three donuts", "Nothing.", "Lunch", "subway", "two cookies", "bowl of cereal", "crackers and cottage cheese", "75 kg of a 100 kg bucket of chicken", "goddamn sandwiches", "classic italian sandwich and a mandarin orange and coffee", "cheesecake, toast with jam, orange juice", "Fuze Refresh", "Reeses big cups", "two eggs on toast", "steak", "spaghetti", "tortellini and spaghetti sauce with beef and chicken", "turd monkeys", "a cookie", "oatmeal bar", "a meatball sub", "pork and beans", "pankakes, bacon, eggs, and hashbrowns", "a pound of bacon", "several pounds of bacon", "meatballs and cheese", "eggs", "The number of gumballs that fit in my hat.", "bread", "eggs", "breakfast three times", "Two bottles of Heineken", "food", "chicken", "cupcakes", "pea soup", "cereal", "3 hotdogs and 4 glasses of coke", "3 hotdogs and 4 glasses of coke", "bacon chili cheesedog"]
 
-
+  inputs.each do |x|
+    puts UserInput.new(x).mark_split
+  end
   
 end
