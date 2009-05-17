@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'activesupport'
 
 module Vocabulary
 
@@ -42,7 +43,8 @@ module Vocabulary
     "u" => 0.000_001,
     "n" => 0.000_000_001
   }
-    
+
+  
   MODIFIERS = {
     "dozen"     => 12,
     "several"   => 5,
@@ -65,7 +67,7 @@ module Vocabulary
     "fiftieth"  => 0.02,
     "hundredth" => 0.01
   }
-  
+
   UNITS = {
     "gram"     => Gram.new(1),
     "pound"    => Gram.new(453.59237),
@@ -83,6 +85,15 @@ module Vocabulary
     "handful"  => Litre.new(0.059147059)
   }
 
+  _prefixed_units = {}
+  PREFIXES.each do |pkey, pval|
+    UNITS.each do |ukey, uval|
+      _prefixed_units.merge!({"#{pkey}#{ukey}" => pval*uval})
+    end
+  end
+  PREFIXED_UNITS = _prefixed_units
+
+  
   UNIT_ABBREVIATIONS = {
     "g"   => Gram.new(1),
     "lb"  => Gram.new(453.59237),
@@ -95,6 +106,15 @@ module Vocabulary
     "c"   => Litre.new(0.236588236),
   }
 
+  _prefixed_unit_abbreviations = {}
+  SHORT_PREFIXES.each do |pkey, pval|
+    UNIT_ABBREVIATIONS.each do |ukey, uval|
+      _prefixed_unit_abbreviations.merge!({"#{pkey}#{ukey}" => pval*uval})
+    end
+  end
+  PREFIXED_UNIT_ABBREVIATIONS = _prefixed_unit_abbreviations
+
+  
   FILLER = {
     "a"   => true,
     "of"  => true,
@@ -135,10 +155,33 @@ module Vocabulary
     "thousand"  => 1000
   }
 
-  QUANTIFIER_VOCABULARY = MODIFIERS.
+  QUANTIFIER_VOCABULARY = {}.
+    merge(MODIFIERS).
     merge(FILLER).
+    merge(NUMBER_WORDS).
     merge(UNITS).
-    merge(NUMBER_WORDS)
-  
+    merge(PREFIXED_UNITS).
+    merge(UNIT_ABBREVIATIONS).
+    merge(PREFIXED_UNIT_ABBREVIATIONS)
 
+  def self.allowed_in_quantifier?(word)
+    # Allow numbers.
+    return true if word =~ /^[\d\.]+$/
+
+    sing_word = ActiveSupport::Inflector.singularize(word)
+
+    # if it's whitelisted...
+    return true if QUANTIFIER_VOCABULARY.include?(word)
+    return true if QUANTIFIER_VOCABULARY.include?(sing_word)
+
+    if word =~ /^[\d\.]+\w{0,6}$/ # eg 3.5oz
+      abbrev = word.sub(/[\d\.]+/,'')
+      return true if UNIT_ABBREVIATIONS.include?(abbrev)
+      return true if PREFIXED_UNIT_ABBREVIATIONS.include?(abbrev)
+    end
+
+    return false
+  end
+                                  
+  
 end

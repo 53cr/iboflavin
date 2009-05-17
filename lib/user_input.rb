@@ -5,9 +5,6 @@ require 'activesupport'
 
 require 'vocabulary'
 
-class Gram  < Struct.new(:amt); end
-class Litre < Struct.new(:amt); end
-
 class UserInput
 
   def initialize(str)
@@ -62,7 +59,7 @@ class UserInput
     marks = []
 
     tokens.each_with_index do |el, i|
-      marks[i] = part_of_quantifier_vocabulary?(el)
+      marks[i] = Vocabulary::allowed_in_quantifier?(el)
     end
 
     # not ruby-esque, but more efficient. Deal with it.
@@ -75,10 +72,4 @@ class UserInput
     return (@splitting_point = str.size)
   end
 
-  def part_of_quantifier_vocabulary?(word)
-    return true if word =~ /^[\d\.]+\w{0,4}$/
-    return true if Vocabulary::QUANTIFIER_VOCABULARY.include?(word)
-    return true if Vocabulary::QUANTIFIER_VOCABULARY.include?(ActiveSupport::Inflector.singularize(word))
-  end
-  
 end
