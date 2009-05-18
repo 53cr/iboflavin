@@ -9,7 +9,7 @@ class StaticController < ApplicationController
 
   def add
     @count, @unit, search = Grammar.parse(params[:input])
-    @food = FoodItem.find(:first,:conditions => ['name LIKE ?',"%#{search}%"])
+    @food = FoodItem.search(search,:limit=>1).first
   end
   
 end
