@@ -1,152 +1,351 @@
 require 'test_helper'
 require 'user_input'
 
+## Warning this is a generated file, do not directly modify it.
+##   Instead take a look at lib/tasks/test_generate.rake
+
 class UserInputTest < ActiveSupport::TestCase
-  def test_breakfast_three_times
-    assert_equal UserInput.new("breakfast three times").mark_split, "three times:::breakfast"
+  test "breakfast three times" do
+    result = UserInput.new("breakfast three times")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"breakfast three times"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_a_meatball_sub
-    assert_equal UserInput.new("a meatball sub").mark_split, "a:::meatball sub"
+  test "a meatball sub" do
+    result = UserInput.new("a meatball sub")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"meatball sub"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_spaghetti
-    assert_equal UserInput.new("spaghetti").mark_split, ":::spaghetti"
+  test "spaghetti" do
+    result = UserInput.new("spaghetti")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"spaghetti"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_75_kg_of_a_100_kg_bucket_of_chicken
-    assert_equal UserInput.new("75 kg of a 100 kg bucket of chicken").mark_split, "75 kg of::: a 100 kg bucket of chicken"
+  test "75 kg of a 100 kg bucket of chicken" do
+    result = UserInput.new("75 kg of a 100 kg bucket of chicken")
+    expected = {"unit"=>"Vocabulary::Gram", "count"=>7500000000.0, "foodSearch"=>"-INSTAFAIL-, does not do proportions, bucket of chicken"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_meatballs_and_cheese
-    assert_equal UserInput.new("meatballs and cheese").mark_split, ":::meatballs and cheese"
+  test "meatballs and cheese" do
+    result = UserInput.new("meatballs and cheese")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"meatballs and cheese"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_lunch
-    assert_equal UserInput.new("Lunch").mark_split, ":::Lunch"
+  test "Lunch" do
+    result = UserInput.new("Lunch")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"Lunch"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_cereal
-    assert_equal UserInput.new("cereal").mark_split, ":::cereal"
+  test "cereal" do
+    result = UserInput.new("cereal")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"cereal"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_bowl_of_cereal
-    assert_equal UserInput.new("bowl of cereal").mark_split, ":::bowl of cereal"
+  test "bowl of cereal" do
+    result = UserInput.new("bowl of cereal")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"bowl of cereal"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_a_coffee
-    assert_equal UserInput.new("a coffee").mark_split, "a:::coffee"
+  test "a coffee" do
+    result = UserInput.new("a coffee")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"coffee"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_diet_pepsi_max
-    assert_equal UserInput.new("Diet Pepsi MAX").mark_split, ":::Diet Pepsi MAX"
+  test "Diet Pepsi MAX" do
+    result = UserInput.new("Diet Pepsi MAX")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"Diet Pepsi MAX"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_asdf
-    assert_equal UserInput.new("asdf").mark_split, ":::asdf"
+  test "asdf" do
+    result = UserInput.new("asdf")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"asdf"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_chicken
-    assert_equal UserInput.new("chicken").mark_split, ":::chicken"
+  test "chicken" do
+    result = UserInput.new("chicken")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"chicken"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_fuze_refresh
-    assert_equal UserInput.new("Fuze Refresh").mark_split, ":::Fuze Refresh"
+  test "Fuze Refresh" do
+    result = UserInput.new("Fuze Refresh")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"Fuze Refresh"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_crackers_and_cottage_cheese
-    assert_equal UserInput.new("crackers and cottage cheese").mark_split, ":::crackers and cottage cheese"
+  test "crackers and cottage cheese" do
+    result = UserInput.new("crackers and cottage cheese")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"crackers and cottage cheese"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_nothing
-    assert_equal UserInput.new("Nothing.").mark_split, ":::Nothing."
+  test "Nothing." do
+    result = UserInput.new("Nothing.")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>0.0, "foodSearch"=>""}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_pea_soup
-    assert_equal UserInput.new("pea soup").mark_split, ":::pea soup"
+  test "pea soup" do
+    result = UserInput.new("pea soup")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"pea soup"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_oatmeal_bar
-    assert_equal UserInput.new("oatmeal bar").mark_split, ":::oatmeal bar"
+  test "oatmeal bar" do
+    result = UserInput.new("oatmeal bar")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"oatmeal bar"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_two_eggs_on_toast
-    assert_equal UserInput.new("two eggs on toast").mark_split, "two:::eggs on toast"
+  test "two eggs on toast" do
+    result = UserInput.new("two eggs on toast")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>2.0, "foodSearch"=>"eggs on toast"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_subway
-    assert_equal UserInput.new("subway").mark_split, ":::subway"
+  test "subway" do
+    result = UserInput.new("subway")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"subway"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_bruschetta
-    assert_equal UserInput.new("Bruschetta").mark_split, ":::Bruschetta"
+  test "Bruschetta" do
+    result = UserInput.new("Bruschetta")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"Bruschetta"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_eggs
-    assert_equal UserInput.new("eggs").mark_split, ":::eggs"
+  test "eggs" do
+    result = UserInput.new("eggs")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"eggs"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_marzipan
-    assert_equal UserInput.new("marzipan").mark_split, ":::marzipan"
+  test "marzipan" do
+    result = UserInput.new("marzipan")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"marzipan"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_bread
-    assert_equal UserInput.new("bread").mark_split, ":::bread"
+  test "bread" do
+    result = UserInput.new("bread")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"bread"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_a_pound_of_bacon
-    assert_equal UserInput.new("a pound of bacon").mark_split, "a pound of:::bacon"
+  test "a pound of bacon" do
+    result = UserInput.new("a pound of bacon")
+    expected = {"unit"=>"Vocabulary::Gram", "count"=>453.59237, "foodSearch"=>"bacon"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_reeses_big_cups
-    assert_equal UserInput.new("Reeses big cups").mark_split, ":::Reeses big cups"
+  test "Reeses big cups" do
+    result = UserInput.new("Reeses big cups")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"Reeses big cups"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_cheesecake_toast_with_jam_orange_juice
-    assert_equal UserInput.new("cheesecake, toast with jam, orange juice").mark_split, ":::cheesecake, toast with jam, orange juice"
+  test "cheesecake, toast with jam, orange juice" do
+    result = UserInput.new("cheesecake, toast with jam, orange juice")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"cheesecake, toast with jam, orange juice"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_goddamn_sandwiches
-    assert_equal UserInput.new("goddamn sandwiches").mark_split, ":::goddamn sandwiches"
+  test "goddamn sandwiches" do
+    result = UserInput.new("goddamn sandwiches")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"sandwiches"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_oh_henry_bar
-    assert_equal UserInput.new("oh henry bar").mark_split, ":::oh henry bar"
+  test "oh henry bar" do
+    result = UserInput.new("oh henry bar")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"oh henry bar"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_1_glass_of_orange_juice
-    assert_equal UserInput.new("1 glass of orange juice").mark_split, "1 glass of:::orange juice"
+  test "1 glass of orange juice" do
+    result = UserInput.new("1 glass of orange juice")
+    expected = {"unit"=>"Vocabulary::Litre", "count"=>0.25, "foodSearch"=>"orange juice"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_100g_of_marzipan
-    assert_equal UserInput.new("100g of marzipan").mark_split, "100g of:::marzipan"
+  test "100g of marzipan" do
+    result = UserInput.new("100g of marzipan")
+    expected = {"unit"=>"Vocabulary::Gram", "count"=>100.0, "foodSearch"=>"marzipan"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_3_hotdogs_and_4_glasses_of_coke
-    assert_equal UserInput.new("3 hotdogs and 4 glasses of coke").mark_split, "3:::hotdogs and 4 glasses of coke"
+  test "3 hotdogs and 4 glasses of coke" do
+    result = UserInput.new("3 hotdogs and 4 glasses of coke")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>3.0, "foodSearch"=>"hotdogs and 4 glasses of coke"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_a_cookie
-    assert_equal UserInput.new("a cookie").mark_split, "a:::cookie"
+  test "a cookie" do
+    result = UserInput.new("a cookie")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"cookie"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_steak
-    assert_equal UserInput.new("steak").mark_split, ":::steak"
+  test "steak" do
+    result = UserInput.new("steak")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"steak"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_two_cookies
-    assert_equal UserInput.new("two cookies").mark_split, "two:::cookies"
+  test "two cookies" do
+    result = UserInput.new("two cookies")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>2.0, "foodSearch"=>"cookies"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_very_stale_bread
-    assert_equal UserInput.new("Very stale bread").mark_split, ":::Very stale bread"
+  test "Very stale bread" do
+    result = UserInput.new("Very stale bread")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"Bread"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_two_bottles_of_heineken
-    assert_equal UserInput.new("Two bottles of Heineken").mark_split, "Two bottles of:::Heineken"
+  test "Two bottles of Heineken" do
+    result = UserInput.new("Two bottles of Heineken")
+    expected = {"unit"=>"Vocabulary::Litre", "count"=>0.682, "foodSearch"=>"Heineken"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_several_pounds_of_bacon
-    assert_equal UserInput.new("several pounds of bacon").mark_split, "several pounds of:::bacon"
+  test "several pounds of bacon" do
+    result = UserInput.new("several pounds of bacon")
+    expected = {"unit"=>"Vocabulary::Gram", "count"=>2267.96185, "foodSearch"=>"bacon"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_tortellini_and_spaghetti_sauce_with_beef_and_chicken
-    assert_equal UserInput.new("tortellini and spaghetti sauce with beef and chicken").mark_split, ":::tortellini and spaghetti sauce with beef and chicken"
+  test "tortellini and spaghetti sauce with beef and chicken" do
+    result = UserInput.new("tortellini and spaghetti sauce with beef and chicken")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"tortellini and spaghetti sauce with beef and chicken"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_classic_italian_sandwich_and_a_mandarin_orange_and_coffee
-    assert_equal UserInput.new("classic italian sandwich and a mandarin orange and coffee").mark_split, ":::classic italian sandwich and a mandarin orange and coffee"
+  test "classic italian sandwich and a mandarin orange and coffee" do
+    result = UserInput.new("classic italian sandwich and a mandarin orange and coffee")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"classic italian sandwich and a mandarin orange and coffee"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_1_taco
-    assert_equal UserInput.new("1 taco").mark_split, "1:::taco"
+  test "1 taco" do
+    result = UserInput.new("1 taco")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"taco"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_bacon_chili_cheesedog
-    assert_equal UserInput.new("bacon chili cheesedog").mark_split, ":::bacon chili cheesedog"
+  test "bacon chili cheesedog" do
+    result = UserInput.new("bacon chili cheesedog")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"bacon chili cheesedog"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_cupcakes
-    assert_equal UserInput.new("cupcakes").mark_split, ":::cupcakes"
+  test "cupcakes" do
+    result = UserInput.new("cupcakes")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"cupcakes"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_pork_and_beans
-    assert_equal UserInput.new("pork and beans").mark_split, ":::pork and beans"
+  test "pork and beans" do
+    result = UserInput.new("pork and beans")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"pork and beans"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_the_number_of_gumballs_that_fit_in_my_hat
-    assert_equal UserInput.new("The number of gumballs that fit in my hat.").mark_split, "The number that fit in my hat of:::gumballs."
+  test "The number of gumballs that fit in my hat." do
+    result = UserInput.new("The number of gumballs that fit in my hat.")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>42.0, "foodSearch"=>"-INSTAFAIL- number of gumballs that fit in my hat."}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_food
-    assert_equal UserInput.new("food").mark_split, ":::food"
+  test "food" do
+    result = UserInput.new("food")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"food"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_pankakes_bacon_eggs_and_hashbrowns
-    assert_equal UserInput.new("pankakes, bacon, eggs, and hashbrowns").mark_split, ":::pankakes, bacon, eggs, and hashbrowns"
+  test "pankakes, bacon, eggs, and hashbrowns" do
+    result = UserInput.new("pankakes, bacon, eggs, and hashbrowns")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"pankakes, bacon, eggs, and hashbrowns"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_turd_monkeys
-    assert_equal UserInput.new("turd monkeys").mark_split, ":::turd monkeys"
+  test "turd monkeys" do
+    result = UserInput.new("turd monkeys")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>1.0, "foodSearch"=>"turd monkeys"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_three_donuts
-    assert_equal UserInput.new("three donuts").mark_split, "three:::donuts"
+  test "three donuts" do
+    result = UserInput.new("three donuts")
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>3.0, "foodSearch"=>"donuts"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
-  def test_35oz_of_marzipan
-    assert_equal UserInput.new("3.5oz of marzipan").mark_split, "3.5oz of:::marzipan"
+  test "3.5oz of marzipan" do
+    result = UserInput.new("3.5oz of marzipan")
+    expected = {"unit"=>"Vocabulary::Litre", "count"=>0.103507355, "foodSearch"=>"marzipan"}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
 end

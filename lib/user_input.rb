@@ -11,9 +11,23 @@ class UserInput
   
   def initialize(str)
 
-    @count, @unit, @foodSearch = Grammar::parse(str)
+    # Collapse multiple sequential spaces or hyphens to a single one.
+    @input = str.gsub(/([\s-]+)/) do
+      $1[0..0]
+    end
+
+    @count, @unit, @foodSearch = Grammar::parse(@input)
 
   end
 
 
 end
+
+# array.each do |input|
+#     results = UserInput.new(input)
+#     puts "\"#{input}\":"
+#     puts "  count: #{results.count}"
+#     puts "  unit:  \"#{results.unit}\""
+#     puts "  foodSearch: \"#{results.foodSearch}\""
+#   end
+# end

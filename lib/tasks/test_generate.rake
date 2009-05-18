@@ -1,7 +1,7 @@
 namespace :test do
   namespace :generate do
     task :user_input do
-      read_from = File.join(RAILS_ROOT,"/test/gen_test-user_import.YAML")
+      read_from = File.join(RAILS_ROOT,"/test/test_cases.YAML")
       test_cases = YAML.load(File.read(read_from))
       
       write_to = File.join(RAILS_ROOT,'/test/unit/user_input_test.rb')
@@ -11,13 +11,20 @@ namespace :test do
 require 'test_helper'
 require 'user_input'
 
+\#\# Warning this is a generated file, do not directly modify it.
+\#\#   Instead take a look at lib/tasks/test_generate.rake
+
 class UserInputTest < ActiveSupport::TestCase
 EOS
       
       test_cases.each do |input,expected|
         f.print <<EOC
-  def test_#{input.underscore.gsub(/[^a-zA-Z0-9\s]/,'').gsub(' ','_')}
-    assert_equal UserInput.new("#{input}").mark_split, "#{expected}"
+  test "#{input}" do
+    result = UserInput.new(\"#{input}\")
+    expected = #{expected.inspect}
+    assert_equal result.count, expected["count"]
+    assert_equal result.unit.to_s, expected["unit"]
+    assert_equal result.foodSearch, expected["foodSearch"]
   end
 EOC
       end
