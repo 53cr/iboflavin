@@ -18,7 +18,7 @@ end
                            #{RAILS_ROOT}/vendor/plugins/core/app/observers/
                            #{RAILS_ROOT}/vendor/plugins/core/app/mailers/)
   config.load_once_paths += %W( #{RAILS_ROOT}/vendor/plugins/core/app/observers/)
-  config.active_record.observers = :user_observer
+#  config.active_record.observers = :user_observer
   
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
   config.gem 'authlogic'
