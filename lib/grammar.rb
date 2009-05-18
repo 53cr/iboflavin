@@ -24,9 +24,13 @@ module Grammar
     end
 
     quantifier, object = split_parts(input)
-
-    count, unit = parse_quantifier(quantifier)
-
+    
+    if quantifier
+      count, unit = parse_quantifier(quantifier)
+    else
+      count, unit = 1, Vocabulary::Serving
+    end
+      
     return [count, unit, object]
     
   end
@@ -65,10 +69,9 @@ module Grammar
     end
     
     splitting_point = str.size
-
+    
     term = splitting_point-2
-    return "" if term<0
-    quantifier = input[0..term]
+    quantifier = (term<0) ? "" : input[0..term]
 
     object = input[splitting_point..-1]
     

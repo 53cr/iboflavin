@@ -11,7 +11,7 @@ class UserInput
   
   def initialize(str)
 
-    @count, @unit, @foodSearch = Grammar::parse(@input)
+    @count, @unit, @foodSearch = Grammar::parse(str)
 
   end
 
