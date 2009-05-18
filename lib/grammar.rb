@@ -19,6 +19,10 @@ module Grammar
     # If no Amount Part is given, we assume one serving, and hope the DB
     # provides that information.
 
+    input = input.gsub(/([\s-]+)/) do
+      $1[0..0]
+    end
+
     quantifier, object = split_parts(input)
 
     count, unit = parse_quantifier(quantifier)
