@@ -2,9 +2,9 @@ require "openssl"
 require "net/smtp"
 
 Net::SMTP.class_eval do
-  DEFAULT_AUTH_TYPE = :plain
+  DEFAULT_AUTH_TYPE = :plain unless defined?(DEFAULT_AUTH_TYPE)
   private
-  def do_start(helodomain, user, secret, authtype = DEFAULT_AUTH_TYPR)
+  def do_start(helodomain, user, secret, authtype = DEFAULT_AUTH_TYPE)
     raise IOError, 'SMTP session already started' if @started
     if user or secret
       check_auth_method(authtype)
