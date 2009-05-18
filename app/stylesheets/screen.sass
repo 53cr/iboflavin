@@ -1,8 +1,6 @@
-@import blueprint.sass
-@import compass/reset.sass
-@import blueprint/modules/grid.sass
-
-+blueprint
+@import blueprint/screen.sass
+@import blueprint/modules/scaffolding.sass
+@import compass/reset.sass, compass/utilities.sass
 
 =imagereplacement
   :overflow hidden
@@ -29,6 +27,7 @@ p, li, h1, h2, h3, h4, h5, h6, input
   :color #444
 
 body
+  +blueprint-typography
   :font-family "Helvetica Neue", Helvetica, Arial, sans-serif
   :background url(/images/leftpanel-top.png) top center no-repeat
   :height 100%
