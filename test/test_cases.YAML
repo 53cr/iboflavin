@@ -189,8 +189,8 @@
 "75 kg of a 100 kg bucket of chicken":
   count: 7500000000.0
   unit:  "Vocabulary::Gram"
-  foodSearch: "-INSTAFAIL-, does not do proportions, bucket of chicken"
+  foodSearch: "chicken"
 "The number of gumballs that fit in my hat.":
   count: 42.0
   unit:  "Vocabulary::Serving"
-  foodSearch: "-INSTAFAIL- number of gumballs that fit in my hat."
+  foodSearch: "gumballs"

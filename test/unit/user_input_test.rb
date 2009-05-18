@@ -28,7 +28,7 @@ class UserInputTest < ActiveSupport::TestCase
   end
   test "75 kg of a 100 kg bucket of chicken" do
     result = UserInput.new("75 kg of a 100 kg bucket of chicken")
-    expected = {"unit"=>"Vocabulary::Gram", "count"=>7500000000.0, "foodSearch"=>"-INSTAFAIL-, does not do proportions, bucket of chicken"}
+    expected = {"unit"=>"Vocabulary::Gram", "count"=>7500000000.0, "foodSearch"=>"chicken"}
     assert_equal result.count, expected["count"]
     assert_equal result.unit.to_s, expected["unit"]
     assert_equal result.foodSearch, expected["foodSearch"]
@@ -308,7 +308,7 @@ class UserInputTest < ActiveSupport::TestCase
   end
   test "The number of gumballs that fit in my hat." do
     result = UserInput.new("The number of gumballs that fit in my hat.")
-    expected = {"unit"=>"Vocabulary::Serving", "count"=>42.0, "foodSearch"=>"-INSTAFAIL- number of gumballs that fit in my hat."}
+    expected = {"unit"=>"Vocabulary::Serving", "count"=>42.0, "foodSearch"=>"gumballs"}
     assert_equal result.count, expected["count"]
     assert_equal result.unit.to_s, expected["unit"]
     assert_equal result.foodSearch, expected["foodSearch"]
