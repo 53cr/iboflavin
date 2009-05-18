@@ -2,22 +2,7 @@
 @import compass/reset.sass
 @import compass/utilities.sass
 
-=imagereplacement
-  :overflow hidden
-  :position relative
-  :text-indent -9000px
-  a
-    :display block
-    :height 100% 
-    :width 100%
-  a span 
-    :display block
-    :height 100%
-    :width 100%
-    :position absolute
-    :top 0
-    :left 0
-    :cursor pointer
+@import image-replacement.sass
 
 +blueprint
 
@@ -29,7 +14,6 @@ p, li, h1, h2, h3, h4, h5, h6, input
   :color #444
 
 body
-  :font-family "Helvetica Neue", Helvetica, Arial, sans-serif
   :background url(/images/leftpanel-top.png) top center no-repeat
   :height 100%
 
@@ -59,7 +43,7 @@ body
   :background url(/images/title_iboflavin_beta.png) top left no-repeat
   :margin 44px 0 5px 0
 
-#twitter h2
+#header h2
   +imagereplacement
   :float right
   :height 63px
@@ -69,7 +53,7 @@ body
   :top 40px
 
 
-#cloudpanel
+#cloud
   :background url(/images/cloud.png) top left no-repeat 
   :position absolute
   :top 7px
@@ -77,7 +61,7 @@ body
   :width 707px
   :margin-left -37px
 
-#cloud
+#cloudpanel
   :background url(/images/cloudfade.png) top right no-repeat
   :position absolute
   :height 90px

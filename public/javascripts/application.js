@@ -11,7 +11,7 @@ if ( window.addEventListener ) {
 
 $(document).ready(function() {
 
-  $('#cloudpanel').animate({
+  $('#cloud').animate({
     "background-position": "707px"
   }, 150000, "linear");
 
