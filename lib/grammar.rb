@@ -8,11 +8,11 @@ module Grammar
     # some sort of description of what they just ate, but you never know.
     # it might just be them slamming their face against the keyboard.
 
-    # ||---\--------------------------/--[ Food Part ]----||
-    #      |                          |
-    #      \--[ Amount Part ]-\------//
-    #                         |      |
-    #                         \-(of)-/
+    # ||---\------------------------/-[object]-||
+    #      |                        |
+    #      \-[quantifier]-\--------//
+    #                       |      |
+    #                       \-(of)-/
 
     # What we're _expecting_ is some description of the food, possibly
     # prefixed with some description of how much food there was.
@@ -54,11 +54,8 @@ module Grammar
   def self.split_parts(input)
     tokens = input.downcase.split(/[\s-]+/)
 
-    tokens = input.downcase.split(/[\s-]+/)
-    marks = []
-
-    tokens.each_with_index do |el, i|
-      marks[i] = Vocabulary::quantifier_value(el)
+    marks = tokens.inject([]) do |acc, token|
+      acc << Vocabulary::quantifier_value(token)
     end
 
     # not ruby-esque, but more efficient. Deal with it.
