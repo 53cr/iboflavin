@@ -1,11 +1,10 @@
 development:
-  adapter: mysql
+  adapter: postgresql
   database: iboflavin_development
   host: localhost
   username: iboflavin
   password: hap5ut8och
   encoding: utf8
-  socket: /tmp/mysql.sock
 
 test:
   adapter: sqlite3
@@ -14,10 +13,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql
+  adapter: postgresql
   database: iboflavin_production
   host: localhost
   username: iboflavin
   password: hap5ut8och
   encoding: utf8
-  socket: /tmp/mysql.sock
