@@ -31,7 +31,7 @@ module Grammar
     count, unit = if quantifier
                     parse_quantifier(quantifier)
                   else
-                    1, Vocabulary::Serving # default to 1 serving
+                    [1, Vocabulary::Serving] # default to 1 serving
                   end
       
     return [count, unit, object]
