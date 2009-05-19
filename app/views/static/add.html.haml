@@ -1,5 +1,8 @@
-= @count
-<br/>
-= @unit
-<br/>
-= @food.name
+- if @food
+  = @count
+  <br/>
+  = @unit
+  <br/>
+  = @food.name
+- else 
+  Couldn't find any food to match your query :(
