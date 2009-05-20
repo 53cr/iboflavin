@@ -1,5 +1,20 @@
 module Nutrition
   class Requirements
+    def self.for(user)
+      if user.pregnant or user.lactating
+        
+      elsif user.child or user.infant
+        
+      else
+        if user.male
+          
+        elsif user.female
+          
+        end
+      end
+    end
+    
+    class Error < RuntimeError; end
     UNITS = {
       #Vitamins
       :vit_a => :microgram,
@@ -34,8 +49,12 @@ module Nutrition
       :chloride => :gram,
     }
     
-    def initialize(params={})
+    def initialize(nutrients={})
+      if !nutrients.keys.all? {|key| UNITS.keys.any? {|master| master == key}}
+        raise Nutrition::Requirements::Error.new "An imported vitamin has the wrong key"
+      end
       
+      @_data = nutrients
     end
   
   
