@@ -27,6 +27,9 @@ module Vocabulary
   class Litre   < Unit; end
   class Serving < Unit; end
   
+
+  CONJUNCTIONS = %w{and with}
+
   PREFIXES = {
     "mega"  => 1_000_000,
     "kilo"  => 1_000,
@@ -127,7 +130,7 @@ module Vocabulary
     "a"   => true,
     "of"  => true,
     "an"  => true,
-    "and" => true,
+    "and" => :+,
     "the" => true
   }
 
