@@ -8,16 +8,14 @@ class FoodItem < ActiveRecord::Base
   TOKYO = Rufus::Tokyo::Tyrant.new('localhost',45001)
   
   define_index do
-
     indexes name
-
   end
-
 
   def self.awesome_search(text)
 
     # first, try for most recent use by user
-
+    #TODO
+    
     # next, try global most popular
     if (food = TOKYO[text])
       return self.find(food.to_i)
@@ -26,7 +24,8 @@ class FoodItem < ActiveRecord::Base
     sigtext = ::SearchUtils.signaturize(text)
 
     # try again with sigtext (most recent by user)
-
+    #TODO
+    
     # global most popular
     if (food = TOKYO[sigtext])
       return self.find(food.to_i)
