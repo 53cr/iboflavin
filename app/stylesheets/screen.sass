@@ -6,6 +6,10 @@
 
 +blueprint
 
+=full-height
+  :padding-bottom 32767px
+  :margin-bottom -32767px
+
 p, li, h1, h2, h3, h4, h5, h6, input
   :color #444
 
@@ -18,29 +22,27 @@ html
 
 body
   :background url(/images/leftpanel-top.png) top center no-repeat
-  :height 100%
+
+#footer
+  :clear both
 
 #page
   +container
-  :height 100%
   #leftpanel
     +column(6)
     +append(1)
   #mainpanel
     +column(17,true)
-    :height 100%
     #content
-      :background #e8f9f9
-      :height 100%
-      :padding 36px 45px 0 45px
       :clear both
+      :padding 36px 50px 0 40px
     #header 
       h1
-        +imagereplacement(title_iboflavin_beta.png, 48px, 238px)
+        +imagereplacement("title_iboflavin_beta.png", 48px, 238px)
         :float left
-        :margin 44px 0 5px 0
+        :margin 44px 0 5px -10px
       h2
-        +imagereplacement(twitter.png, 63px, 101px)
+        +imagereplacement("twitter.png", 63px, 101px)
         :float right
         :top 40px
     #cloud
