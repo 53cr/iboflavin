@@ -1,0 +1,15 @@
+%p
+  %strong Input:
+  =h @entry.input
+
+- @entry.entry_matches.each do |match|
+  %p
+    %strong Match: 
+    = match.search
+    %br/
+    = match.food_item.name
+    %br/
+    = match.amount
+    %br/
+    = match.unit
+

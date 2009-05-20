@@ -1,0 +1,13 @@
+Phase 1: Check for literal string
+"Hamburgers with cheeses"
+
+Phase 2: Stem words and remove unimportant words
+"Hamburgers with cheeses" => "hamburger cheese"
+
+Phase 3: Sort Phase 3 results
+"Hamburgers with cheeses" => "cheese hamburger" 
+
+Phase 4: Search for phase 2 string in FoodItem table
+
+Phase [x]a: Check for results for the current user
+Phase [x]b: Check for results across all users 

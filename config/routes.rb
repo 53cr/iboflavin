@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :entry_matches
+
   map.resources :entries
 
   map.resources :entries

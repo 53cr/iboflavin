@@ -1,0 +1,16 @@
+<h1>Editing entry</h1>
+
+<% form_for(@entry) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :input %><br />
+    <%= f.text_field :input %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @entry %> |
+<%= link_to 'Back', entries_path %>
