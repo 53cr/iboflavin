@@ -6,7 +6,7 @@ module Grammar
 
   def self.parse(str)
     tokens        = tokenize(str)
-    naive_phrases = naive_phrases(tokens)
+    naive_phrases = naive_phrases(tokens) # split on conjunctions
     phrases       = recombine_split_quantifiers(naive_phrases)
 
     phrases.map! do |phrase|
@@ -23,12 +23,12 @@ module Grammar
   
   def self.naive_phrases(tokens)
     # split on conjunctions into the form:
-    # "three and a half hamburgers and a hotdog with ketchup and relish"
+    # "three and a half hamburgers and a hotdog with ketchup and three pounds of relish"
     #   [[nil, ["three"]],
     #    ["and", ["a", "half", "hamburgers"]],
     #    ["and", ["a", "hotdog"]],
     #    ["with", ["ketchup"]],
-    #    ["and", ["relish"]]]
+    #    ["and", ["three", "pounds", "of", "relish"]]]
     phrases = tokens.inject([[nil,[]]]) do |arr, word|
       if Vocabulary::CONJUNCTIONS.include?(word)
         arr << [word,[]]
@@ -43,7 +43,17 @@ module Grammar
   end
 
   def self.recombine_split_quantifiers(naive)
-    # if phrase[1] is pure quantifier, merge next phrase onto this one.
+    #   [[nil, ["three"]],
+    #    ["and", ["a", "half", "hamburgers"]],
+    #    ["and", ["a", "hotdog"]],
+    #    ["with", ["ketchup"]],
+    #    ["and", ["three", "pounds", "of", "relish"]]]
+
+    #   [["three", "and", "a", "half", "hamburgers"],
+    #    ["a", "hotdog"],
+    #    ["ketchup"],
+    #    ["three", "pounds", "of", "relish"]]
+
     phrases = []
 
     append = false
@@ -69,16 +79,24 @@ module Grammar
       acc << Vocabulary::quantifier_value(word)
     end
 
-    object_index = values.index(false)
-    quantifier = parse_quantifier(values[0...object_index])
-    object = phrase[object_index..-1]
+    ### This could use improvement. ##########################
+    object_index = values.index(false) #######################
+    quantifier = parse_quantifier(values[0...object_index]) ##
+    object = phrase[object_index..-1] ########################
+    ##########################################################
 
-    return [quantifier, object].flatten
+    return [quantifier, object.join(' ')].flatten
   end
 
   def self.parse_quantifier(values)
-    expr = [[1]]
+    # "three and a half pounds"
+    # [[3], [1/2, (1 pound)]]
+    # [[3], [1/2 * (1 pound)]]
+    # [3 + x]
+    # y
 
+    expr = [[1]]
+    
     until values.empty?
       val = values.shift
       if val == :+
@@ -87,7 +105,7 @@ module Grammar
         (expr.last << val) if val.is_a? Numeric
       end
     end
-
+    
     total = expr.map { |subex|
       subex.inject(&:*)
     }.inject(&:+)
