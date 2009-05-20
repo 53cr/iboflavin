@@ -679,7 +679,7 @@ body { background: url(/images/leftpanel-top.png) top center no-repeat; }
 /* line 97, ../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.6/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
 * html #page #mainpanel { overflow-x: hidden; }
 /* line 36, ../../app/stylesheets/screen.sass */
-#page #mainpanel #content { clear: both; padding: 36px 50px 0 40px; }
+#page #mainpanel #content { clear: both; padding: 36px 48px 0 35px; }
 /* line 40, ../../app/stylesheets/screen.sass */
 #page #mainpanel #header h1 { overflow: hidden; height: 48px; width: 238px; margin: 0; background-image: url(/images/title_iboflavin_beta.png); background-position: top left; background-repeat: no-repeat; position: relative; text-indent: -9000px; float: left; margin: 44px 0 5px -10px; }
 /* line 12, ../../app/stylesheets/_image-replacement.sass */
@@ -700,4 +700,4 @@ body { background: url(/images/leftpanel-top.png) top center no-repeat; }
 /* line 62, ../../app/stylesheets/screen.sass */
 #thequestion h3 { text-align: right; margin-bottom: 0; }
 /* line 65, ../../app/stylesheets/screen.sass */
-#thequestion input.text { width: 567px; height: 36px; font-size: 24px; }
+#thequestion input.text { width: 575px; height: 36px; font-size: 24px; }
