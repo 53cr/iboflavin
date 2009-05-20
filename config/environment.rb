@@ -6,11 +6,14 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+require 'rufus/tokyo/tyrant'
+
+
 
 Rails::Initializer.run do |config|
   observers = Dir.glob("#{RAILS_ROOT}/{vendor/plugins/core/,}app/observers/*.rb").map do |file| 
-  File.basename(file).gsub(".rb","") 
-end
+    File.basename(file).gsub(".rb","") 
+  end
   config.load_paths += %W( #{RAILS_ROOT}/app/sweepers/
                            #{RAILS_ROOT}/app/observers/
                            #{RAILS_ROOT}/app/mailers/
@@ -32,12 +35,6 @@ end
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 
-  # Specify gems that this application depends on and have them installed with rake gems:install
-  # config.gem "bj"
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
-  # config.gem "aws-s3", :lib => "aws/s3"
-
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -57,3 +54,5 @@ end
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+require 'rufus/tokyo/tyrant'

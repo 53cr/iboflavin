@@ -1,5 +1,3 @@
-require 'lingua/stemmer'
-
 class EntryMatch < ActiveRecord::Base
 
   before_save :cache_search_terms
@@ -12,13 +10,8 @@ class EntryMatch < ActiveRecord::Base
 
   private
   def cache_search_terms
-    s = Lingua::Stemmer.new
-    arr = s.stem(self.search).split(/[\s-]+/)
-    self.p2search = arr.join(' ')
-    self.p3search = arr.sort.join(' ')
-
-    self.food_item = FoodItem.awesome_search(self.search, self.unit, self.amount)
-
+    self.sigsearch = SearchUtils.signaturize(self.search)
+    self.food_item = FoodItem.awesome_search(self.search)
   end
   
 end

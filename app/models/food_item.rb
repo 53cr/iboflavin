@@ -5,7 +5,8 @@ class FoodItem < ActiveRecord::Base
   has_many :food_item_nutrients
   has_many :nutrients, :through => :food_item_nutrients
 
-
+  TOKYO = Rufus::Tokyo::Tyrant.new('localhost',45001)
+  
   define_index do
 
     indexes name
@@ -13,19 +14,36 @@ class FoodItem < ActiveRecord::Base
   end
 
 
-  def self.awesome_search(text, unit, amount)
+  def self.awesome_search(text)
 
-    # THIS NEEDS MAJOR OPTIMIZATION. LIKE, SO BAD.
-    
-    # PHASE 1a: Previous results submitted by this user with the exact same text
-#     x = EntryMatch.find(:all, :conditions => {:search => text, :user_id => 1})
-#     x.map(&:food_item_id)
+    # first, try for most recent use by user
 
+    # next, try global most popular
+    if (food = TOKYO[text])
+      return self.find(food.to_i)
+    end
 
-#    return self.search(text)
+    sigtext = ::SearchUtils.signaturize(text)
 
-    return self.first
-    
+    # try again with sigtext (most recent by user)
+
+    # global most popular
+    if (food = TOKYO[sigtext])
+      return self.find(food.to_i)
+    end
+
+    # all else fails, fire it off the the god-awful full-text search.
+    # if we're running in development, don't freak out when sphinx isn't available.
+    if RAILS_ENV=='development'
+      begin
+        return self.search(text)
+      rescue
+        return self.find(:first,:conditions=>['name LIKE ?',"%#{text}%"])
+      end
+    else 
+      return self.search(text)
+    end
+      
   end
   
 end

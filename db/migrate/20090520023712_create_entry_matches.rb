@@ -6,8 +6,7 @@ class CreateEntryMatches < ActiveRecord::Migration
       t.integer :entry_id
       
       t.string :search
-      t.string :p2search
-      t.string :p3search
+      t.string :sigsearch
       t.integer :food_item_id
 
       t.float :amount
