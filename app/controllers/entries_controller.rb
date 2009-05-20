@@ -17,7 +17,8 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @entry }
+      format.xml  { render :xml  => @entry }
+      format.json { render :json => {:entry => @entry, :entry_matches => @entry.entry_matches}.to_json }
     end
   end
 
@@ -46,10 +47,12 @@ class EntriesController < ApplicationController
       if @entry.save
         flash[:notice] = 'Entry was successfully created.'
         format.html { redirect_to(@entry) }
-        format.xml  { render :xml => @entry, :status => :created, :location => @entry }
+        format.xml  { render :xml  => @entry, :status => :created, :location => @entry }
+        format.json { render :json => @entry, :status => :created, :location => @entry }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml  => @entry.errors, :status => :unprocessable_entity }
+        format.json { render :json => @entry.errors, :status => :unprocessable_entity }
       end
     end
   end
