@@ -35,12 +35,12 @@ class FoodItem < ActiveRecord::Base
     # if we're running in development, don't freak out when sphinx isn't available.
     if RAILS_ENV=='development'
       begin
-        return self.search(text)
+        return self.search(text,:limit=>1).first rescue nil
       rescue
-        return self.find(:first,:conditions=>['name LIKE ?',"%#{text}%"])
+        return self.find(:first,:conditions=>['name LIKE ?',"%#{text}%"]) rescue nil
       end
     else 
-      return self.search(text)
+      return self.search(text,:limit=>1).first rescue nil
     end
       
   end
