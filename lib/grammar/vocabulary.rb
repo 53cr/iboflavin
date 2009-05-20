@@ -56,7 +56,6 @@ module Grammar
       "n" => 0.000_000_001
     }
 
-    
     MODIFIERS = {
       "dozen"     => 12,
       "several"   => 5,
@@ -81,9 +80,26 @@ module Grammar
     }
 
     UNITS = {
+      # Literally one serving
+      "serving"  => 1,
+      "helping"  => 1,
+
+      # Highly subjective. Just guess. They can correct later.
+      "some"     => 1,
+      "bit"      => 1,
+      "little"   => 1,
+      "lot"      => 2,
+      "bunch"    => 2,
+
+      # Food-specific. Assume one serving?
+      "piece"    => 1,
+      "slice"    => 1,
+
+      # Weight-based
       "gram"     => Gram.new(1),
       "pound"    => Gram.new(453.59237),
 
+      # Volume-based
       "glass"    => Litre.new(0.250),
       "bottle"   => Litre.new(0.341),
       "can"      => Litre.new(0.335),
