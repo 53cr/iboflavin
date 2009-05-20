@@ -22,6 +22,7 @@ end
   
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
   config.gem 'authlogic'
+  config.gem 'rufus-tokyo'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
   config.gem 'thoughtbot-shoulda', :lib => 'shoulda', :source => 'http://gems.github.com'
   # Settings in config/environments/* take precedence over those specified here.
@@ -56,6 +57,3 @@ end
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
-
-
-require 'lib/grammar'
