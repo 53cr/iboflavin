@@ -7,9 +7,10 @@
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
-    = javascript_include_tag 'http://rubidium.53cr.com/js/c27f1fd154520a9f86ba07cb62a0206c/jquery-1.3.2+cufon-yui-2009-05-04+Fertigo_400.font+++iboflav.in.js'
+    /= javascript_include_tag 'http://rubidium.53cr.com/js/c27f1fd154520a9f86ba07cb62a0206c/jquery-1.3.2+cufon-yui-2009-05-04+Fertigo_400.font+++iboflav.in.js'
+    = javascript_include_tag 'jquery', 'cufon-yui', 'Fertigo_400.font'
     = javascript_tag 'Cufon.replace("h3");'
-    = javascript_include_tag 'application.js'
+    = javascript_include_tag 'jquery-ui', 'jrails', 'application.js'
 
   %body
     #page

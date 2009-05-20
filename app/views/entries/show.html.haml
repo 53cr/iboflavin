@@ -7,9 +7,9 @@
     %strong Match: 
     = match.search
     %br/
-    = match.food_item.name
+    = match.food_item.name rescue "err"
     %br/
-    = match.amount
+    = match.amount rescue "err"
     %br/
-    = match.unit
+    = match.unit rescue "err"
 

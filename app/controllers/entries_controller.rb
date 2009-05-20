@@ -16,7 +16,7 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => false }
       format.xml  { render :xml  => @entry }
       format.json { render :json => {:entry => @entry, :entry_matches => @entry.entry_matches}.to_json }
     end
@@ -45,7 +45,6 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
-        flash[:notice] = 'Entry was successfully created.'
         format.html { redirect_to(@entry) }
         format.xml  { render :xml  => @entry, :status => :created, :location => @entry }
         format.json { render :json => @entry, :status => :created, :location => @entry }
