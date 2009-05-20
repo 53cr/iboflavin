@@ -1,7 +1,5 @@
 require 'pp'
 
-require 'vocabulary'
-
 module Grammar
 
   def self.parse(str)
