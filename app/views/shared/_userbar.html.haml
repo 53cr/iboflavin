@@ -1,4 +1,4 @@
 #userbar
   %ul
     %li= link_to 'Logout', '/logout'
-    %li Logged in as #{link_to 'Burke', '/'}
+    %li Logged in as #{link_to @current_user.login, '/dashboard'}

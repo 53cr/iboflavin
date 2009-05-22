@@ -8,6 +8,9 @@ if ( window.addEventListener ) {
 }
 
 
+var handleMessage = function(response, statusText) {
+  $("#recent").prepend(response).effect("highlight",{},1500);
+};
 
 $(document).ready(function() {
 
@@ -16,6 +19,8 @@ $(document).ready(function() {
   }, 150000, "linear");
 
   var def = "Four Pan-Galactic Gargle Blasters";
+
+  $("#thequestion form").ajaxForm({success: handleMessage, clearForm: true});
 
   $("#thequestion input.text").
     attr('value', def).

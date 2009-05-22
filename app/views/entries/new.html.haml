@@ -1,7 +1,7 @@
 #thequestion
   %h3 What are you eating?
 
-  - remote_form_for(@entry, :update => 'recent', :position => 'top') do |f| 
+  - form_for(@entry, :position => 'top') do |f| 
     = f.error_messages
     = f.text_field :input, :class=>"text", :value=>"Four Pan-Galactic Gargle Blasters", :style=>"color:#999"
 
