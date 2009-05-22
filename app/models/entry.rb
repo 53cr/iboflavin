@@ -4,7 +4,8 @@ class Entry < ActiveRecord::Base
 
   belongs_to :user
   has_many :entry_matches
-
+  
+  private
   def create_entry_matches
 
     items = Grammar::parse(self.input)
@@ -14,5 +15,6 @@ class Entry < ActiveRecord::Base
     end
     
   end
-    
+
+  
 end

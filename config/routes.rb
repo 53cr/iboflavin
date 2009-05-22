@@ -1,12 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :entry_matches
-
   map.resources :entries
 
-  map.resources :entries
-
-  map.root :controller => 'entries', :action => 'new'
-  
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 

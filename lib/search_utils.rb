@@ -41,7 +41,7 @@ module SearchUtils
         end
       end
       
-      tokyo[search] = maxfreqid.to_s
+      tokyo["s_#{search}"] = maxfreqid.to_s
     end
 
     tokyo.close

@@ -1,15 +1,6 @@
-%p
-  %strong Input:
-  =h @entry.input
+%h4=h @entry.input
 
+%ul
 - @entry.entry_matches.each do |match|
-  %p
-    %strong Match: 
-    = match.search
-    %br/
-    = match.food_item.name rescue "err"
-    %br/
-    = match.amount rescue "err"
-    %br/
-    = match.unit rescue "err"
-
+  %li
+    == #{match.humanize_amount} of #{match.food_item.name rescue "err"}

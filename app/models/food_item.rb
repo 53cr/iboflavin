@@ -17,7 +17,7 @@ class FoodItem < ActiveRecord::Base
     #TODO
     
     # next, try global most popular
-    if (food = TOKYO[text])
+    if (food = TOKYO["s_#{text}"])
       return self.find(food.to_i)
     end
 
@@ -27,7 +27,7 @@ class FoodItem < ActiveRecord::Base
     #TODO
     
     # global most popular
-    if (food = TOKYO[sigtext])
+    if (food = TOKYO["s_#{sigtext}"])
       return self.find(food.to_i)
     end
 
