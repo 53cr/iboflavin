@@ -19,9 +19,9 @@ module Nutrition
       #Vitamins
       :vit_a => :microgram,
       :vit_c => :milligram,
-      :vit_d=> :microgram, 
-      :vit_e=> :milligram, 
-      :vit_k=> :microgram, 
+      :vit_d => :microgram, 
+      :vit_e => :milligram, 
+      :vit_k => :microgram, 
       :thiamin => :milligram, 
       :riboflavin => :milligram, 
       :niacin => :milligram, 
@@ -56,7 +56,13 @@ module Nutrition
       
       @_data = nutrients
     end
-  
-  
+    
+    def for(nutrient)
+      vitamin = @_data[nutrient]
+      return { :value => vitamin, :unit => UNITS[nutrient] }
+    end
+    def self.valid_nutrients
+      UNITS.keys
+    end
   end
 end

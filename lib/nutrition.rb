@@ -2,7 +2,7 @@
 # :vit_a, :vit_c, :vit_d, :vit_e, :vit_k, :thiamin, :riboflavin, :niacin, :vit_b6, :folate, :vit_b12, :pantothenic, :biotin, :choline
 #Elements
 #:calcium, :chromium, :copper, :fluoride, :iodine, :iron, :magnesium, :manganese, :molybdenum, :phosphorus, :selenium, :zinc, :potassium, :sodium, :chloride
-require "nutrition/nutrition_requirements.rb"
+require "nutrition/requirements"
 module Nutrition  
   DATA = {
     :infant => {
