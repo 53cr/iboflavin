@@ -59,3 +59,4 @@ end
 
 
 require 'lib/grammar'
+require 'lib/enumerable'
