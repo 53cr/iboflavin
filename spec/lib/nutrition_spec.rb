@@ -3,7 +3,7 @@ require 'nutrition'
 
 module Nutrition
   describe "Nutrition" do
-    context "should contain values for" do
+    context "should return values for" do
       it "all ages from 0 months to 999 years"
       it "both sexes"
       it "infants"

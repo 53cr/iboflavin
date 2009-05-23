@@ -50,8 +50,11 @@ module Nutrition
     }
     
     def initialize(nutrients={})
-      if !nutrients.keys.all? {|key| UNITS.keys.any? {|master| master == key}}
+      if !UNITS.includes_all? nutrients.keys
         raise Nutrition::Requirements::Error.new "An imported vitamin has the wrong key"
+      end
+      if !nutrients.includes_all? UNITS.keys
+        raise Nutrition::Requirements::Error.new "The imported vitamins are missing a key"
       end
       
       @_data = nutrients

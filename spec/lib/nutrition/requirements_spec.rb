@@ -3,7 +3,7 @@ require 'nutrition'
 
 module Nutrition
   describe Requirements do
-    context "should give" do
+    context "" do
       before(:all) do
         @valid_data = {
           :vit_a=>400, :vit_c=>40, :vit_d=>5, :vit_e=>4, :vit_k=>2.0,
@@ -23,10 +23,9 @@ module Nutrition
       end
       
       it "should require all vitamins and mineral types be present" do
-        pending
         invalid_data = @valid_data.dup
-        invalid_data[:vit_a] = nil
-        lambda { Requirements.new(invalid_data) }.should raise "The imported vitamins are missing a key"
+        invalid_data.delete(:vit_a)
+        lambda { Requirements.new(invalid_data) }.should raise_error "The imported vitamins are missing a key"
       end
       
       it "should retain vitamin/mineral values passed in" do
