@@ -1,1 +1,2 @@
-="http://#{APP[:host]}/confirm/#{@user.salt}"
+= confirmation_url(@user.perishable_token)
+

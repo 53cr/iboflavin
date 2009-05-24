@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), "/../spec_helper")
 
-describe "A User", :type => :model do
+describe "A User" do
   before(:each) do
     @user = User.new
   end

@@ -1,0 +1,11 @@
+#thequestion
+  %h3 What are you eating?
+
+  - form_for(@entry, :position => 'top') do |f| 
+    = f.error_messages
+    = f.text_field :input, :class=>"text", :value=>"Four Pan-Galactic Gargle Blasters", :style=>"color:#999"
+
+
+%h3 So far today, you've had...
+
+#recent

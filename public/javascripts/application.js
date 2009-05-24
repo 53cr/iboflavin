@@ -7,15 +7,48 @@ if ( window.addEventListener ) {
   }, true);
 }
 
+var configureRPX = function() {
+  RPXNOW.token_url = "http://localhost:3000/rpx/login";
+  RPXNOW.realm = "iboflavin";
+  RPXNOW.default_provider = "twitter";
+  RPXNOW.overlay = true;
+  RPXNOW.language_preference = 'en';
+};
 
+var handleMessage = function(response, statusText) {
+  $("#recent").prepend(response).effect("highlight",{},1500);
+};
+
+var edit_submit_handler = function(el) {
+
+};
+
+var edit_cancel_handler = function(el) {
+
+};
+
+var bind_editors = function() {
+  $(".in-place-edit").children().inPlaceEdit({
+    submit : edit_submit_handler,
+    cancel : edit_cancel_handler,
+    html : ' \
+          <div class="inplace-edit"> \
+            <input type="text" value="" class="field" /> \
+          </div>'
+  });
+};
 
 $(document).ready(function() {
+
+  bind_editors();
 
   $('#cloud').animate({
     "background-position": "707px"
   }, 150000, "linear");
 
   var def = "Four Pan-Galactic Gargle Blasters";
+
+  $("#thequestion form").ajaxForm({success: handleMessage, clearForm: true});
 
   $("#thequestion input.text").
     attr('value', def).
