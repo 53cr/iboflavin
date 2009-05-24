@@ -11,6 +11,7 @@ Rails::Initializer.run do |config|
   config.gem 'httparty'
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
   config.gem 'authlogic'
+  config.gem 'ruby-stemmer'
   config.gem 'rufus-tokyo'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
   config.gem 'thoughtbot-shoulda',      :lib => 'shoulda',      :source => 'http://gems.github.com'
