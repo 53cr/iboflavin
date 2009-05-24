@@ -16,7 +16,8 @@ var configureRPX = function() {
 };
 
 var handleMessage = function(response, statusText) {
-  $("#recent").prepend(response).effect("highlight",{},1500);
+  $("#recent").prepend(response);
+  $("#recent .entry:first").effect("highlight",{},1500);
 };
 
 var edit_submit_handler = function(el) {

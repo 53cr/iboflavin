@@ -1,7 +1,7 @@
-%h4=h @entry.input
-
-%ul
-- @entry.entry_matches.each do |match|
-  %li
-    == <span class="in-place-edit"><span>#{match.humanize_amount}</span></span> of #{match.food_item.name rescue "err"}
-    <script type="text/javascript">bind_editors();</script>
+.entry
+  %p.name=h @entry.input
+  %ul
+    - @entry.entry_matches.each do |match|
+      %li
+        == <span class="in-place-edit"><span>#{match.humanize_amount}</span></span> of #{match.food_item.name rescue "err"}
+        <script type="text/javascript">bind_editors();</script>

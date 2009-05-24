@@ -713,3 +713,12 @@ body { background: url(/images/leftpanel-top.png) top center no-repeat; }
 
 /* line 95, ../../app/stylesheets/screen.sass */
 .in-place-edit * { display: inline; }
+
+/* line 99, ../../app/stylesheets/screen.sass */
+#recent p.name { font-weight: bold; }
+/* line 101, ../../app/stylesheets/screen.sass */
+#recent ul, #recent p { line-height: 24px; margin: 0; padding: 0; }
+/* line 105, ../../app/stylesheets/screen.sass */
+#recent li { margin-left: 18px; list-style-type: none; }
+/* line 108, ../../app/stylesheets/screen.sass */
+#recent input { width: 100px; }
