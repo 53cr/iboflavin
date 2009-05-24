@@ -710,3 +710,6 @@ body { background: url(/images/leftpanel-top.png) top center no-repeat; }
 
 /* line 87, ../../app/stylesheets/screen.sass */
 #footer { position: fixed; clear: both; bottom: 0; width: 100%; background: url(/images/footer.png) top left repeat; height: 50px; }
+
+/* line 95, ../../app/stylesheets/screen.sass */
+.in-place-edit * { display: inline; }
