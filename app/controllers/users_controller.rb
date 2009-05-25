@@ -35,8 +35,9 @@ class UsersController < ApplicationController
       @user = User.new({ :twitter_screen_name => user_info['screen_name'],
                          :twitter_token => @access_token.token,
                          :twitter_secret => @access_token.secret })
-      
-      redirect_to( @user.save(false) )
+
+      @user.save(false)
+      redirect_to( @user )
     else
       RAILS_DEFAULT_LOGGER.error "Failed to get user info via OAuth"
       # The user might have rejected this application. Or there was some other error during the request.
