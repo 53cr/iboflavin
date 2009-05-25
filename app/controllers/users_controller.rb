@@ -31,6 +31,7 @@ class UsersController < ApplicationController
         redirect_to :action => :index
         return
       end
+      RAILS_DEFAULT_LOGGER.error user_info.inspect
       # We have an authorized user, save the information to the database.
       @user = User.new({ :twitter_screen_name => user_info['screen_name'],
                          :twitter_token => @access_token.token,
