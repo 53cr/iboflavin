@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
   config.gem 'ruby-stemmer', :lib => 'lingua/stemmer'
   config.gem 'twitter'
+  config.gem 'json'
   config.gem 'oauth'
   config.gem 'rufus-tokyo'
   config.gem "thoughtbot-clearance",    :lib => 'clearance',    :source => 'http://gems.github.com'
