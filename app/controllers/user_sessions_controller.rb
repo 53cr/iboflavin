@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
 
     if @user_session.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default user_url(@user_session.user)
+      redirect_back_or_default new_entry_url
     else
       if @user_session.rpx_data
         @user = User.new(@user_session.rpx_data)
