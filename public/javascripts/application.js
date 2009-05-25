@@ -8,7 +8,7 @@ if ( window.addEventListener ) {
 }
 
 var configureRPX = function() {
-  RPXNOW.token_url = "http://localhost:3000/rpx/login";
+  RPXNOW.token_url = 'http://'+location.host+'/rpx/login';
   RPXNOW.realm = "iboflavin";
   RPXNOW.default_provider = "twitter";
   RPXNOW.overlay = true;
