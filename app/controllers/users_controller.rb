@@ -37,6 +37,7 @@ class UsersController < ApplicationController
                          :twitter_secret => @access_token.secret })
 
       @user.save(false)
+      @user.reload
       redirect_to( @user )
     else
       RAILS_DEFAULT_LOGGER.error "Failed to get user info via OAuth"
