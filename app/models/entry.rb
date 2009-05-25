@@ -11,7 +11,7 @@ class Entry < ActiveRecord::Base
     items = Grammar::parse(self.input)
 
     items.each do |item|
-      EntryMatch.create!({:user_id => 1, :entry_id => self.id, :search => item[2], :amount => item[0], :unit => item[1].to_s})
+      EntryMatch.create!({:user_id => self.user_id, :entry_id => self.id, :search => item[2], :amount => item[0], :unit => item[1].to_s})
     end
     
   end

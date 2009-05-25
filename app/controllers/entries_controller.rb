@@ -30,6 +30,9 @@ class EntriesController < ApplicationController
   def new
     @entry = Entry.new
 
+    #TODO: Actually show today's, not just the most recent 5.
+    @recent = Entry.find(:all, :conditions => {:user_id => @current_user.id}, :order => 'id DESC', :limit => 5)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @entry }
@@ -44,7 +47,7 @@ class EntriesController < ApplicationController
   # POST /entries
   # POST /entries.xml
   def create
-    @entry = Entry.new(params[:entry])
+    @entry = Entry.new(params[:entry].merge({:user_id => @current_user.id}))
 
     respond_to do |format|
       if @entry.save

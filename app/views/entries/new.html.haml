@@ -9,3 +9,5 @@
 %h3 So far today, you've had...
 
 #recent
+  - @recent.each do |entry|
+    = render :partial => entry
