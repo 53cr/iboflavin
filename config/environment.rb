@@ -11,6 +11,7 @@ Rails::Initializer.run do |config|
   config.gem 'httparty'
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
   config.gem 'authlogic'
+#  config.gem "authlogic-rpx", :lib => "authlogic_rpx"
   config.gem 'ruby-stemmer', :lib => 'lingua/stemmer'
   config.gem 'rufus-tokyo'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
@@ -20,4 +21,6 @@ Rails::Initializer.run do |config|
 end
 require 'lib/enumerable'
 require 'rufus/tokyo/tyrant'
+
+RPXNow.api_key = "1ef5c23e2e04de833ed36d8f51e3075f73f61822"
 

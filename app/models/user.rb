@@ -12,4 +12,7 @@ class User < ActiveRecord::Base
   def child?
     (1...9) === age
   end
+  
+  acts_as_authentic do |c|
+  end 
 end
