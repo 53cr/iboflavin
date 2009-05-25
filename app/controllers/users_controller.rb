@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @request_token = OAuth::RequestToken.new(UsersController.consumer,
                                              session[:request_token],
                                              session[:request_token_secret])
-    @access_tokn = @request_token.get_access_token
+    @access_token = @request_token.get_access_token
     @response = UsersController.consumer.request(:get,
                                                  '/account/verify_credentials.json',
                                                  @access_token,
@@ -31,7 +31,6 @@ class UsersController < ApplicationController
         redirect_to :action => :index
         return
       end
-      puts user_info.inspect
       # We have an authorized user, save the information to the database.
       @user = User.new({ :twitter_screen_name => user_info['screen_name'],
                          :twitter_token => @access_token.token,
