@@ -4,6 +4,9 @@
 #:calcium, :chromium, :copper, :fluoride, :iodine, :iron, :magnesium, :manganese, :molybdenum, :phosphorus, :selenium, :zinc, :potassium, :sodium, :chloride
 require "nutrition/requirements"
 module Nutrition  
+  def self.raw_data
+    DATA
+  end
   DATA = {
     :infant => {
       (0...7.0/12) => Nutrition::Requirements.new({
