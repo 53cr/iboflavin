@@ -4,6 +4,15 @@
 <%= form.label :email %><br />
 <%= form.text_field :email %><br />
 <br />
+<%= form.label :twitter_account %><br />
+<%= form.text_field :twitter_account %><br />
+<br />
+<%= form.label :sex %><br />
+<%= form.select(:sex,[["--Select--",nil],['Male','male'],['Female','female']]) %>
+<br />
+<%= form.label :age %><br />
+<%= form.text_field :age %><br />
+<br />
 <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
 <%= form.password_field :password %><br />
 <br />
