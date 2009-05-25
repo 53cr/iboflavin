@@ -20,22 +20,9 @@ var handleMessage = function(response, statusText) {
   $("#recent .entry:first").effect("highlight",{},1500);
 };
 
-var edit_submit_handler = function(el) {
-
-};
-
-var edit_cancel_handler = function(el) {
-
-};
-
 var bind_editors = function() {
-  $(".in-place-edit").children().inPlaceEdit({
-    submit : edit_submit_handler,
-    cancel : edit_cancel_handler,
-    html : ' \
-          <div class="inplace-edit"> \
-            <input type="text" value="" class="field" /> \
-          </div>'
+  $(".in-place-edit").editable('/entry_matches/update_amount', {
+
   });
 };
 

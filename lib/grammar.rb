@@ -79,19 +79,23 @@ module Grammar
 
     ### This could use improvement. ##########################
     object_index = values.index(false) #######################
-    quantifier = parse_quantifier(values[0...object_index]) ##
+    quantifier = parse_quantifier(phrase[0...object_index]) ##
     object = phrase[object_index..-1] ########################
     ##########################################################
 
     return [quantifier, object.join(' ')].flatten
   end
 
-  def self.parse_quantifier(values)
+  def self.parse_quantifier(phrase)
     # "three and a half pounds"
     # [[3], [1/2, (1 pound)]]
     # [[3], [1/2 * (1 pound)]]
     # [3 + x]
     # y
+
+    values = phrase.inject([]) do |acc, word|
+      acc << Vocabulary::quantifier_value(word)
+    end
 
     expr = [[1]]
     
