@@ -40,6 +40,6 @@ loop do
 
 
   puts "done"
-  sleep 8
+  sleep 60
   
 end

@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-
-  before_create :check_twitter
+  include Clearance::User
 
   validates_presence_of :age
   validates_numericality_of :age, :less_than_or_equal_to => 999, :greater_than_or_equal_to => 0
@@ -17,11 +16,5 @@ class User < ActiveRecord::Base
   def child?
     (1...9) === age
   end
-  
-  acts_as_authentic do |c|
-  end
 
-  def check_twitter
-
-  end
 end
