@@ -31,12 +31,16 @@ class UsersController < ApplicationController
         redirect_to :action => :index
         return
       end
+      RAILS_DEFAULT_LOGGER.error user_info.inspect
       # We have an authorized user, save the information to the database.
-      @user = User.new({ :twitter_screen_name => user_info['screen_name'],
-                         :twitter_token => @access_token.token,
-                         :twitter_secret => @access_token.secret })
-      
-      redirect_to( @user.save(false) )
+      @user = User.new()
+      @user.twitter_screen_name = user_info['screen_name']
+      @user.twitter_token = @access_token.token
+      @user.twitter_secret = @access_token.secret
+
+      @user.save(false)
+      @user.reload
+      redirect_to( @user )
     else
       RAILS_DEFAULT_LOGGER.error "Failed to get user info via OAuth"
       # The user might have rejected this application. Or there was some other error during the request.
