@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   validates_presence_of :age
   validates_numericality_of :age, :less_than_or_equal_to => 999, :greater_than_or_equal_to => 0
 
-  validates_uniqueness_of :twitter_account
-  
   validates_presence_of :sex  
   validates_inclusion_of :sex, :in => ['male','female']
 
