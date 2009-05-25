@@ -5,6 +5,8 @@ describe User do
     @user = User.new( :email => "joe@blow.com", :password => "unicorns", :sex => :male, :birthday => 22.years.ago)
   end
   subject {@user}
+  
+  # General specs
   it { should respond_to :sex }
   it { should respond_to :age }
   it { should respond_to :birthday }
@@ -13,11 +15,7 @@ describe User do
   it { should respond_to :child? }
   it { should respond_to :infant? }
   
-  it { should validate_presence_of :birthday}
-  it "should validate birthday" do
-    pending "age validation checks this"
-  end
-  
+  # Sex related specs
   it { should validate_presence_of :sex}
   it "should be either male or female" do  
     @user.sex = :male
@@ -30,11 +28,22 @@ describe User do
     @user.should be_invalid
   end
   
+  # Birthday related specs
+  it { should validate_presence_of :birthday}
+  it "should validate birthday" do
+    @user.birthday = "frankenstein"
+    @user.should_not be_valid
+    
+    @user.birthday = 22.years.ago
+    @user.should be_valid
+  end
+  
   it "should give proper age for birthday" do
     @user.birthday = 22.years.ago
     @user.age.to_i.should be(22)
   end
 
+  # Age related specs
   it "must be from 0 to 999 years old" do
     invalid_ages = [-500, -1, 1000, 9999]
     invalid_ages.each do |invalid_age|
