@@ -1,0 +1,4 @@
+problems?
+
+try 
+cp -r vendor/plugins/thinking_sphinx .

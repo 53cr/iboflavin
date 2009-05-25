@@ -1,9 +1,9 @@
 class AddPregnantLactatingSexAndAgeToUser < ActiveRecord::Migration
   def self.up
-    add_column :users, :pregnant, :boolean
-    add_column :users, :lactating, :boolean
+    add_column :users, :pregnant, :boolean, :default => false
+    add_column :users, :lactating, :boolean, :default => false
     add_column :users, :sex, :string
-    add_column :users, :age, :integer
+    add_column :users, :age, :float
   end
 
   def self.down
