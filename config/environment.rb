@@ -11,6 +11,8 @@ Rails::Initializer.run do |config|
   config.gem 'httparty'
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
   config.gem 'ruby-stemmer', :lib => 'lingua/stemmer'
+  config.gem 'twitter'
+  config.gem 'oauth'
   config.gem 'rufus-tokyo'
   config.gem "thoughtbot-clearance",    :lib => 'clearance',    :source => 'http://gems.github.com'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
@@ -21,7 +23,7 @@ end
 require 'lib/enumerable'
 require 'rufus/tokyo/tyrant'
 
-TWITTER_LOGIN_C_TOKEN  = 'IYCYvHrxUYKsc2p4Db9Kg'
-TWITTER_LOGIN_C_SECRET = '0EZGo1r1Hha6zvvF29VngXqEdFmEzuxGfRrxYOWfmjc'
+TWITTER_LOGIN_CONSUMER_TOKEN  = 'uR0t1yRbmvCPWpcIIDesA'
+TWITTER_LOGIN_CONSUMER_SECRET = 'RufotdP4ZudTfyuLgn2KNiKCoTISBMEJWWmgxjRCw4'
 
 DO_NOT_REPLY = "noreply@iboflav.in"

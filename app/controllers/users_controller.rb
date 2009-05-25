@@ -1,4 +1,53 @@
 class UsersController < ApplicationController
+
+  def self.consumer
+    OAuth::Consumer.new(TWITTER_LOGIN_CONSUMER_TOKEN,
+                        TWITTER_LOGIN_CONSUMER_SECRET,
+                        { :site => 'http://twitter.com'})
+  end
+
+  def create_from_twitter
+    @request_token = UsersController.consumer.get_request_token
+    session[:request_token] = @request_token.token
+    session[:request_token_secret] = @request_token.secret
+    redirect_to @request_token.authorize_url
+    return
+  end
+
+  def callback
+    @request_token = OAuth::RequestToken.new(UsersController.consumer,
+                                             session[:request_token],
+                                             session[:request_token_secret])
+    @access_tokn = @request_token.get_access_token
+    @response = UsersController.consumer.request(:get,
+                                                 '/account/verify_credentials.json',
+                                                 @access_token,
+                                                 {:scheme => :query_string})
+    case @response
+    when Net::HTTPSuccess
+      user_info = JSON.parse(@response.body)
+      unless user_info['screen_name']
+        flash[:notice] = "Authentication failed"
+        redirect_to :action => :index
+        return
+      end
+      puts user_info.inspect
+      # We have an authorized user, save the information to the database.
+      @user = User.new({ :twitter_screen_name => user_info['screen_name'],
+                         :twitter_token => @access_token.token,
+                         :twitter_secret => @access_token.secret })
+      @user.save!
+      redirect_to(@user)
+    else
+      RAILS_DEFAULT_LOGGER.error "Failed to get user info via OAuth"
+      # The user might have rejected this application. Or there was some other error during the request.
+      flash[:notice] = "Authentication failed"
+      redirect_to :action => :index
+      return
+    end
+  end
+  
+
   # GET /users
   # GET /users.xml
   def index
