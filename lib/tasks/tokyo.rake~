@@ -1,7 +1,7 @@
 namespace :tokyo do
   desc 'start tokyo stuff'
   task :start do
-    system "ttserver -port 45001 data.tch &"
+    system "ttserver -port 45001 arbitraryfilename.tch &"
   end
   
   desc 'stop tokyo stuff #hack'
