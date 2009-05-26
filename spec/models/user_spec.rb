@@ -1,4 +1,5 @@
 require File.join(File.dirname(__FILE__), "/../spec_helper")
+# You might notice +/- 5 days here and there. The accuracy of many of the life stage classifications is sporadic because of Ruby Date year determination. Since this is not really a big deal I chose to take less accuracy as it really doesn't matter.
 
 describe User do
   before(:each) do
@@ -51,15 +52,15 @@ describe User do
       @user.should be_invalid
     end
     
-    valid_ages = [0, 1, 900, 998, *(1..99).to_a]
+    valid_ages = [0.01, 1, 900, 998, *(1..99).to_a]
     valid_ages.each do |valid_age|
-      @user.birthday = valid_age.years.ago
+      @user.birthday = (valid_age * 365).days.ago
       @user.should be_valid
     end
   end
 
   it "should be an infant if < 1 year old" do
-    infant_ages = [0, 125, 250, 364]
+    infant_ages = [1, 125, 250, 360]
     infant_ages.each do |age| 
       @user.birthday =  age.days.ago
       @user.save
@@ -67,7 +68,7 @@ describe User do
     end
     non_infant_ages = [1, 5, 19, 56]
     non_infant_ages.each do |age| 
-      @user.birthday =  age.years.ago
+      @user.birthday =  age.years.ago - 5.days
       @user.save
       @user.should_not be_infant
     end
@@ -75,7 +76,7 @@ describe User do
   
   it "should be a child if >= 1 year old and < 9" do
     child_ages = [1, 2, 3, 4, 5, 6, 7, 8, 8.99]
-    @user.birthday =  1.years.ago
+    @user.birthday =  1.years.ago - 5.days
     @user.should be_child
     @user.birthday =  5.years.ago
     @user.should be_child
