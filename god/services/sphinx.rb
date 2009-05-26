@@ -1,9 +1,14 @@
 God.watch do |w|
   port = 3312
+
+  config_path = "#{RAILS_ROOT}/config/development.sphinx.conf"
+  
+  index_cmd = "indexer --config #{config_path} --all --rotate"
+  
   w.pid_file = File.join(APP_ROOT, "shared/log/sphinx.#{port}.pid")
   w.name = "iboflavin-sphinx-#{port}"
   w.interval = 30.seconds
-  w.start   = "searchd -c #{RAILS_ROOT}/config/development.sphinx.conf"
+  w.start   = "searchd -c #{config_path}"
   w.stop    = "kill -TERM `cat #{w.pid_file}`"
 
   w.start_grace = 10.seconds
