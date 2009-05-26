@@ -1,8 +1,83 @@
 require File.join(File.dirname(__FILE__), "/../../spec_helper")
 require 'nutrition'
 
+Spec::Matchers.define :be_all_unique do
+  match do |array|
+    array.uniq.count == array.count
+  end
+end
+Spec::Matchers.define :be_all_the_same do
+  match do |array|
+    array.uniq.count == 1
+  end
+end
+
+Spec::Matchers.define :return_unique_requirements_for do |bdays|
+  match do |user|
+    requirements = []
+    bdays.each do |bday|
+      user.birthday = bday
+      requirements << Nutrition::Requirements.for(user)
+    end
+    requirements.uniq.count == requirements.count
+  end
+end
+
 module Nutrition
   describe Requirements do
+    context "should return unique requirements for age groups of" do
+      before(:each) do
+        @user = User.new
+      end
+      
+      def test_unique_for_user_and_birthdays(user,bdays)
+        requirements = []
+        bdays.each do |bday|
+          user.birthday = bday
+          requirements << Requirements.for(user)
+        end
+        requirements.should be_all_unique
+      end
+      
+      it "infants" do
+        ages = [1.months.ago, 8.months.ago]
+        @user.should return_unique_requirements_for ages
+      end
+      
+      it "children" do
+        ages = [2.years.ago, 5.years.ago]
+        @user.should return_unique_requirements_for ages
+      end
+      
+      it "males" do
+        @user.sex = :male
+        ages = [10.years.ago, 15.years.ago, 20.years.ago, 
+                32.years.ago, 52.years.ago, 71.years.ago]
+        @user.should return_unique_requirements_for ages
+      end
+      
+      it "females" do
+        @user.sex = :female
+        ages = [10.years.ago, 15.years.ago, 20.years.ago,
+                32.years.ago, 52.years.ago, 71.years.ago]
+        @user.should return_unique_requirements_for ages
+      end
+      
+      it "lactating women" do
+        @user.sex = :female
+        @user.lactating = true
+        ages = [15.years.ago, 20.years.ago, 32.years.ago]
+        @user.should return_unique_requirements_for ages
+      end
+      
+      it "pregnant women" do
+        @user.sex = :female
+        @user.pregnant = true
+        ages = [15.years.ago, 20.years.ago, 32.years.ago]
+        @user.should return_unique_requirements_for ages
+      end
+    end
+    
     context "" do
       before(:all) do
         @valid_data = {

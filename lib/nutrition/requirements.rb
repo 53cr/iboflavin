@@ -1,16 +1,16 @@
 module Nutrition
   class Requirements
     def self.for(user)
-      if user.pregnant or user.lactating
-        
-      elsif user.child or user.infant
-        
+      if user.infant?
+        DATA[:infant].with_keys_as_ranges(user.age)
+      elsif user.child?
+        DATA[:child].with_keys_as_ranges(user.age)
+      elsif user.lactating?
+        DATA[:lactating].with_keys_as_ranges(user.age)
+      elsif user.pregnant?
+        DATA[:pregnant].with_keys_as_ranges(user.age)
       else
-        if user.male
-          
-        elsif user.female
-          
-        end
+        DATA[user.sex].with_keys_as_ranges(user.age)
       end
     end
     
@@ -67,5 +67,11 @@ module Nutrition
     def self.valid_nutrients
       UNITS.keys
     end
+  end
+end
+
+class Hash
+  def with_keys_as_ranges(number)
+    self.each_key { |key| if key === number; return self[key]; end}
   end
 end
