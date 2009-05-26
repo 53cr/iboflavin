@@ -1,6 +1,6 @@
 God.watch do |w|
   port = 3312
-  w.pid_file = File.join(APP_ROOT, "log/sphinx.#{port}.pid")
+  w.pid_file = File.join(APP_ROOT, "shared/log/sphinx.#{port}.pid")
   w.name = "iboflavin-sphinx-#{port}"
   w.interval = 30.seconds
   w.start   = "cd #{RAILS_ROOT}; rake ts:start"

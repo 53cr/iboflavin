@@ -1,8 +1,8 @@
 God.watch do |w|
   port = 45001
-  data_file  = File.join(APP_ROOT, "data/ttserver.#{port}.tch")
+  data_file  = File.join(APP_ROOT, "shared/data/ttserver.#{port}.tch")
 
-  w.pid_file = File.join(APP_ROOT, "log/ttserver.#{port}.pid")
+  w.pid_file = File.join(APP_ROOT, "shared/log/ttserver.#{port}.pid")
   w.name = "iboflavin-ttserver-#{port}"
   w.interval = 30.seconds
   w.start = "ttserver -dmn -pid #{w.pid_file} -port #{port} #{data_file}"
