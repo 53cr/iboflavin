@@ -61,7 +61,7 @@ describe User do
 
   it "should be an infant if < 1 year old" do
     infant_ages = [1, 125, 250, 360]
-    infant_ages.each do |age| 
+    infant_ages.each do |age|
       @user.birthday =  age.days.ago
       @user.save
       @user.should be_infant
