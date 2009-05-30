@@ -11,4 +11,5 @@ doc/app
 coverage/*
 .dotest/*
 *.tch
-.idea/*
+.idea/workspace.xml
+iboflavin.iws
