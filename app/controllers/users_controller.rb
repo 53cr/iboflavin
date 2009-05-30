@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     @request_token = UsersController.consumer.get_request_token
     session[:request_token] = @request_token.token
     session[:request_token_secret] = @request_token.secret
-    redirect_to @request_token.authorize_url
+    authenticate_url = @request_token.authorize_url.sub('/oauth/authorize','/oauth/authenticate')
+    redirect_to authenticate_url
     return
   end
 
