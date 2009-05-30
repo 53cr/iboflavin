@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  include Clearance::User
+  acts_as_authentic do |c|
+    
+  end
 
   has_many :entry_matches
   attr_accessible :birthday, :sex, :pregnant, :lactating
