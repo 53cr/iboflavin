@@ -1,5 +1,5 @@
-= link_to "Log in with Twitter", :controller => 'users', :action => 'create_from_twitter'
-%hr/
-%h4 Don't have a Twitter account?
+= link_to((image_tag 'twitter-auth.png'), :controller => 'users', :action => 'create_from_twitter')
+%br/
+%h3 Don't have a Twitter account?
 == #{link_to 'Log in', new_user_session_path} / #{link_to 'Sign up', new_user_path}
 
