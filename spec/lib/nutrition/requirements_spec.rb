@@ -1,17 +1,6 @@
 require File.join(File.dirname(__FILE__), "/../../spec_helper")
 require 'nutrition'
 
-Spec::Matchers.define :be_all_unique do
-  match do |array|
-    array.uniq.count == array.count
-  end
-end
-Spec::Matchers.define :be_all_the_same do
-  match do |array|
-    array.uniq.count == 1
-  end
-end
-
 Spec::Matchers.define :return_unique_requirements_for do |bdays|
   match do |user|
     requirements = []
@@ -28,15 +17,6 @@ module Nutrition
     context "should return unique requirements for age groups of" do
       before(:each) do
         @user = User.new
-      end
-      
-      def test_unique_for_user_and_birthdays(user,bdays)
-        requirements = []
-        bdays.each do |bday|
-          user.birthday = bday
-          requirements << Requirements.for(user)
-        end
-        requirements.should be_all_unique
       end
       
       it "infants" do
