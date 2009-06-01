@@ -4,8 +4,7 @@ Feature: Twitter Integration
   Users will need to be able to tweet to iBoflavin
 
   Scenario: User Tweets a Food to iBoflavin
-    When a user tweets "
-    
-    
-  
+    When a user tweets "200 g of Cucumber"
+    And visits their recently added entries page
+    Then they should see "200 grams of Cucumber"  
   
