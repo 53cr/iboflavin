@@ -13,18 +13,18 @@ Rails::Initializer.run do |config|
   config.gem 'ruby-stemmer', :lib => 'lingua/stemmer'
   config.gem 'twitter'
   config.gem 'json'
+  config.gem 'authlogic'
+  config.gem "authlogic-oauth", :lib => "authlogic_oauth"
   config.gem 'oauth'
   config.gem 'rufus-tokyo'
-  config.gem "thoughtbot-clearance",    :lib => 'clearance',    :source => 'http://gems.github.com'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
-  config.gem 'thoughtbot-shoulda',      :lib => 'shoulda',      :source => 'http://gems.github.com'
   config.time_zone = 'UTC'
 
 end
 require 'lib/enumerable'
 require 'rufus/tokyo/tyrant'
 
-TWITTER_LOGIN_CONSUMER_TOKEN  = 'uR0t1yRbmvCPWpcIIDesA'
-TWITTER_LOGIN_CONSUMER_SECRET = 'RufotdP4ZudTfyuLgn2KNiKCoTISBMEJWWmgxjRCw4'
+TWITTER_LOGIN_CONSUMER_TOKEN  = '5mc9zeVQzhcv8FSU3Hb3Gg'
+TWITTER_LOGIN_CONSUMER_SECRET = 'jD0pabQhDkliGWYYrRQSqqjiBEHE61c2t2OjHDDZQ'
 
 DO_NOT_REPLY = "noreply@iboflav.in"

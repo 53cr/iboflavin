@@ -1,8 +1,9 @@
 class EntryMatchesController < ApplicationController
 
+  before_filter :require_user
+
   #TODO: Make this not suck.
   skip_before_filter :verify_authenticity_token 
-
 
   #TODO: Make sure this entry belongs to this user!
   #TODO: And other verifications...

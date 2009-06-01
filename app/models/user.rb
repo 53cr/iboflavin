@@ -1,15 +1,19 @@
 class User < ActiveRecord::Base
-  include Clearance::User
+  acts_as_authentic do |c|
+    
+  end
 
   has_many :entry_matches
-  attr_accessible :birthday, :sex, :pregnant, :lactating
+  attr_accessible :birthday, :sex, :pregnant, :lactating,
+                  :twitter_screen_name, :password_confirmation,
+                  :password, :age, :login, :email
 
-  validates_presence_of :birthday
+  #validates_presence_of :birthday
 
-  validates_presence_of :sex
-  validates_inclusion_of :sex, :in => [:male,:female]
+  #validates_presence_of :sex
+  #validates_inclusion_of :sex, :in => ['male','female']
 
-  validate :age_between_0_and_999
+  #validate :age_between_0_and_999
 
   def age
     if self.birthday

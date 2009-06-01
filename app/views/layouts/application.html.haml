@@ -2,12 +2,12 @@
 %html{ :lang => "en" }
   %head
     %meta{ :content => "text/html charset=utf-8", "http-equiv" => "Content-Type" }
+    /TODO Set this to a reasonable title based on the controller or something.
     %title= APP[:name]
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
-    /= javascript_include_tag 'http://rubidium.53cr.com/js/c27f1fd154520a9f86ba07cb62a0206c/jquery-1.3.2+cufon-yui-2009-05-04+Fertigo_400.font+++iboflav.in.js'
     = javascript_include_tag 'jquery', 'cufon-yui', 'Fertigo_400.font'
     = javascript_tag 'Cufon.replace("h3");'
     = javascript_include_tag 'jquery.jeditable', 'jquery-form', 'effects.core', 'effects.highlight', 'application'
@@ -26,8 +26,5 @@
             %div{:class => key}= h(value)
           = yield
     #footer
-      asdf
-    <script type="text/javascript" src="http://www.google-analytics.com/ga.js"></script>
-    <script type="text/javascript">//<![CDATA[
-    try {_gat._getTracker("UA-5149541-6")._trackPageview();} catch(err) {} //]]>
-    </script>
+    = javascript_include_tag "http://www.google-analytics.com/ga.js"
+    = javascript_tag 'try {_gat._getTracker("UA-5149541-6")._trackPageview();} catch(err) {}'
