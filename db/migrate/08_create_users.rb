@@ -1,11 +1,11 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string    :login
-      t.string    :email
+      t.string    :login, :default => nil, :null => true
+      t.string    :email, :default => nil, :null => true
       t.string    :crypted_password
-      t.string    :password_salt
-      t.string    :persistence_token
+      t.string    :password_salt, :default => nil, :null => true
+      t.string    :persistence_token, :null => false
       t.string    :single_access_token
       t.string    :perishable_token  
 
@@ -22,11 +22,16 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :sex
       t.date      :birthday
       t.string    :twitter_screen_name
-      t.string    :twitter_token
-      t.string    :twitter_secret
+      t.string    :oauth_token
+      t.string    :oauth_secret
+
+      t.string    :timezone
 
       t.timestamps
     end
+    add_index :users, :login
+    add_index :users, :email
+    add_index :users, :oauth_token
   end
 
   def self.down

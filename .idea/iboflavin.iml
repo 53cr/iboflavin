@@ -44,6 +44,7 @@
     <orderEntry type="library" name="[gem] thoughtbot-factory_girl (v1.2.0, /Users/burke/.gem/ruby/1.8/gems/thoughtbot-factory_girl-1.2.0)" level="application" />
     <orderEntry type="library" name="[gem] thoughtbot-shoulda (v2.10.1, /opt/local/lib/ruby/gems/1.8/gems/thoughtbot-shoulda-2.10.1)" level="application" />
     <orderEntry type="library" name="[gem] authlogic (v2.0.13, /opt/local/lib/ruby/gems/1.8/gems/authlogic-2.0.13)" level="application" />
+    <orderEntry type="library" name="[gem] authlogic-oauth (v1.0.0, /opt/local/lib/ruby/gems/1.8/gems/authlogic-oauth-1.0.0)" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <RMODULE_SETTINGS_STORAGE_ID NAME="NUMBER" VALUE="0" />
