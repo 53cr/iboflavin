@@ -1,3 +1,4 @@
+# https://www.pivotaltracker.com/story/show/702061
 Feature: Edit Recent Entries
   In order to correct recognition errors
   And keep customers happy
