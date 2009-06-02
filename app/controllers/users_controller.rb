@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   def new
     @from_twitter = session[:use_twitter]
     session[:use_twitter] = false
+    if @from_twitter and !User.find_by_login(session[:twitter_screen_name])
+      @ok_to_use_screen_name = true
+    end
     @user = User.new
   end
 

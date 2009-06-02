@@ -1,0 +1,33 @@
+%h3 Sign Up
+
+- form_for @user, :url => account_path do |form|
+  = form.error_messages
+
+  = form.label :login, "Username", :class => 'inline'
+  - if @ok_to_use_screen_name
+    = form.text_field :login, :class => 'text', :value => session[:twitter_screen_name]
+  - else 
+    = form.text_field :login, :class => 'text'
+  %br/
+  %br/
+  = form.label :email, "Email", :class => 'inline'
+  = form.text_field :email, :class => 'text'
+  %br/
+  %br/
+  - if @from_twitter
+    = form.label :twitter_screen_name, "Twitter Screen Name", :class => 'inline'
+    = form.text_field :twitter_screen_name, :value => session[:twitter_screen_name], :disabled => 'disabled', :class => 'text'
+    %br/
+    = form.check_box :link_twitter, :checked => 'checked'
+    = form.label :link_twitter, "Link my iBoflavin account to my Twitter account"
+    %br/
+    %br/
+  = form.label :password, nil, :class => 'inline'
+  = form.password_field :password, :class => 'text'
+  %br/
+  %br/
+  = form.label :password_confirmation, "Password (again)", :class => 'inline'
+  = form.password_field :password_confirmation, :class => 'text'
+  %br/
+
+  = form.submit "Register"

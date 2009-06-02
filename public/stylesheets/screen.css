@@ -722,3 +722,6 @@ body { background: url(/images/leftpanel-top.png) top center no-repeat; }
 #recent li { margin-left: 18px; list-style-type: none; }
 /* line 108, ../../app/stylesheets/screen.sass */
 #recent input { width: 100px; }
+
+/* line 111, ../../app/stylesheets/screen.sass */
+label.inline { clear: left; display: block; float: left; position: relative; top: 8px; text-align: right; margin-right: 6px; line-height: 18px; width: 120px; }

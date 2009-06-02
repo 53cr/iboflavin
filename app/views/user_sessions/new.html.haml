@@ -2,18 +2,16 @@
 
 - form_for @user_session, :url => user_session_path do |f| 
   = f.error_messages 
-  = f.label :login 
-  %br/
-  = f.text_field :login 
-  %br/
-  %br/
-  = f.label :password 
-  %br/
-  = f.password_field :password 
+  = f.label :login, nil, :class => 'inline'
+  = f.text_field :login, :class => 'text'
   %br/
   %br/
+  = f.label :password, nil, :class => 'inline'
+  = f.password_field :password, :class => 'text'
+  %br/
+  %br/
+  = f.label :remember_me, nil, :class => 'inline', :style => 'top:0'
   = f.check_box :remember_me 
-  = f.label :remember_me 
   %br/
   %br/
   = f.submit "Login"
