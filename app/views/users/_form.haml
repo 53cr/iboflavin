@@ -17,15 +17,15 @@
   = form.label :link_twitter, "Link my iBoflavin account to my Twitter account"
   %br/
   %br/
-= form.label :sex 
-%br/
-= form.select(:sex,[["--Select--",nil],['Male','male'],['Female','female']]) 
-%br/
-= form.label :birthday 
-%br/
-= form.date_select :birthday 
-%br/
-%br/
+-#= form.label :sex 
+-#%br/
+-#= form.select(:sex,[["--Select--",nil],['Male','male'],['Female','female']]) 
+-#%br/
+-#= form.label :birthday 
+-#%br/
+-#= form.date_select :birthday 
+-#%br/
+-#%br/
 = form.label :password, form.object.new_record? ? nil : "Change password" 
 %br/
 = form.password_field :password 

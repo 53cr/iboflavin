@@ -4,15 +4,21 @@ class User < ActiveRecord::Base
 
   has_many :entry_matches
   attr_accessible :birthday, :sex, :pregnant, :lactating,
-                  :twitter_screen_name, :password_confirmation,
-                  :password, :age, :login, :email
+                  :password_confirmation, :password, :age, :login, :email
 
-  validates_presence_of :birthday
+  #TODO We don't want to force users to register with this. Run a custom validation that validates only if they're defined.
+  #validates_presence_of :birthday
+  #validates_presence_of :sex
+  #validates_inclusion_of :sex, :in => ['male','female']
+  #validate :age_between_0_and_999
 
-  validates_presence_of :sex
-  validates_inclusion_of :sex, :in => ['male','female']
-
-  validate :age_between_0_and_999
+  validates_uniqueness_of :twitter_screen_name, :oauth_token, :oauth_secret
+  
+  def grab_twitter_info
+    self.twitter_screen_name = session[:twitter_screen_name]
+    self.oauth_token = session[:twitter_access_token]
+    self.oauth_secret = session[:twitter_access_secret]
+  end
 
   def age
     if self.birthday

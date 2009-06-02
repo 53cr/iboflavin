@@ -11,6 +11,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+
+    if params[:user][:link_twitter]
+    @user.grab_twitter_info
+    
     if @user.save
       flash[:notice] = "Login successful!"
       redirect_back_or_default account_url
