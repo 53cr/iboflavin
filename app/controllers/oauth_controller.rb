@@ -26,8 +26,8 @@ class OauthController < ApplicationController
           redirect_to :action => :index
           return
         end
-        # We have an authorized user
-        @user = User.find_by_access_token(@access_token.token)
+        # We have an authorized twitter user
+        @user = User.find_by_oauth_token(@access_token.token)
         if @user
           flash[:notice] = "We would have logged you in, but this hasn't been implemented yet!"
           # log user in
