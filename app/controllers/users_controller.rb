@@ -14,8 +14,8 @@ class UsersController < ApplicationController
 
     if params[:user][:link_twitter]
       @user.twitter_screen_name = session[:twitter_screen_name]
-      @user.oauth_token = session[:twitter_access_token]
-      @user.oauth_secret = session[:twitter_access_secret]
+      @user.oauth_token = session[:twitter_token]
+      @user.oauth_secret = session[:twitter_secret]
     end
     
     if @user.save
