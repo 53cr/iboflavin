@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if params[:user][:link_twitter]
-    @user.grab_twitter_info
+      @user.grab_twitter_info
+    end
     
     if @user.save
       flash[:notice] = "Login successful!"
