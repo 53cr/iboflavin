@@ -14,12 +14,6 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :twitter_screen_name, :oauth_token, :oauth_secret
   
-  def grab_twitter_info
-    self.twitter_screen_name = session[:twitter_screen_name]
-    self.oauth_token = session[:twitter_access_token]
-    self.oauth_secret = session[:twitter_access_secret]
-  end
-
   def age
     if self.birthday
       ((Date.today - self.birthday) / 365).to_f

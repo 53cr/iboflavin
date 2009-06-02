@@ -13,7 +13,9 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if params[:user][:link_twitter]
-      @user.grab_twitter_info
+      @user.twitter_screen_name = session[:twitter_screen_name]
+      @user.oauth_token = session[:twitter_access_token]
+      @user.oauth_secret = session[:twitter_access_secret]
     end
     
     if @user.save
