@@ -8,12 +8,14 @@
 = form.text_field :email 
 %br/
 %br/
-- if session[:twitter_screen_name]
+- if @from_twitter
   = form.label :twitter_screen_name
   %br/
   = form.text_field :twitter_screen_name, :value => session[:twitter_screen_name], :disabled => 'disabled'
   %br/
   %br/
+  = form.checkbox :link_twitter, :checked => 'checked'
+  = form.label :link_twitter, "Link my iBoflavin account to my Twitter account"
 = form.label :sex 
 %br/
 = form.select(:sex,[["--Select--",nil],['Male','male'],['Female','female']]) 

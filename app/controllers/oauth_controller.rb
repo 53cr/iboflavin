@@ -36,6 +36,7 @@ class OauthController < ApplicationController
           session[:twitter_token]       = @access_token.token
           session[:twitter_secret]      = @access_token.secret
           session[:twitter_screen_name] = user_info['screen_name']
+          session[:use_twitter]         = true
 
           flash[:notice] = "Success! We just need a bit more information."
           redirect_to new_user_url

@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
 
   def new
+    @from_twitter = session[:use_twitter]
+    session[:use_twitter] = false
     @user = User.new
   end
 
