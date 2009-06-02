@@ -4,7 +4,14 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
 
+  before_filter :load_current_user
+  
   private
+  def load_current_user
+    current_user
+    return true
+  end
+  
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
