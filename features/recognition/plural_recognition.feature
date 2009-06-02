@@ -1,6 +1,6 @@
 # https://www.pivotaltracker.com/story/show/754406
 Feature: Plural Recognition
-  In order to have Users feel the system is more human
+  In order to have users feel the system is more human
   Users will need to see their foods pluralized properly
 
   Scenario: User inputs a non-plural as plural
