@@ -29,8 +29,9 @@ class OauthController < ApplicationController
         # We have an authorized twitter user
         @user = User.find_by_oauth_token(@access_token.token)
         if @user
-          flash[:notice] = "We would have logged you in, but this hasn't been implemented yet!"
-          # log user in
+          flash[:notice] = "Success! You've been logged in via Twitter"
+          UserSession.create(@user, true)
+          redirect_to new_entry_url
         else
           session[:twitter_screen_name] = user_info['screen_name']
           session[:twitter_token]       = @access_token.token
