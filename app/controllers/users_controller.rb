@@ -11,13 +11,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.save do |result|
-      if result
-        flash[:notice] = "Login successful!"
-        redirect_back_or_default account_url
-      else
-        render :action => :new
-      end
+    if @user.save
+      flash[:notice] = "Login successful!"
+      redirect_back_or_default account_url
+    else
+      render :action => :new
     end
   end
 
@@ -31,14 +29,11 @@ class UsersController < ApplicationController
 
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
-    @user.save do |result|
-      if result
-        flash[:notice] = "Login successful!"
-        redirect_back_or_default account_url
-      else
-        render :action => :new
-      end
+    if @user.save
+      flash[:notice] = "Login successful!"
+      redirect_back_or_default account_url
+    else
+      render :action => :new
     end
   end
-
 end
