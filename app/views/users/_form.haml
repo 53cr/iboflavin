@@ -1,0 +1,35 @@
+= form.label :login 
+%br/
+= form.text_field :login 
+%br/
+%br/
+= form.label :email 
+%br/
+= form.text_field :email 
+%br/
+%br/
+- if session[:twitter_screen_name]
+  = form.label :twitter_screen_name
+  %br/
+  = form.text_field :twitter_screen_name, value => session[:twitter_screen_name], :disabled => 'disabled'
+  %br/
+  %br/
+= form.label :sex 
+%br/
+= form.select(:sex,[["--Select--",nil],['Male','male'],['Female','female']]) 
+%br/
+= form.label :birthday 
+%br/
+= form.date_select :birthday 
+%br/
+%br/
+= form.label :password, form.object.new_record? ? nil : "Change
+password" 
+%br/
+= form.password_field :password 
+%br/
+%br/
+= form.label :password_confirmation 
+%br/
+= form.password_field :password_confirmation 
+%br/

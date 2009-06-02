@@ -5,5 +5,5 @@ class UserSession < Authlogic::Session::Base
     { :site=>"http://twitter.com",
       :authorize_url => "http://twitter.com/oauth/authenticate" })
   end
-
+  
 end
