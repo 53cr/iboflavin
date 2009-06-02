@@ -11,7 +11,7 @@
 - if session[:twitter_screen_name]
   = form.label :twitter_screen_name
   %br/
-  = form.text_field :twitter_screen_name, value => session[:twitter_screen_name], :disabled => 'disabled'
+  = form.text_field :twitter_screen_name, :value => session[:twitter_screen_name], :disabled => 'disabled'
   %br/
   %br/
 = form.label :sex 
