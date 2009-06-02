@@ -8,7 +8,7 @@ the user must be able to create an account and log in. The user will be
    Given the user is not logged in
    When they click "Sign Up"
    And fill in all the required fields
-   Then an account should be created for them
+   Then they should be logged in to their newly created account
 
  Scenario: Logging In
    Given the user is not logged in
@@ -17,7 +17,7 @@ the user must be able to create an account and log in. The user will be
    And click submit
    Then they should be logged in
 
- Scenario: Loggin In with Twitter
+ Scenario: Logging In with Twitter
    Given the user is not logged in
    And they have a Twitter account which is attached to an iBoflavin account
    And they are currently signed in to that Twitter account

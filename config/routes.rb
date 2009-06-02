@@ -1,9 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  
+  map.connect '/twitter', { :controller => 'oauth', :action => 'callback', :method => 'get' }
 
-
-  map.twitter_login '/twitter_login', { :controller => 'user_sessions', :action => 'create', :method => 'get' }
-  map.twitter_register '/twitter_register', { :controller => 'users', :action => 'create', :method => 'get' }
-  map.authorize_twitter '/twitter', { :controller => 'oauth', :action => 'authorize', :method => 'get' }
+  map.twitter_login '/login/twitter', {:controller => 'oauth', :action => 'login', :method => 'get'}
 
   map.resources :entry_matches
   map.resources :entries
