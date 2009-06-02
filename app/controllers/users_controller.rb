@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default account_url
+      redirect_back_or_default new_entry_url
     else
       render :action => :new
     end

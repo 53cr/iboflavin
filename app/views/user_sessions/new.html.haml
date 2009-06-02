@@ -1,4 +1,6 @@
-%h1 Login
+%h3 Login
+
+= link_to((image_tag 'twitter-auth.png'), twitter_login_url)
 
 - form_for @user_session, :url => user_session_path do |f| 
   = f.error_messages 
