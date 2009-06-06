@@ -7,28 +7,28 @@ if ( window.addEventListener ) {
   }, true);
 }
 
-var configureRPX = function() {
-  RPXNOW.token_url = 'http://'+location.host+'/rpx/login',
-  RPXNOW.realm = "iboflavin";
-  RPXNOW.default_provider = "twitter";
-  RPXNOW.overlay = true;
-  RPXNOW.language_preference = 'en';
-};
-
 var handleMessage = function(response, statusText) {
   $("#recent").prepend(response);
   $("#recent .entry:first").effect("highlight",{},1500);
 };
 
-var bind_editors = function() {
-  $(".in-place-edit").editable('/entry_matches/update_amount', {
-
-  });
+var bindevents_newentry = function() {
+  $(".in-place-edit").editable('/entry_matches/update_amount', {});
+  $(".delete_x.unevented").mouseover(function(){
+    $(this).children('a').children('.off').hide();
+    $(this).children('a').children('.on').show();
+  }).mouseout(function(){
+    $(this).children('a').children('.on').hide();
+    $(this).children('a').children('.off').show();
+  }).click(function(){
+    alert("delete thing!");
+    return false;
+  }).removeClass("unevented");
 };
 
 $(document).ready(function() {
 
-  bind_editors();
+  bindevents_newentry();
 
   $('#cloud').animate({
     "background-position": "707px"

@@ -1,7 +1,7 @@
 .entry
-  %p.name=h entry.input
+  %p.name== #{h entry.input} #{delete_entry}
   %ul
     - entry.entry_matches.each do |match|
       %li
-        == <span class="in-place-edit" id="edit-amount-#{match.id}">#{match.humanize_amount}</span> of #{match.food_item.name rescue "err"}
-        <script type="text/javascript">bind_editors();</script>
+        == <span class="editable in-place-edit" id="edit-amount-#{match.id}">#{match.humanize_amount}</span> of <span class="editable">#{match.food_item.name rescue "(no matches found)"}</span> #{delete_entrymatch}
+        <script type="text/javascript">bindevents_newentry();</script>

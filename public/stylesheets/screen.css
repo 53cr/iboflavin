@@ -735,3 +735,11 @@ body { background: url(/images/leftpanel-top.png) top center no-repeat; }
 
 /* line 128, ../../app/stylesheets/screen.sass */
 label.inline { clear: left; display: block; float: left; position: relative; top: 8px; text-align: right; margin-right: 6px; line-height: 18px; width: 120px; }
+
+/* line 139, ../../app/stylesheets/screen.sass */
+.delete_x { height: 14px; width: 16px; position: relative; top: 3px; cursor: pointer; }
+
+/* line 146, ../../app/stylesheets/screen.sass */
+.editable { background: #ccdcff; cursor: pointer; }
+/* line 149, ../../app/stylesheets/screen.sass */
+.editable:hover { color: white; background: #014fff; }
