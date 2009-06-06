@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   #validates_inclusion_of :sex, :in => ['male','female']
   #validate :age_between_0_and_999
 
-  validates_uniqueness_of :twitter_screen_name, :oauth_token, :oauth_secret
+  validates_uniqueness_of :twitter_screen_name, :oauth_token, :oauth_secret, :allow_nil => true
   
   def age
     if self.birthday

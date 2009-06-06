@@ -14,11 +14,13 @@
 
   %body
     #page
-      #leftpanel
-        &nbsp;
+      - if @current_user
+        = render :partial => 'shared/leftpanel'
+      - else
+        #leftpanel
+          #leftpanel-inner
+            &nbsp;
       #mainpanel
-        - if @current_user
-          = render :partial => 'shared/userbar'
         #cloud <div></div>
         #header= render :partial => '/shared/header'
         #content
