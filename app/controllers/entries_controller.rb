@@ -30,8 +30,9 @@ class EntriesController < ApplicationController
   def new
     @entry = Entry.new
 
-    #TODO: Actually show today's, not just the most recent 5.
-    @recent = Entry.find(:all, :conditions => {:user_id => @current_user.id}, :order => 'id DESC', :limit => 5)
+    @recent = Entry.find(:all, :conditions => ["user_id = ? AND created_at >= ?",@current_user.id,Date.today], :order => 'id DESC')
+
+    @calories_today = @recent.map{|e|e.amount_of_nutrient(208)}.inject(&:+)
     
     respond_to do |format|
       format.html # new.html.erb

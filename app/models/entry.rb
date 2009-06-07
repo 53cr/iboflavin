@@ -5,6 +5,10 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   has_many :entry_matches
 
+  def amount_of_nutrient(nut)
+    self.entry_matches.map{|em|em.amount_of_nutrient(nut)}.inject(&:+)
+  end
+  
   private
   def create_entry_matches
           

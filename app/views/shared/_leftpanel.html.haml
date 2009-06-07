@@ -5,7 +5,7 @@
     == #{link_to '53mg', account_url} / #{link_to 'Settings', account_url} / #{link_to 'Logout', user_session_path, :method => :delete}<br/>
     <hr/>
     Calories Today<br/>
-    <span class="dietgoal">1200/2000</span><br/>
+    <span class="dietgoal">#{@calories_today||0}/2000</span><br/>
     Vitamin B2 Today<br/>
     <span class="dietgoal">100<span class="unit">mg</span>/120<span class="unit">mg</span></span><br/>
     <a href="/goals">Change Diet Goals</a>
