@@ -31,7 +31,7 @@ class EntryMatch < ActiveRecord::Base
     # Serving size may be specified in volumetric units.
     if unit == "Grammar::Vocabulary::Litre"
       amount *= (self.food_item.density/1000.0)
-      unit = "Grammar::Vocabulary::Grams"
+      unit = "Grammar::Vocabulary::Gram"
     end
 
     # Everything is measured in multiples of 100g.
