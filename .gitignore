@@ -13,3 +13,4 @@ coverage/*
 *.tch
 .idea/workspace.xml
 iboflavin.iws
+.#*
