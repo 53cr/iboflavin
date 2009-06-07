@@ -1,4 +1,4 @@
 problems?
 
 try 
-cp -r vendor/plugins/thinking_sphinx .
+mv vendor/plugins/thinking_sphinx .; rake db:migrate; mv think* vendor/plugins

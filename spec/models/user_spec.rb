@@ -2,8 +2,9 @@ require File.join(File.dirname(__FILE__), "/../spec_helper")
 # You might notice +/- 5 days here and there. The accuracy of many of the life stage classifications is sporadic because of Ruby Date year determination. Since this is not really a big deal I chose to take less accuracy as it really doesn't matter.
 
 describe User do
+  VALID_ATTR = { :login => "ryan", :email => "ryan@neufeld.ca", :password => "unicorns", :password_confirmation=> "unicorns"}
   before(:each) do
-    @user = User.new( :email => "joe@blow.com", :password => "unicorns", :sex => :male, :birthday => 22.years.ago)
+    @user = User.create( VALID_ATTR )
   end
   subject {@user}
   
@@ -17,7 +18,6 @@ describe User do
   it { should respond_to :infant? }
   
   # Sex related specs
-  it { should validate_presence_of :sex}
   it "should be either male or female" do  
     @user.sex = :male
     @user.should be_valid
@@ -30,12 +30,14 @@ describe User do
   end
   
   # Birthday related specs
-  it { should validate_presence_of :birthday}
   it "should validate birthday" do
     @user.birthday = "frankenstein"
-    @user.should_not be_valid
+    @user.birthday.should be nil
     
     @user.birthday = 22.years.ago
+    @user.should be_valid
+    
+    @user.birthday = nil
     @user.should be_valid
   end
   

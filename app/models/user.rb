@@ -7,11 +7,9 @@ class User < ActiveRecord::Base
                   :password_confirmation, :password, :age, :login, :email
 
   #TODO We don't want to force users to register with this. Run a custom validation that validates only if they're defined.
-  #validates_presence_of :birthday
-  #validates_presence_of :sex
-  #validates_inclusion_of :sex, :in => ['male','female']
-  #validate :age_between_0_and_999
 
+  validates_inclusion_of :sex, :in => [:male, 'male', :female, 'female', nil, '']
+  validate :age_between_0_and_999
   validates_uniqueness_of :twitter_screen_name, :oauth_token, :oauth_secret, :allow_nil => true
   
   def age
@@ -42,7 +40,7 @@ class User < ActiveRecord::Base
 
   private
   def age_between_0_and_999
-    unless (0..999) === self.age
+    unless (0..999) === self.age or self.age == nil
       errors.add(:birthday, "should make you from 0 to 999 years old")
     end
   end
