@@ -57,7 +57,7 @@ class EntryMatch < ActiveRecord::Base
 
   private
   def find_food_item
-    self.food_item = FoodItem.awesome_search(self.search)
+    self.food_item = (FoodItem.awesome_search(self.user_id,self.search)[0])
   end
   def set_sigsearch
     self.sigsearch = SearchUtils.signaturize(self.search)
