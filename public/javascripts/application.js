@@ -17,7 +17,7 @@ var bindevents_newentry = function() {
   $(".in-place-edit.unevented").each(function(el) {
     var id = $(this).attr('id');
     id = id.split('-')[1];
-      $(this).editable('/entry_matches/'+id+'.js', {
+      $(this).editable('/entry_matches/'+id+'?format=js', {
       name: 'entry_match[value]',
       method: 'PUT',
       submitdata: {
@@ -42,7 +42,7 @@ var bindevents_newentry = function() {
       url: $(this).attr('href'),
       type: 'POST',
       dataType: 'script',
-      data: '_method=delete&authenticity_token='+AUTH_TOKEN,
+      data: '_method=delete&authenticity_token='+escape(AUTH_TOKEN),
       success: function(msg) {
         $(that).closest(".removeable").hide('slow',function(){
           $(this).remove();
