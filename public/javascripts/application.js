@@ -13,17 +13,34 @@ var handleMessage = function(response, statusText) {
 };
 
 var bindevents_newentry = function() {
+  // In place editing for Quantifiers in Entry listings
   $(".in-place-edit").editable('/entry_matches/update_amount', {});
+  // Mouseover effect for swapping on/off versions of close 'X'
   $(".delete_x.unevented").mouseover(function(){
     $(this).children('a').children('.off').hide();
     $(this).children('a').children('.on').show();
   }).mouseout(function(){
     $(this).children('a').children('.on').hide();
     $(this).children('a').children('.off').show();
-  }).click(function(){
-    alert("delete thing!");
+  });
+  // Bind the close link to remove via ajax, then remove the element from the DOM.
+  $(".delete_x.unevented a").click(function(e){
+    var that = this;
+    $.ajax({
+      url: $(this).attr('href'),
+      type: 'POST',
+      dataType: 'script',
+      data: '_method=delete&authenticity_token='+AUTH_TOKEN,
+      success: function(msg) {
+        $(that).closest(".removeable").hide('slow',function(){
+          $(this).remove();
+        });
+      }
+    });
     return false;
-  }).removeClass("unevented");
+  });
+  // Don't add more events to this element later :)
+  $(".delete_x.unevented").removeClass("unevented");
 };
 
 $(document).ready(function() {

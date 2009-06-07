@@ -88,6 +88,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(entries_url) }
       format.xml  { head :ok }
+      format.js   { render :nothing => true }
     end
   end
 end
