@@ -5,8 +5,6 @@ class FoodItem < ActiveRecord::Base
   has_many :food_item_nutrients
   has_many :nutrients, :through => :food_item_nutrients
 
-  has_many :weights
-  
   TOKYO = Rufus::Tokyo::Tyrant.new('localhost',45001)
   
   define_index do
@@ -14,15 +12,15 @@ class FoodItem < ActiveRecord::Base
   end
 
   def density
-    100
+    self.density || 1
   end
 
   def serving_size
-    150
+    self.serving_size || 150
   end
 
   def serving_size_unit
-    "Grammar::Vocabulary::Gram"
+    self.serving_size_unit || "Grammar::Vocabulary::Gram"
   end
   
   def self.awesome_search(text)
