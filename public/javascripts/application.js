@@ -42,7 +42,10 @@ var bindevents_newentry = function() {
       url: $(this).attr('href'),
       type: 'POST',
       dataType: 'script',
-      data: '_method=delete&authenticity_token='+escape(AUTH_TOKEN),
+      data: {
+        '_method': 'delete',
+        'authenticity_token': AUTH_TOKEN
+      },
       success: function(msg) {
         $(that).closest(".removeable").hide('slow',function(){
           $(this).remove();
