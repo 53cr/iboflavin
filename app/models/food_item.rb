@@ -12,15 +12,15 @@ class FoodItem < ActiveRecord::Base
   end
 
   def density
-    self.density || 1
+    read_attribute(:density) || 1
   end
 
   def serving_size
-    self.serving_size || 150
+    read_attribute(:serving_size) || 150
   end
 
   def serving_size_unit
-    self.serving_size_unit || "Grammar::Vocabulary::Gram"
+    read_attribute(:serving_size_unit) || "Grammar::Vocabulary::Gram"
   end
   
   def self.awesome_search(text)
