@@ -13,6 +13,18 @@ class FoodItem < ActiveRecord::Base
     indexes name
   end
 
+  def density
+    100
+  end
+
+  def serving_size
+    150
+  end
+
+  def serving_size_unit
+    "Grammar::Vocabulary::Gram"
+  end
+  
   def self.awesome_search(text)
 
     # first, try for most recent use by user
