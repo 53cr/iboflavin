@@ -1,6 +1,7 @@
 class EntryMatch < ActiveRecord::Base
 
-  before_save :cache_search_terms
+  before_create :find_food_item
+  before_save :set_sigsearch
   
   belongs_to :entry
   belongs_to :user
@@ -55,9 +56,11 @@ class EntryMatch < ActiveRecord::Base
   end
 
   private
-  def cache_search_terms
-    self.sigsearch = SearchUtils.signaturize(self.search)
+  def find_food_item
     self.food_item = FoodItem.awesome_search(self.search)
+  end
+  def set_sigsearch
+    self.sigsearch = SearchUtils.signaturize(self.search)
   end
   
 end
