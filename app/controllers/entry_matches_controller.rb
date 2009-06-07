@@ -2,22 +2,31 @@ class EntryMatchesController < ApplicationController
 
   before_filter :require_user
 
-  #TODO: Make this not suck.
-  skip_before_filter :verify_authenticity_token 
+  # We have to deal with input from jeditable here. 
+  def update
+    # id will sometimes be in-place-edit-9323 or something like that.
+    id = params[:id].split('-').last 
 
-  #TODO: Make sure this entry belongs to this user!
-  #TODO: And other verifications...
-  def update_amount
-    id = params[:id] # edit-amount-<ID>
-    id = id.split('-').last.to_i
-    value = params[:value]
-    ematch = EntryMatch.find(id)
+    if params[:entry_match][:value]
+      a,u = Grammar::parse_quantifier(Grammar::tokenize(params[:entry_match][:value]))
+      params[:entry_match][:amount], params[:entry_match][:unit] = a,u.to_s
+      params[:entry_match].delete(:value)
+    end
 
-    amount, unit = Grammar::parse_quantifier(Grammar::tokenize(value))
-
-    ematch.update_attributes!({:amount => amount, :unit => unit.to_s})
-
-    render :text => ematch.humanize_amount
+    @entry_match = EntryMatch.find(id)
+    
+    respond_to do |format|
+      if @entry_match.update_attributes(params[:entry_match])
+        # flash[:notice] = 'EntryMatch was successfully updated.'
+        format.html { redirect_to(@entry_match) }
+        format.xml  { head :ok }
+        format.js   { }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @entry_match.errors, :status => :unprocessable_entity }
+        format.js   { render :text => '' }
+      end
+    end
   end
 
   def index
@@ -55,20 +64,6 @@ class EntryMatchesController < ApplicationController
     end
   end
 
-  def update
-    @entry_match = EntryMatch.find(params[:id])
-
-    respond_to do |format|
-      if @entry_match.update_attributes(params[:entry_match])
-        flash[:notice] = 'EntryMatch was successfully updated.'
-        format.html { redirect_to(@entry_match) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @entry_match.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
 
   def destroy
     @entry_match = EntryMatch.find(params[:id])

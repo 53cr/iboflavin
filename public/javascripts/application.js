@@ -14,7 +14,19 @@ var handleMessage = function(response, statusText) {
 
 var bindevents_newentry = function() {
   // In place editing for Quantifiers in Entry listings
-  $(".in-place-edit").editable('/entry_matches/update_amount', {});
+  $(".in-place-edit.unevented").each(function(el) {
+    var id = $(this).attr('id');
+    id = id.split('-')[1];
+      $(this).editable('/entry_matches/'+id+'.js', {
+      name: 'entry_match[value]',
+      method: 'PUT',
+      submitdata: {
+        authenticity_token: AUTH_TOKEN,
+        wants: 'amount'
+      }
+    }).removeClass("unevented");
+  });
+
   // Mouseover effect for swapping on/off versions of close 'X'
   $(".delete_x.unevented").mouseover(function(){
     $(this).children('a').children('.off').hide();

@@ -3,5 +3,5 @@
   %ul
     - entry.entry_matches.each do |match|
       %li.removeable
-        == <span class="editable in-place-edit" id="edit-amount-#{match.id}">#{match.humanize_amount}</span> of <span class="editable">#{match.food_item.name rescue "(no matches found)"}</span> #{delete_entrymatch(match.id)}
+        == <span class="editable in-place-edit unevented" id="editamount-#{match.id}">#{match.humanize_amount}</span> of <span class="editable">#{match.food_item.name rescue "(no matches found)"}</span> #{delete_entrymatch(match.id)}
         <script type="text/javascript">bindevents_newentry();</script>
