@@ -10,7 +10,18 @@ describe User do
   
   it { should respond_to :nutritional_requirements }
   describe "Nutrition Requirements" do
-    it "should be a kind of Nutrition::Requirements"
+    before(:each) do
+      @user = Factory(:user)
+    end
+    
+    it "should get them for a 'blank' user with no stats" do
+      pending "getting around to it"
+      @user.nutritional_requirements.should_not be nil
+    end
+    it "should be a kind of Nutrition::Requirements" do
+      @user = Factory(:ryan)
+      @user.nutritional_requirements.should be_kind_of Nutrition::Requirements
+    end
     it "should cache its requirements for the current object"
     it "should update when user changes"
     # more specs

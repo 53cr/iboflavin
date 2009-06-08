@@ -95,7 +95,9 @@ module Nutrition
     end
     
     def for(nutrient)
-      nutrient = NUTRIENT_IDS_TO_NUTRIENT[nutrient.id]
+      if nutrient.kind_of? Nutrient
+        nutrient = NUTRIENT_IDS_TO_NUTRIENT[nutrient.id]
+      end
       return @_data[nutrient]
     end
     
