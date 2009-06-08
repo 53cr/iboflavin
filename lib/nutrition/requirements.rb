@@ -1,3 +1,5 @@
+require 'enumerable'
+
 module Nutrition
   class Requirements
     def self.for(user)
