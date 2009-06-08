@@ -1,3 +1,5 @@
+require 'nutrition/requirements'
+
 class User < ActiveRecord::Base
 
   acts_as_authentic
@@ -17,8 +19,7 @@ class User < ActiveRecord::Base
   end
   
   def rdi_for(nutrient)
-#    nutritional_requirements.for(nutrient)
-    return 0
+    nutritional_requirements.for(nutrient)
   end
   
   def age
