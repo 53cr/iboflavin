@@ -96,9 +96,10 @@ module Nutrition
     
     def for(nutrient)
       #TODO: Redo me with new logic
-      vitamin = @_data[nutrient]
-      return { :value => vitamin, :unit => UNITS[nutrient] }
+      nutrient = NUTRIENT_IDS_TO_NUTRIENT[nutrient.id]
+      return @_data[nutrient]
     end
+    
     def self.valid_nutrients
       NUTRIENTS
     end

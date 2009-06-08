@@ -8,5 +8,7 @@ module Nutrition
     end
     
     it "should have the same units as the Nutrient table"
+    it "should return a value for a listed Nutrient"
+    it "should return nil for an unlisted Nutrient"
   end
 end
