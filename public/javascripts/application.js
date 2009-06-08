@@ -10,6 +10,51 @@ if ( window.addEventListener ) {
 var handleMessage = function(response, statusText) {
   $("#recent").prepend(response);
   $("#recent .entry:first").effect("highlight",{},1500);
+  recalculate_totals();
+};
+
+var set_food_item_choice = function(em_id, fi_id) {
+  var that = $("li#entrymatch-"+em_id);
+  $.ajax({
+    url: '/entry_matches/'+em_id+"?format=html",
+    type: 'POST',
+    dataType: 'script',
+    data: {
+      '_method': 'PUT',
+      'authenticity_token': AUTH_TOKEN,
+      'entry_match[food_item_id]': fi_id
+    },
+    success: function(msg) {
+      that.replaceWith(msg)
+      $("li#entrymatch-"+em_id).effect("highlight",{},1000);
+      recalculate_totals();
+    }
+  });
+};
+
+// Update the calorie count, etc., on the left panel.
+// Probably just fire off an ajax request.
+var recalculate_totals = function() {
+  $.ajax({
+    url: '/goals/sidebar',
+    type: 'GET',
+    success: function(msg) {
+      $("#goals").html(msg);
+    }
+  });
+};
+
+var bindevents_alternateselection = function() {
+  $('.alternate_fi').click(function(e) {
+    var id = $(this).attr('id');
+    var spl = id.split('-');
+    var fi_id = spl[2];
+    var em_id = spl[1];
+    set_food_item_choice(em_id, fi_id);
+
+    $(document).trigger('close.facebox');
+    e.preventDefault();
+  });
 };
 
 var bindevents_newentry = function() {
@@ -100,5 +145,7 @@ $(document).ready(function() {
             attr('value', def).
             css('color', '#999');
       });
+
+  recalculate_totals();
 
 });

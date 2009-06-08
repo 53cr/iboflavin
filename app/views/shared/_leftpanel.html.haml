@@ -4,11 +4,8 @@
     <span class="username">#{link_to @current_user.login, account_url}</span>
     == #{link_to '53mg', account_url} / #{link_to 'Settings', account_url} / #{link_to 'Logout', user_session_path, :method => :delete}<br/>
     <hr/>
-    Calories Today<br/>
-    <span class="dietgoal">#{@calories_today||0}/2000</span><br/>
-    Riboflavin Today<br/>
-    <span class="dietgoal">#{@b2_today||0}<span class="unit">mg</span>/#{@b2_total}<span class="unit">mg</span></span><br/>
-    <a href="/goals">Change Diet Goals</a>
+    #goals
+      = render 'goals/sidebar'
     <hr/>
     Invite People<br/>
     = text_field_tag :adsf, nil, {:class=>'text', :style=>'width: 205px'}

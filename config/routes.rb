@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :entry_matches, :member => {:alternates => :get}
   map.resources :entries
 
+  map.resources :food_items
+
   map.resource :user_session
 
   map.resource :account, :controller => "users"

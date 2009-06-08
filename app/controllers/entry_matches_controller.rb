@@ -7,7 +7,7 @@ class EntryMatchesController < ApplicationController
     # id will sometimes be in-place-edit-9323 or something like that.
     id = params[:id].split('-').last 
 
-    if params[:entry_match][:value]
+    if params[:entry_match] && params[:entry_match][:value]
       a,u = Grammar::parse_quantifier(Grammar::tokenize(params[:entry_match][:value]))
       params[:entry_match][:amount], params[:entry_match][:unit] = a,u.to_s
       params[:entry_match].delete(:value)
@@ -21,7 +21,7 @@ class EntryMatchesController < ApplicationController
       respond_to do |format|
         if @entry_match.update_attributes(params[:entry_match])
           # flash[:notice] = 'EntryMatch was successfully updated.'
-          format.html { redirect_to(@entry_match) }
+          format.html { render :partial => @entry_match }
           format.xml  { head :ok }
           format.js   { }
         else

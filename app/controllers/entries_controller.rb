@@ -31,11 +31,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new
 
     @recent = Entry.find(:all, :conditions => ["user_id = ? AND created_at >= ?",@current_user.id,Date.today], :order => 'id DESC')
-    riboflavin,calories = 405,208
-    @calories_today = @recent.map{|e|e.amount_of_nutrient(calories)}.compact.inject(&:+)
-    @b2_today = @recent.map{|e|e.amount_of_nutrient(riboflavin)}.compact.inject(&:+)
-    @b2_total = @current_user.rdi_for(Nutrient.find(405))
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @entry }
