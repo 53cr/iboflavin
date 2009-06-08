@@ -30,7 +30,8 @@ iBoflavin.set_food_item_choice = function(em_id, fi_id) {
 };
 
 $(document).bind("entry.replace", function() {
-  $(document).trigger("entry.change entry.add");
+  $(document).trigger("entry.change");
+  $(document).trigger("entry.add");
 });
 
 $(document).bind("entry.change", function() {
