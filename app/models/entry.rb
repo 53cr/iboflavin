@@ -1,7 +1,10 @@
 class Entry < ActiveRecord::Base
 
   after_save :create_entry_matches
+  before_destroy :destroy_entry_matches
 
+  validates_format_of :input, :with => /\S+/
+  
   belongs_to :user
   has_many :entry_matches
 
@@ -24,6 +27,10 @@ class Entry < ActiveRecord::Base
       })
     end
     
+  end
+
+  def destroy_entry_matches
+    self.entry_matches.map(&:destroy)
   end
 
 end

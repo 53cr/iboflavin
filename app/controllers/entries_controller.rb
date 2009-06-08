@@ -50,7 +50,7 @@ class EntriesController < ApplicationController
   # POST /entries.xml
   def create
     @entry = Entry.new(params[:entry].merge({:user_id => @current_user.id}))
-
+    
     respond_to do |format|
       if @entry.save
         format.html { redirect_to(@entry) }
