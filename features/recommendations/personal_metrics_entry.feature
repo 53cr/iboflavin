@@ -5,4 +5,4 @@ Feature: Personal Attributes Entry
   Users should be able to enter their personal attributes
   
   # TODO: Scenarios
-  
+  # TODO: enter weight + other attribs to get kcal guess or just pick your own

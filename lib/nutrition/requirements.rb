@@ -1,7 +1,7 @@
 module Nutrition
   class Requirements
     def self.for(user)
-      if user.nil?
+      if user.nil? or (user and (user.sex.nil? or user.age.nil?))
         DATA[:male].with_keys_as_ranges(25)
       elsif user.infant?
         DATA[:infant].with_keys_as_ranges(user.age)
