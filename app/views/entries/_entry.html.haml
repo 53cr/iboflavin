@@ -2,6 +2,6 @@
   %p.name== #{h entry.input} #{delete_entry(entry.id)}
   %ul
     - entry.entry_matches.each do |match|
-      %li.removeable
-        == <span class="editable in-place-edit unevented" id="editamount-#{match.id}">#{match.humanize_amount}</span> (#{match.amount_of_nutrient(208)}kCal) of <span class="editable">#{match.food_item.name rescue "(no matches found)"}</span> #{delete_entrymatch(match.id)}
+      %li.removeable{ :id => "entrymatch-"+match.id.to_s }
+        == <span class="editable in-place-edit unevented" id="editamount-#{match.id}">#{match.humanize_amount}</span> (#{match.amount_of_nutrient(208)}kCal) of <span class="editable fooditem unevented"><a href="/entry_matches/#{match.id}/alternates" rel="facebox">#{match.food_item.name rescue "(no matches found)"}</a></span> #{delete_entrymatch(match.id)}
         <script type="text/javascript">bindevents_newentry();</script>

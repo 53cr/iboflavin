@@ -17,7 +17,7 @@ var bindevents_newentry = function() {
   $(".in-place-edit.unevented").each(function(el) {
     var id = $(this).attr('id');
     id = id.split('-')[1];
-      $(this).editable('/entry_matches/'+id+'?format=js', {
+    $(this).editable('/entry_matches/'+id+'?format=js', {
       name: 'entry_match[value]',
       method: 'PUT',
       submitdata: {
@@ -26,6 +26,22 @@ var bindevents_newentry = function() {
       }
     }).removeClass("unevented");
   });
+
+//   $(".editable.fooditem.unevented").each(function(el) {
+//     var id = $(this).closest("li.removeable").attr('id');
+//     id = id.split('-')[1];
+//     $(this).click(function(e) {
+//       alert('click');
+
+//       e.preventDefault();
+//     });
+//   }).removeClass("unevented");
+
+  $(".editable.fooditem.unevented").each(function(el) {
+    $(this).children("a").facebox();
+  }).removeClass("unevented");
+
+
 
   // Mouseover effect for swapping on/off versions of close 'X'
   $(".delete_x.unevented").mouseover(function(){
