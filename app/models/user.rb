@@ -1,3 +1,4 @@
+require 'nutrition'
 require 'nutrition/requirements'
 
 class User < ActiveRecord::Base
