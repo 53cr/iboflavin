@@ -181,25 +181,38 @@ a {
 <div class="results">
 <div class="example_group">
   <dl>
-  <dt id="example_group_1">Nutrition::Requirements</dt>
-    <script type="text/javascript">moveProgressBar('25.0');</script>
-    <dd class="spec passed"><span class="passed_spec_name">can translate Nutrient model instance to Requirements key</span></dd>
-    <script type="text/javascript">makeYellow('rspec-header');</script>
-    <script type="text/javascript">makeYellow('example_group_1');</script>
-    <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="spec not_implemented"><span class="not_implemented_spec_name">should have the same units as the Nutrient table (PENDING: Not Yet Implemented)</span></dd>
-    <script type="text/javascript">makeYellow('rspec-header');</script>
-    <script type="text/javascript">makeYellow('example_group_1');</script>
-    <script type="text/javascript">moveProgressBar('75.0');</script>
-    <dd class="spec not_implemented"><span class="not_implemented_spec_name">should return a value for a listed Nutrient (PENDING: Not Yet Implemented)</span></dd>
-    <script type="text/javascript">makeYellow('rspec-header');</script>
-    <script type="text/javascript">makeYellow('example_group_1');</script>
-    <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="spec not_implemented"><span class="not_implemented_spec_name">should return nil for an unlisted Nutrient (PENDING: Not Yet Implemented)</span></dd>
+  <dt id="example_group_1">Nutrition::Requirements </dt>
+    <script type="text/javascript">moveProgressBar('9.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should reject vitamin/minerals that do not exist</span></dd>
+    <script type="text/javascript">moveProgressBar('18.1');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should require all vitamins and mineral types be present</span></dd>
+    <script type="text/javascript">moveProgressBar('27.2');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should retain vitamin/mineral values passed in</span></dd>
+    <script type="text/javascript">moveProgressBar('36.3');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should return vitamin/minerals with added units</span></dd>
+    <script type="text/javascript">moveProgressBar('45.4');</script>
+    <dd class="spec passed"><span class="passed_spec_name">should keep list of valid vitamins and minerals</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.072619 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "4 examples, 0 failures, 3 pending";</script>
+<div class="example_group">
+  <dl>
+  <dt id="example_group_2">Nutrition::Requirements should return unique requirements for age groups of</dt>
+    <script type="text/javascript">moveProgressBar('54.5');</script>
+    <dd class="spec passed"><span class="passed_spec_name">infants</span></dd>
+    <script type="text/javascript">moveProgressBar('63.6');</script>
+    <dd class="spec passed"><span class="passed_spec_name">children</span></dd>
+    <script type="text/javascript">moveProgressBar('72.7');</script>
+    <dd class="spec passed"><span class="passed_spec_name">males</span></dd>
+    <script type="text/javascript">moveProgressBar('81.8');</script>
+    <dd class="spec passed"><span class="passed_spec_name">females</span></dd>
+    <script type="text/javascript">moveProgressBar('90.9');</script>
+    <dd class="spec passed"><span class="passed_spec_name">lactating women</span></dd>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="spec passed"><span class="passed_spec_name">pregnant women</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.122213 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "11 examples, 0 failures";</script>
 </div>
 </div>
 </body>

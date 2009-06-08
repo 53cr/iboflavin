@@ -86,17 +86,15 @@ module Nutrition
       it "should retain vitamin/mineral values passed in" do
         @valid_data[:vit_a] = 1234
         person_reqs = Requirements.new(@valid_data)
-        person_reqs.for(:vit_a)[:value].should equal 1234
+        person_reqs.for(:vit_a).should equal 1234
       end
       
       it "should return vitamin/minerals with added units" do
         @valid_data.each_key {|key| @valid_data[key] = 1337}
         person_reqs = Requirements.new(@valid_data)
         @valid_data.each_key do |key|
-          req = person_reqs.for(key)
-          req.should be_a_kind_of Hash
-          req[:value].should be 1337
-          req[:unit].should  equal Requirements::UNITS[key]
+          person_reqs.for(key).should be 1337
+          
         end
       end
       
