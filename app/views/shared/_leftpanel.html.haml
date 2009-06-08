@@ -7,7 +7,7 @@
     Calories Today<br/>
     <span class="dietgoal">#{@calories_today||0}/2000</span><br/>
     Riboflavin Today<br/>
-    <span class="dietgoal">#{@b2_today||0}<span class="unit">mg</span>/#{@current_user.rdi_for(Nutrient.find(405))}<span class="unit">mg</span></span><br/>
+    <span class="dietgoal">#{@b2_today||0}<span class="unit">mg</span>/#{@b2_total}<span class="unit">mg</span></span><br/>
     <a href="/goals">Change Diet Goals</a>
     <hr/>
     Invite People<br/>
