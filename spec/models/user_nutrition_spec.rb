@@ -10,23 +10,32 @@ describe User do
   
   it { should respond_to :nutritional_requirements }
   describe "Nutrition Requirements" do
-    before(:each) do
-      @user = Factory(:user)
-    end
+    context "with anonymous user" do
+      
+      before(:each) do
+        @user = Factory(:user)
+      end
     
-    it "should get them for a 'blank' user with no stats" do
-      pending "getting around to it"
-      @user.nutritional_requirements.should_not be nil
+      it "should get them for a 'blank' user with no stats" do
+        pending "getting around to it"
+        @user.nutritional_requirements.should_not be nil
+      end
     end
-    it "should be a kind of Nutrition::Requirements" do
-      @user = Factory(:ryan)
-      @user.nutritional_requirements.should be_kind_of Nutrition::Requirements
+    context "with user 'Ryan'" do
+      before(:each) do
+        @user = Factory(:ryan)
+      end
+      it "should be a kind of Nutrition::Requirements" do
+        @user.nutritional_requirements.should be_kind_of Nutrition::Requirements
+      end
+      it "should cache its requirements for the current object"
+      it "should update when user changes"
+      # more specs
+      it "should return applicable nutrient requirements for a given nutrient" do
+        vitamin_a = Nutrient.find(320)
+        @user.rdi_for(vitamin_a).should be 900
+      end
     end
-    it "should cache its requirements for the current object"
-    it "should update when user changes"
-    # more specs
-
   end
-  
-  it "should return applicable nutrient requirements for a given nutrient"
+
 end
