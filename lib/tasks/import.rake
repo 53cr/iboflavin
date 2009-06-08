@@ -1,6 +1,6 @@
 require 'fastercsv'
 
-task 'usda:import' => ['usda:import:food_items','usda:import:food_groups','usda:import:nutrients','usda:import:food_item_nutrients', 'usda:import:weights']
+task 'usda:import' => ['usda:import:food_items','usda:import:food_groups','usda:import:nutrients','usda:import:food_item_nutrients']
 
 namespace :usda do
   namespace :import do
