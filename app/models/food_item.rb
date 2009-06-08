@@ -5,8 +5,6 @@ class FoodItem < ActiveRecord::Base
   has_many :food_item_nutrients
   has_many :nutrients, :through => :food_item_nutrients
 
-  TOKYO = Rufus::Tokyo::Tyrant.new('localhost',45001)
-  
   define_index do
     indexes name
   end
