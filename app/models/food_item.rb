@@ -31,8 +31,11 @@ class FoodItem < ActiveRecord::Base
     matches << user_most_common(uid,sigtext, 5)
     matches << global_most_common(sigtext, 5)
     matches << sigtext_search(sigtext)
+    
+    ret = matches.flatten.uniq.reject(&:nil?)
 
-    return matches.flatten.uniq.reject(&:nil?)
+    RAILS_DEFAULT_LOGGER.error ">>>>>>>>>>>>>#{ret.size}"
+    return ret
   end
 
   private
@@ -52,7 +55,6 @@ class FoodItem < ActiveRecord::Base
     query = ActiveRecord::Base.replace_bind_variables(query,[uid, sigtext])
     
     sql_result = ActiveRecord::Base.connection.execute(query)
-    RAILS_DEFAULT_LOGGER.error "XXXXXXX#{sql_result.all_hashes}XXXXX"
     food_item_ids = sql_result.all_hashes.map{|e|e['food_item_id']}
     food_item_ids = food_item_ids.reject(&:nil?).map(&:to_i)
     return FoodItem.find(food_item_ids)

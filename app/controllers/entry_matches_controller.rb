@@ -29,6 +29,21 @@ class EntryMatchesController < ApplicationController
     end
   end
 
+  def alternates
+    @entry_match = EntryMatch.find(params[:id])
+
+    search = (params[:search] ?
+              ::SearchUtils.signaturize(params[:search]) :
+              @entry_match.sigsearch)
+    
+    @food_items = FoodItem.awesome_search(@current_user.id, search)
+
+    respond_to do |format|
+      format.html { render :layout => false } 
+      format.xml  { render :xml => @food_items }
+    end
+  end
+  
   def index
     @entry_matches = EntryMatch.all
 
