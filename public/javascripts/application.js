@@ -29,7 +29,7 @@ iBoflavin.set_food_item_choice = function(em_id, fi_id) {
   });
 };
 
-$(document).bind("entry.change.today", function() {
+$(document).bind("entry.change", function() {
   $.ajax({
     url: '/goals/sidebar',
     type: 'GET',
