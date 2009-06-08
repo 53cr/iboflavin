@@ -16,7 +16,6 @@ module Nutrition
       end
     end
     
-    class Error < RuntimeError; end
     UNITS = {
       #Vitamins
       :vit_a => :mcg_RAE,
@@ -87,10 +86,10 @@ module Nutrition
     }
     def initialize(nutrients={})
       if !NUTRIENTS.includes_all? nutrients.keys
-        raise Nutrition::Requirements::Error "An imported vitamin has the wrong key"
+        RAILS_DEFAULT_LOGGER.error "An imported vitamin has the wrong key"
       end
       if !nutrients.includes_all? NUTRIENTS
-        raise Nutrition::Requirements::Error "The imported vitamins are missing a key"
+        RAILS_DEFAULT_LOGGER.error "The imported vitamins are missing a key"
       end
       
       @_data = nutrients
