@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :twitter_screen_name, :oauth_token, :oauth_secret, :allow_nil => true
   
   def nutritional_requirements
+    Nutrition
     @nutr_reqs ||= Nutrition::Requirements.for(self)
   end
   
