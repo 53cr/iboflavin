@@ -17,7 +17,6 @@ describe User do
       end
     
       it "should get them for a 'blank' user with no stats" do
-        pending "getting around to it"
         @user.nutritional_requirements.should_not be nil
       end
     end

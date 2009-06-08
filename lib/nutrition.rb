@@ -3,6 +3,7 @@
 #Elements
 #:calcium, :chromium, :copper, :fluoride, :iodine, :iron, :magnesium, :manganese, :molybdenum, :phosphorus, :selenium, :zinc, :potassium, :sodium, :chloride
 require "nutrition/requirements"
+require 'nutrition/energy_requirement'
 module Nutrition  
   def self.raw_data
     DATA
