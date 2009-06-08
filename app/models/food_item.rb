@@ -30,12 +30,9 @@ class FoodItem < ActiveRecord::Base
     matches << user_most_recent(uid,sigtext) 
     matches << user_most_common(uid,sigtext, 5)
     matches << global_most_common(sigtext, 5)
-    matches << sigtext_search(sigtext)
+    matches << text_search(text)
     
-    ret = matches.flatten.uniq.reject(&:nil?)
-
-    RAILS_DEFAULT_LOGGER.error ">>>>>>>>>>>>>#{ret.size}"
-    return ret
+    return matches.flatten.uniq.reject(&:nil?)
   end
 
   private
@@ -76,18 +73,18 @@ class FoodItem < ActiveRecord::Base
     return FoodItem.find(food_item_ids)
   end
 
-  def self.sigtext_search(sigtext, limit=15)
+  def self.text_search(text, limit=15)
     
     # all else fails, fire it off the the god-awful full-text search.
     # if we're running in development, don't freak out when sphinx isn't available.
     if RAILS_ENV=='development'
       begin
-        return self.search(sigtext,:limit=>limit)
+        return self.search(text,:limit=>limit)
       rescue
-        return self.find(:all,:conditions=>['name LIKE ?',"%#{sigtext}%"],:limit=>limit) rescue nil
+        return self.find(:all,:conditions=>['name LIKE ?',"%#{text}%"],:limit=>limit) rescue nil
       end
     else 
-      return self.search(sigtext,:limit=>limit)
+      return self.search(text,:limit=>limit)
     end
 
   end
