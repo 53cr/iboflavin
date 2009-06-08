@@ -31,9 +31,9 @@ class EntriesController < ApplicationController
     @entry = Entry.new
 
     @recent = Entry.find(:all, :conditions => ["user_id = ? AND created_at >= ?",@current_user.id,Date.today], :order => 'id DESC')
-
-    @calories_today = @recent.map{|e|e.amount_of_nutrient(208)}.compact.inject(&:+)
-    @b2_today = @recent.map{|e|e.amount_of_nutrient(405)}.compact.inject(&:+)
+    riboflavin,calories = 405,208
+    @calories_today = @recent.map{|e|e.amount_of_nutrient(calories)}.compact.inject(&:+)
+    @b2_today = @recent.map{|e|e.amount_of_nutrient(riboflavin)}.compact.inject(&:+)
     
     respond_to do |format|
       format.html # new.html.erb
