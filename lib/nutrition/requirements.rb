@@ -87,11 +87,17 @@ module Nutrition
       # ?? => :chloride,
     }
     def initialize(nutrients={})
-      if !NUTRIENTS.includes_all? nutrients.keys
-        RAILS_DEFAULT_LOGGER.error "An imported vitamin has the wrong key"
+      if !NUTRIENTS.includes_all? nutrients.keys 
+        error_msg = "An imported vitamin has the wrong key"
+        RAILS_DEFAULT_LOGGER.error error_msg
+        raise error_msg if defined?(TESTING_GOING_ON)
+        return nil
       end
       if !nutrients.includes_all? NUTRIENTS
-        RAILS_DEFAULT_LOGGER.error "The imported vitamins are missing a key"
+        error_msg = "The imported vitamins are missing a key"
+        RAILS_DEFAULT_LOGGER.error error_msg
+        raise error_msg if defined?(TESTING_GOING_ON)
+        return nil
       end
       
       @_data = nutrients
@@ -110,8 +116,4 @@ module Nutrition
   end
 end
 
-class Hash
-  def with_keys_as_ranges(number)
-    self.each_key { |key| if key === number; return self[key]; end}
-  end
-end
+

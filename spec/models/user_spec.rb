@@ -16,6 +16,15 @@ describe User do
   it { should respond_to :child? }
   it { should respond_to :infant? }
   
+  # Lifestyle related specs
+  it "lifestyle should be either sedentary, low-active, active or nil" do
+    ['sedentary', 'low active', 'active', nil].each do |lifestyle|
+      @user.lifestyle = lifestyle
+      @user.should be_valid
+    end
+    @user.lifestyle = "penultimate"
+    @user.should_not be_valid
+  end
   # Sex related specs
   it "should be either male or female" do  
     @user.sex = :male
@@ -26,6 +35,18 @@ describe User do
     
     @user.sex = :goorplon
     @user.should be_invalid
+  end
+  it "should respond to #male?" do
+    @user.sex = :male
+    @user.should be_male
+    @user.sex = :female
+    @user.should_not be_male
+  end
+  it "should respond to #female?" do
+    @user.sex = :female
+    @user.should be_female
+    @user.sex = :male
+    @user.should_not be_female
   end
   
   # Birthday related specs
