@@ -110,6 +110,7 @@ var bindevents_newentry = function() {
       success: function(msg) {
         $(that).closest(".removeable").hide('slow',function(){
           $(this).remove();
+          recalculate_totals();
         });
       }
     });
