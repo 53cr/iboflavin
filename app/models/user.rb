@@ -2,7 +2,6 @@ require 'nutrition'
 require 'nutrition/requirements'
 
 #TODO: add columns: lifestyle
-#TODO: add user#female? user#male?
 class User < ActiveRecord::Base
 
   acts_as_authentic
@@ -14,6 +13,7 @@ class User < ActiveRecord::Base
   #TODO We don't want to force users to register with this. Run a custom validation that validates only if they're defined.
 
   validates_inclusion_of :sex, :in => [:male, 'male', :female, 'female', nil, '']
+  validates_inclusion_of :lifestyle, :in => ['sedentary', 'active', 'low active', nil]
   validate :age_between_0_and_999
   validates_uniqueness_of :twitter_screen_name, :oauth_token, :oauth_secret, :allow_nil => true
   
