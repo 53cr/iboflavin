@@ -30,8 +30,8 @@ class FoodItem < ActiveRecord::Base
     matches << user_most_recent(uid,sigtext) 
     matches << user_most_common(uid,sigtext, 5)
     matches << global_most_common(sigtext, 5)
-    matches << sigtext_search(sigtext)
-
+    matches << text_search(text)
+    
     return matches.flatten.uniq.reject(&:nil?)
   end
 
@@ -52,7 +52,6 @@ class FoodItem < ActiveRecord::Base
     query = ActiveRecord::Base.replace_bind_variables(query,[uid, sigtext])
     
     sql_result = ActiveRecord::Base.connection.execute(query)
-    RAILS_DEFAULT_LOGGER.error "XXXXXXX#{sql_result.all_hashes}XXXXX"
     food_item_ids = sql_result.all_hashes.map{|e|e['food_item_id']}
     food_item_ids = food_item_ids.reject(&:nil?).map(&:to_i)
     return FoodItem.find(food_item_ids)
@@ -74,18 +73,18 @@ class FoodItem < ActiveRecord::Base
     return FoodItem.find(food_item_ids)
   end
 
-  def self.sigtext_search(sigtext, limit=15)
+  def self.text_search(text, limit=15)
     
     # all else fails, fire it off the the god-awful full-text search.
     # if we're running in development, don't freak out when sphinx isn't available.
     if RAILS_ENV=='development'
       begin
-        return self.search(sigtext,:limit=>limit)
+        return self.search(text,:limit=>limit)
       rescue
-        return self.find(:all,:conditions=>['name LIKE ?',"%#{sigtext}%"],:limit=>limit) rescue nil
+        return self.find(:all,:conditions=>['name LIKE ?',"%#{text}%"],:limit=>limit) rescue nil
       end
     else 
-      return self.search(sigtext,:limit=>limit)
+      return self.search(text,:limit=>limit)
     end
 
   end

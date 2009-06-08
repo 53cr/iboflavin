@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.twitter_login '/login/twitter', {:controller => 'oauth', :action => 'login', :method => 'get'}
 
-  map.resources :entry_matches
+  map.resources :entry_matches, :member => {:alternates => :get}
   map.resources :entries
 
   map.resource :user_session

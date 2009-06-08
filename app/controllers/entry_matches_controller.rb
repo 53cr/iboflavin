@@ -14,37 +14,51 @@ class EntryMatchesController < ApplicationController
     end
 
     @entry_match = EntryMatch.find(id)
-    
-    respond_to do |format|
-      if @entry_match.update_attributes(params[:entry_match])
-        # flash[:notice] = 'EntryMatch was successfully updated.'
-        format.html { redirect_to(@entry_match) }
-        format.xml  { head :ok }
-        format.js   { }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @entry_match.errors, :status => :unprocessable_entity }
-        format.js   { render :text => '' }
+    if @current_user.id != @entry_match.user_id
+      redirect_to '/'
+    else
+      
+      respond_to do |format|
+        if @entry_match.update_attributes(params[:entry_match])
+          # flash[:notice] = 'EntryMatch was successfully updated.'
+          format.html { redirect_to(@entry_match) }
+          format.xml  { head :ok }
+          format.js   { }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @entry_match.errors, :status => :unprocessable_entity }
+          format.js   { render :text => '' }
+        end
       end
     end
   end
 
-  def index
-    @entry_matches = EntryMatch.all
+  def alternates
+    @entry_match = EntryMatch.find(params[:id])
+    if @current_user.id != @entry_match.user_id
+      redirect_to '/'
+    else
+      search = params[:search] || @entry_match.search
+      
+      @food_items = FoodItem.awesome_search(@current_user.id, search)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @entry_matches }
+      respond_to do |format|
+        format.html { render :layout => false } 
+        format.xml  { render :xml => @food_items }
+      end
     end
   end
 
   def show
     @entry_match = EntryMatch.find(params[:id])
-
-    respond_to do |format|
-      format.html { render :layout => false }
-      format.xml  { render :xml  => @entry_match }
-      format.json { render :json => {:entry_match => @entry_match, :entry_matches => @entry_match.entry_matches}.to_json }
+    if @current_user.id != @entry_match.user_id
+      redirect_to '/'
+    else
+      respond_to do |format|
+        format.html { render :layout => false }
+        format.xml  { render :xml  => @entry_match }
+        format.json { render :json => {:entry_match => @entry_match, :entry_matches => @entry_match.entry_matches}.to_json }
+      end
     end
   end
 
@@ -67,12 +81,16 @@ class EntryMatchesController < ApplicationController
 
   def destroy
     @entry_match = EntryMatch.find(params[:id])
-    @entry_match.destroy
+    if @current_user.id != @entry_match.user_id
+      redirect_to '/'
+    else
+      @entry_match.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(entry_matches_url) }
-      format.xml  { head :ok }
-      format.js   { render :nothing => true }
+      respond_to do |format|
+        format.html { redirect_to(entry_matches_url) }
+        format.xml  { head :ok }
+        format.js   { render :nothing => true }
+      end
     end
   end
 
