@@ -95,7 +95,6 @@ module Nutrition
     end
     
     def for(nutrient)
-      #TODO: Redo me with new logic
       nutrient = NUTRIENT_IDS_TO_NUTRIENT[nutrient.id]
       return @_data[nutrient]
     end
