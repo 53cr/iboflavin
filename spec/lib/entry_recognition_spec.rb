@@ -7,6 +7,7 @@ describe "Entry Recognition" do
 
   test_cases.each do |input,expected|
     it "should recognize #{input} as #{expected.inspect}" do
+      pending
       results = UserInput.parse(input)
       results.each_with_index do |result,i|
         result.count.should      == expected[i]["count"]

@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
   validate :age_between_0_and_999
   validates_uniqueness_of :twitter_screen_name, :oauth_token, :oauth_secret, :allow_nil => true
   
+  def nutritional_requirements
+    @nutr_reqs ||= Nutrition::Requirements.for(self)
+  end
+  
+  def rdi_for(nutrient)
+    nutritional_requirements.for(nutrient)
+  end
+  
   def age
     if self.birthday
       ((Date.today - self.birthday) / 365).to_f

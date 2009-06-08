@@ -17,43 +17,77 @@ module Nutrition
     class Error < RuntimeError; end
     UNITS = {
       #Vitamins
-      :vit_a => :microgram,
-      :vit_c => :milligram,
-      :vit_d => :microgram, 
-      :vit_e => :milligram, 
-      :vit_k => :microgram, 
-      :thiamin => :milligram, 
-      :riboflavin => :milligram, 
-      :niacin => :milligram, 
-      :vit_b6 => :milligram, 
-      :folate => :microgram, 
-      :vit_b12 => :microgram, 
-      :pantothenic => :milligram, 
-      :biotin => :microgram, 
-      :choline => :milligram,
+      :vit_a => :mcg_RAE,
+      :vit_c => :mg,
+      :vit_d => :IU,
+      :vit_e => :mg, 
+      :vit_k => :mcg, 
+      :thiamin => :mg, 
+      :riboflavin => :mg, 
+      :niacin => :mg, 
+      :vit_b6 => :mg, 
+      :folate => :mcg_DFE, 
+      :vit_b12 => :mcg, 
+      :pantothenic => :mg, 
+      :biotin => :mcg, 
+      :choline => :mg,
       #Elements
-      :calcium => :milligram,
-      :chromium => :microgram, 
-      :copper => :microgram, 
-      :fluoride => :milligram, 
-      :iodine => :microgram, 
-      :iron => :milligram, 
-      :magnesium => :milligram, 
-      :manganese => :milligram, 
-      :molybdenum => :microgram, 
-      :phosphorus => :milligram, 
-      :selenium => :microgram, 
-      :zinc => :milligram, 
-      :potassium => :gram, 
-      :sodium => :gram, 
-      :chloride => :gram,
+      :calcium => :mg,
+      :chromium => :mcg, 
+      :copper => :mg, 
+      :fluoride => :mcg, 
+      :iodine => :mcg, 
+      :iron => :mg, 
+      :magnesium => :mg, 
+      :manganese => :mg, 
+      :molybdenum => :mcg, 
+      :phosphorus => :mg, 
+      :selenium => :mcg, 
+      :zinc => :mg, 
+      :potassium => :mg, 
+      :sodium => :mg, 
+      :chloride => :g,
     }
-    
+    NUTRIENTS = [:vit_a, :vit_c, :vit_d, :vit_e, :vit_k, :thiamin, :riboflavin, :niacin, :vit_b6, :folate, :vit_b12, :pantothenic, :biotin,  :choline,
+    #Elements
+    :calcium, :chromium,  :copper,  :fluoride,  :iodine,  :iron,  :magnesium,  :manganese,  :molybdenum,  :phosphorus,  :selenium,  :zinc,  :potassium,  :sodium,  :chloride]
+    NUTRIENT_IDS_TO_NUTRIENT = {
+      320 => :vit_a,
+      401 => :vit_c,
+      324 => :vit_d,
+      323 => :vit_e,
+      430 => :vit_k,
+      404 => :thiamin,
+      405 => :riboflavin,
+      406 => :niacin,
+      415 => :vit_b6,
+      435 => :folate,
+      418 => :vit_b12,
+      410 => :pantothenic,
+      # ?? => :biotin,
+      421 => :choline,
+      #Elements
+      301 => :calcium,
+      # ?? => :chromium,
+      312 => :copper,
+      313 => :fluoride,
+      # ?? => :iodine,
+      303 => :iron,
+      304 => :magnesium,
+      315 => :manganese,
+      # ?? => :molybdenum,
+      305 => :phosphorus,
+      317 => :selenium,
+      309 => :zinc,
+      306 => :potassium,
+      307 => :sodium
+      # ?? => :chloride,
+    }
     def initialize(nutrients={})
-      if !UNITS.includes_all? nutrients.keys
+      if !NUTRIENTS.includes_all? nutrients.keys
         raise Nutrition::Requirements::Error.new "An imported vitamin has the wrong key"
       end
-      if !nutrients.includes_all? UNITS.keys
+      if !nutrients.includes_all? NUTRIENTS
         raise Nutrition::Requirements::Error.new "The imported vitamins are missing a key"
       end
       
@@ -61,11 +95,12 @@ module Nutrition
     end
     
     def for(nutrient)
+      #TODO: Redo me with new logic
       vitamin = @_data[nutrient]
       return { :value => vitamin, :unit => UNITS[nutrient] }
     end
     def self.valid_nutrients
-      UNITS.keys
+      NUTRIENTS
     end
   end
 end
