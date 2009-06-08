@@ -1,3 +1,3 @@
 %li.unevented.removeable{ :id => "entrymatch-"+entry_match.id.to_s }
   == <span class="editable in-place-edit" id="editamount-#{entry_match.id}">#{entry_match.humanize_amount}</span> (#{entry_match.amount_of_nutrient(208)}kCal) of <span class="editable fooditem"><a href="/entry_matches/#{entry_match.id}/alternates" rel="facebox">#{entry_match.food_item.name rescue "(no matches found)"}</a></span> #{delete_entrymatch(entry_match.id)}
-= javascript_tag '$(document).trigger("entry.change")'
+= javascript_trigger 'entry.change'
