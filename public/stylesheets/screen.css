@@ -655,91 +655,94 @@ textarea { width: 390px; height: 250px; padding: 5px; }
 p, li, h1, h2, h3, h4, h5, h6, input { color: #444; }
 
 /* line 16, ../../app/stylesheets/screen.sass */
-h3 { font-size: 24px; }
+a { text-decoration: none; }
 
 /* line 19, ../../app/stylesheets/screen.sass */
+h3 { font-size: 24px; }
+
+/* line 22, ../../app/stylesheets/screen.sass */
 html { background: url(/images/html_back.png) top center repeat-y #cef2f2; height: 100%; }
 
-/* line 23, ../../app/stylesheets/screen.sass */
+/* line 26, ../../app/stylesheets/screen.sass */
 body { background: url(/images/leftpanel-top.png) top center no-repeat; }
 
-/* line 26, ../../app/stylesheets/screen.sass */
+/* line 29, ../../app/stylesheets/screen.sass */
 #footer { clear: both; }
 
-/* line 29, ../../app/stylesheets/screen.sass */
+/* line 32, ../../app/stylesheets/screen.sass */
 #page { width: 950px; margin: 0 auto; overflow: hidden; display: inline-block; padding-bottom: 54px; }
 /* line 5, ../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.6/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
 #page { display: block; }
-/* line 32, ../../app/stylesheets/screen.sass */
+/* line 35, ../../app/stylesheets/screen.sass */
 #page #userbar { z-index: 10; width: 670px; text-align: right; position: absolute; top: 0; }
-/* line 33, ../../app/stylesheets/screen.sass */
+/* line 36, ../../app/stylesheets/screen.sass */
 #page #userbar ul { background: red; list-style-type: none; margin: 0; padding: 0; }
-/* line 38, ../../app/stylesheets/screen.sass */
+/* line 41, ../../app/stylesheets/screen.sass */
 #page #userbar li { background: red; float: right; padding-left: 10px; }
-/* line 47, ../../app/stylesheets/screen.sass */
+/* line 50, ../../app/stylesheets/screen.sass */
 #page #leftpanel { display: inline; float: left; margin-right: 10px; width: 230px; padding-right: 40px; }
 /* line 97, ../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.6/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
 * html #page #leftpanel { overflow-x: hidden; }
-/* line 50, ../../app/stylesheets/screen.sass */
+/* line 53, ../../app/stylesheets/screen.sass */
 #page #leftpanel .gravatar { float: left; height: 36px; width: 36px; margin-right: 5px; }
-/* line 55, ../../app/stylesheets/screen.sass */
+/* line 58, ../../app/stylesheets/screen.sass */
 #page #leftpanel .username { font-size: 18px; line-height: 18px; display: block; }
-/* line 59, ../../app/stylesheets/screen.sass */
+/* line 62, ../../app/stylesheets/screen.sass */
 #page #leftpanel .dietgoal { font-size: 24px; text-align: center; font-family: Georgia; }
-/* line 63, ../../app/stylesheets/screen.sass */
+/* line 66, ../../app/stylesheets/screen.sass */
 #page #leftpanel .dietgoal .unit { font-size: 18px; }
-/* line 65, ../../app/stylesheets/screen.sass */
+/* line 68, ../../app/stylesheets/screen.sass */
 #page #leftpanel #leftpanel-inner { padding: 130px 5px 0px 8px; }
-/* line 67, ../../app/stylesheets/screen.sass */
+/* line 70, ../../app/stylesheets/screen.sass */
 #page #mainpanel { display: inline; float: left; margin-right: 0; width: 670px; }
 /* line 97, ../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.6/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
 * html #page #mainpanel { overflow-x: hidden; }
-/* line 69, ../../app/stylesheets/screen.sass */
+/* line 72, ../../app/stylesheets/screen.sass */
 #page #mainpanel #content { clear: both; padding: 26px 48px 0 35px; }
-/* line 73, ../../app/stylesheets/screen.sass */
+/* line 76, ../../app/stylesheets/screen.sass */
 #page #mainpanel #header h1 { overflow: hidden; height: 64px; width: 342px; margin: 0; background-image: url(/images/title_iboflavin_beta.png); background-position: top left; background-repeat: no-repeat; position: relative; text-indent: -9000px; float: left; margin: 38px 0 5px -10px; }
 /* line 12, ../../app/stylesheets/_image-replacement.sass */
 #page #mainpanel #header h1 a { display: block; height: 100%; width: 100%; }
 /* line 16, ../../app/stylesheets/_image-replacement.sass */
 #page #mainpanel #header h1 a span { display: block; height: 100%; width: 100%; position: absolute; top: 0; left: 0; cursor: pointer; }
-/* line 77, ../../app/stylesheets/screen.sass */
+/* line 80, ../../app/stylesheets/screen.sass */
 #page #mainpanel #header h2 { overflow: hidden; height: 63px; width: 101px; margin: 0; background-image: url(/images/twitter.png); background-position: top left; background-repeat: no-repeat; position: relative; text-indent: -9000px; float: right; top: 40px; }
 /* line 12, ../../app/stylesheets/_image-replacement.sass */
 #page #mainpanel #header h2 a { display: block; height: 100%; width: 100%; }
 /* line 16, ../../app/stylesheets/_image-replacement.sass */
 #page #mainpanel #header h2 a span { display: block; height: 100%; width: 100%; position: absolute; top: 0; left: 0; cursor: pointer; }
-/* line 81, ../../app/stylesheets/screen.sass */
+/* line 84, ../../app/stylesheets/screen.sass */
 #page #mainpanel #cloud { background: url(/images/cloud.png) top left no-repeat; position: absolute; top: 4px; height: 90px; width: 707px; margin-left: -100px; }
-/* line 88, ../../app/stylesheets/screen.sass */
+/* line 91, ../../app/stylesheets/screen.sass */
 #page #mainpanel #cloud div { background: url(/images/cloudfade.png) top right no-repeat; position: absolute; height: 90px; width: 707px; }
 
-/* line 95, ../../app/stylesheets/screen.sass */
-#thequestion h3 { text-align: right; margin-bottom: 0; }
 /* line 98, ../../app/stylesheets/screen.sass */
+#thequestion h3 { text-align: right; margin-bottom: 0; }
+/* line 101, ../../app/stylesheets/screen.sass */
 #thequestion input.text { width: 575px; height: 36px; font-size: 24px; }
 
-/* line 104, ../../app/stylesheets/screen.sass */
+/* line 107, ../../app/stylesheets/screen.sass */
 #footer { position: fixed; clear: both; bottom: 0; width: 100%; background: url(/images/footer.png) top left repeat; height: 50px; }
 
-/* line 112, ../../app/stylesheets/screen.sass */
+/* line 115, ../../app/stylesheets/screen.sass */
 .in-place-edit * { display: inline; }
 
-/* line 116, ../../app/stylesheets/screen.sass */
+/* line 119, ../../app/stylesheets/screen.sass */
 #recent p.name { font-weight: bold; }
-/* line 118, ../../app/stylesheets/screen.sass */
+/* line 121, ../../app/stylesheets/screen.sass */
 #recent ul, #recent p { line-height: 24px; margin: 0; padding: 0; }
-/* line 122, ../../app/stylesheets/screen.sass */
-#recent li { margin-left: 18px; list-style-type: none; }
 /* line 125, ../../app/stylesheets/screen.sass */
+#recent li { margin-left: 18px; list-style-type: none; }
+/* line 128, ../../app/stylesheets/screen.sass */
 #recent input { width: 100px; }
 
-/* line 128, ../../app/stylesheets/screen.sass */
+/* line 131, ../../app/stylesheets/screen.sass */
 label.inline { clear: left; display: block; float: left; position: relative; top: 8px; text-align: right; margin-right: 6px; line-height: 18px; width: 120px; }
 
-/* line 139, ../../app/stylesheets/screen.sass */
+/* line 142, ../../app/stylesheets/screen.sass */
 .delete_x { height: 14px; width: 16px; position: relative; top: 3px; cursor: pointer; }
 
-/* line 146, ../../app/stylesheets/screen.sass */
-.editable { background: #ccdcff; cursor: pointer; }
 /* line 149, ../../app/stylesheets/screen.sass */
+.editable { background: #ccdcff; cursor: pointer; }
+/* line 152, ../../app/stylesheets/screen.sass */
 .editable:hover { color: white; background: #014fff; }
