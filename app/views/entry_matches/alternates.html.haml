@@ -1,8 +1,4 @@
 - @food_items.each do |fi|
   = link_to fi.name, url_for(fi), :class => 'alternate_fi', :id => "alternate-#{@entry_match.id}-#{fi.id}"
   %br/
-<script type="text/javascript">
-//<![CDATA[
-bindevents_alternateselection();
-//]]>
-</script>
+= javascript_tag '$(document).trigger("entry.alternates")'

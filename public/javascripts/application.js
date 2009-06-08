@@ -1,19 +1,6 @@
-if ( window.addEventListener ) {
-  var state = 0, konami = [38,38,40,40,37,39,37,39,66,65];
-  window.addEventListener("keydown", function(e) {
-    if ( e.keyCode == konami[state] ) state++;
-    else state = 0;
-    if ( state == 10 ) window.location = "http://53cr.com/secret";
-  }, true);
-}
+var iBoflavin = {};
 
-var handleMessage = function(response, statusText) {
-  $("#recent").prepend(response);
-  $("#recent .entry:first").effect("highlight",{},1500);
-  recalculate_totals();
-};
-
-var set_food_item_choice = function(em_id, fi_id) {
+iBoflavin.set_food_item_choice = function(em_id, fi_id) {
   var that = $("li#entrymatch-"+em_id);
   $.ajax({
     url: '/entry_matches/'+em_id+"?format=html",
@@ -25,16 +12,14 @@ var set_food_item_choice = function(em_id, fi_id) {
       'entry_match[food_item_id]': fi_id
     },
     success: function(msg) {
-      that.replaceWith(msg)
+      that.replaceWith(msg);
       $("li#entrymatch-"+em_id).effect("highlight",{},1000);
-      recalculate_totals();
+      $(document).trigger("entry.change");
     }
   });
 };
 
-// Update the calorie count, etc., on the left panel.
-// Probably just fire off an ajax request.
-var recalculate_totals = function() {
+$(document).bind("entry.change.today", function() {
   $.ajax({
     url: '/goals/sidebar',
     type: 'GET',
@@ -42,24 +27,24 @@ var recalculate_totals = function() {
       $("#goals").html(msg);
     }
   });
-};
+});
 
-var bindevents_alternateselection = function() {
+$(document).bind("entry.alternates", function() {
   $('.alternate_fi').click(function(e) {
     var id = $(this).attr('id');
     var spl = id.split('-');
     var fi_id = spl[2];
     var em_id = spl[1];
-    set_food_item_choice(em_id, fi_id);
+    iBoflavin.set_food_item_choice(em_id, fi_id);
 
     $(document).trigger('close.facebox');
     e.preventDefault();
   });
-};
+});
 
-var bindevents_newentry = function() {
+$(document).bind("entry.add", function() {
   // In place editing for Quantifiers in Entry listings
-  $(".in-place-edit.unevented").each(function(el) {
+  $(".unevented .in-place-edit").each(function(el) {
     var id = $(this).attr('id');
     id = id.split('-')[1];
     $(this).editable('/entry_matches/'+id+'?format=js', {
@@ -69,35 +54,24 @@ var bindevents_newentry = function() {
         authenticity_token: AUTH_TOKEN,
         wants: 'amount'
       }
-    }).removeClass("unevented");
+    });
   });
 
-//   $(".editable.fooditem.unevented").each(function(el) {
-//     var id = $(this).closest("li.removeable").attr('id');
-//     id = id.split('-')[1];
-//     $(this).click(function(e) {
-//       alert('click');
-
-//       e.preventDefault();
-//     });
-//   }).removeClass("unevented");
-
-  $(".editable.fooditem.unevented").each(function(el) {
+  $(".unevented .editable.fooditem").each(function(el) {
     $(this).children("a").facebox();
-  }).removeClass("unevented");
-
-
+  });
 
   // Mouseover effect for swapping on/off versions of close 'X'
-  $(".delete_x.unevented").mouseover(function(){
+  $(".unevented .delete_x.unevented").mouseover(function(){
     $(this).children('a').children('.off').hide();
     $(this).children('a').children('.on').show();
   }).mouseout(function(){
     $(this).children('a').children('.on').hide();
     $(this).children('a').children('.off').show();
   });
+
   // Bind the close link to remove via ajax, then remove the element from the DOM.
-  $(".delete_x.unevented a").click(function(e){
+  $(".unevented .delete_x a").click(function(e){
     var that = this;
     $.ajax({
       url: $(this).attr('href'),
@@ -110,19 +84,18 @@ var bindevents_newentry = function() {
       success: function(msg) {
         $(that).closest(".removeable").hide('slow',function(){
           $(this).remove();
-          recalculate_totals();
+          $(document).trigger("entry.change");
         });
       }
     });
     return false;
   });
+
   // Don't add more events to this element later :)
-  $(".delete_x.unevented").removeClass("unevented");
-};
+  $(".unevented").removeClass("unevented");
+});
 
 $(document).ready(function() {
-
-  bindevents_newentry();
 
   $('#cloud').animate({
     "background-position": "707px"
@@ -130,7 +103,14 @@ $(document).ready(function() {
 
   var def = "Four Pan-Galactic Gargle Blasters";
 
-  $("#thequestion form").ajaxForm({success: handleMessage, clearForm: true});
+  $("#thequestion form").ajaxForm({
+    clearForm: true,
+    success: function(response, statusText) {
+      $("#recent").prepend(response);
+      $("#recent .entry:first").effect("highlight",{},1500);
+      $(document).trigger("entry.change");
+    }
+  });
 
   $("#thequestion input.text").
     attr('value', def).
@@ -147,6 +127,6 @@ $(document).ready(function() {
             css('color', '#999');
       });
 
-  recalculate_totals();
+  $(document).trigger("entry");
 
 });
