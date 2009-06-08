@@ -4,6 +4,14 @@
 #:calcium, :chromium, :copper, :fluoride, :iodine, :iron, :magnesium, :manganese, :molybdenum, :phosphorus, :selenium, :zinc, :potassium, :sodium, :chloride
 require "nutrition/requirements"
 require 'nutrition/energy_requirement'
+
+class Hash
+  def with_keys_as_ranges(number)
+    self.each_key { |key| if key === number; return self[key]; end}
+    return nil
+  end
+end
+
 module Nutrition  
   def self.raw_data
     DATA

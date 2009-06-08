@@ -1,6 +1,8 @@
 require 'nutrition'
 require 'nutrition/requirements'
 
+#TODO: add columns: lifestyle
+#TODO: add user#female? user#male?
 class User < ActiveRecord::Base
 
   acts_as_authentic
@@ -29,22 +31,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  def age=(age)
-  end
-
   def birthday
     if self[:birthday]
       self[:birthday].to_date
     end
   end
 
-  def infant?
-    (0...1) === self.age
-  end
+  def infant?; (0...1) === self.age; end
 
-  def child?
-    (1...9) === self.age
-  end
+  def child?; (1...9) === self.age; end
+  
+  def male?; self.sex.to_sym == :male; end
+  def female?; self.sex.to_sym == :female; end
   
   def report_for(opts = {:date => lambda {Date.today}.call })
   end

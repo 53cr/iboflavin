@@ -27,6 +27,18 @@ describe User do
     @user.sex = :goorplon
     @user.should be_invalid
   end
+  it "should respond to #male?" do
+    @user.sex = :male
+    @user.should be_male
+    @user.sex = :female
+    @user.should_not be_male
+  end
+  it "should respond to #female?" do
+    @user.sex = :female
+    @user.should be_female
+    @user.sex = :male
+    @user.should_not be_female
+  end
   
   # Birthday related specs
   it "should validate birthday" do

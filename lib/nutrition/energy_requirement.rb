@@ -29,7 +29,17 @@ module Nutrition
       (71...999) => { :sedentary => 1550, :low_active =>	1750, :active => 2000 }
     }
     def self.for(user) 
-      
+      if !user.sex or !user.age 
+        return 2000
+      else
+        if user.male?
+          energy = MALE
+        elsif user.female?
+          energy = FEMALE
+        end
+        requirement = energy.with_keys_as_ranges(user.age)
+        requirement[user.lifestyle] || requirement[:low_active]
+      end
     end
   end
 end
