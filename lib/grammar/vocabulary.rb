@@ -100,6 +100,8 @@ module Grammar
       "pound"    => Gram.new(453.59237),
 
       # Volume-based
+      "tablespoon"=> Litre.new(0.015),
+      "teaspoon" => Litre.new(0.005),
       "glass"    => Litre.new(0.250),
       "bottle"   => Litre.new(0.341),
       "can"      => Litre.new(0.335),
@@ -126,6 +128,8 @@ module Grammar
       "g"   => Gram.new(1),
       "lb"  => Gram.new(453.59237),
 
+      "tsp" => Litre.new(0.005),
+      "tbsp"=> Litre.new(0.015),
       "oz"  => Litre.new(0.029573530),
       "l"   => Litre.new(1),
       "qt"  => Litre.new(0.946352946),
