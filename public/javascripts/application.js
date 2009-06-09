@@ -3,10 +3,9 @@ var iBoflavin = {};
 (function(){
   var state = 0, konami = [38,38,40,40,37,39,37,39,66,65];
   $(window).bind("keydown",function(e){
-    if ( e.keyCode == konami[state] ) state++;
+    if (e.keyCode == konami[state]) state++;
     else state = 0;
-    if ( state == 10 )
-      window.location = "http://53cr.com/secret";
+    if (state == 10) window.location = "http://53cr.com/secret";
   });
 })();
 
@@ -29,7 +28,12 @@ iBoflavin.set_food_item_choice = function(em_id, fi_id) {
   });
 };
 
-$(document).bind("entry.change.today", function() {
+$(document).bind("entry.replace", function() {
+  $(document).trigger("entry.change");
+  $(document).trigger("entry.add");
+});
+
+$(document).bind("entry.change", function() {
   $.ajax({
     url: '/goals/sidebar',
     type: 'GET',

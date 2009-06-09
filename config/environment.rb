@@ -8,6 +8,8 @@ Rails::Initializer.run do |config|
                            #{RAILS_ROOT}/app/mailers/
                          )
 
+  config.active_record.observers = :entry_match_observer
+  
   config.gem 'httparty'
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
   config.gem 'ruby-stemmer', :lib => 'lingua/stemmer'
@@ -27,3 +29,9 @@ TWITTER_LOGIN_CONSUMER_TOKEN  = '5mc9zeVQzhcv8FSU3Hb3Gg'
 TWITTER_LOGIN_CONSUMER_SECRET = 'jD0pabQhDkliGWYYrRQSqqjiBEHE61c2t2OjHDDZQ'
 
 DO_NOT_REPLY = "noreply@iboflav.in"
+
+TOKYO = Rufus::Tokyo::Tyrant.new('localhost',45001)
+
+if "irb" == $0
+  RAILS_DEFAULT_LOGGER =  Logger.new(STDOUT)
+end

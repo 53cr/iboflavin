@@ -5,8 +5,6 @@ class FoodItem < ActiveRecord::Base
   has_many :food_item_nutrients
   has_many :nutrients, :through => :food_item_nutrients
 
-  TOKYO = Rufus::Tokyo::Tyrant.new('localhost',45001)
-  
   define_index do
     indexes name
   end
@@ -37,7 +35,7 @@ class FoodItem < ActiveRecord::Base
 
   private
   def self.user_most_recent(uid,sigtext)
-    return EntryMatch.find(:first, :conditions => {:user_id => uid, :sigsearch => sigtext}).food_item rescue nil
+    return EntryMatch.find(:first, :conditions => {:user_id => uid, :sigsearch => sigtext}, :order => 'id DESC').food_item rescue nil
   end
 
   def self.user_most_common(uid, sigtext, number_of_results = 5)
