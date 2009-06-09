@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  
+  map.resources :goals, :collection => {:sidebar => :get}
+
   map.connect '/twitter', { :controller => 'oauth', :action => 'callback', :method => 'get' }
 
   map.twitter_login '/login/twitter', {:controller => 'oauth', :action => 'login', :method => 'get'}

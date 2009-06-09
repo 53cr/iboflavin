@@ -9,34 +9,41 @@ class EntryMatch < ActiveRecord::Base
   
   validates_presence_of :search, :user_id, :entry_id
 
-  def amount_of_nutrient(nutrient_id)
+  def is_today
+    self.created_at > Date.today
+  end
+  
+  def amount_of_nutrient(nutrient_id,was=false)
+    z_food_item_id = (was ? self.food_item_id_was : self.food_item_id)
+    return 0 if z_food_item_id.nil?
     begin
-      fin = FoodItemNutrient.find_by_food_item_id_and_nutrient_id(self.food_item.id, nutrient_id)
-      return fin.amount * standard_mass_multiples
+      fin = FoodItemNutrient.find_by_food_item_id_and_nutrient_id(z_food_item_id, nutrient_id)
+      return fin.amount * standard_mass_multiples(was)
     rescue
       return 0
     end
   end
   
-  def standard_mass_multiples
-    unit   = self.unit
-    amount = self.amount
+  def standard_mass_multiples(was=false)
+    z_unit   = (was ? self.unit_was : self.unit)
+    z_amount = (was ? self.amount_was : self.amount)
+    z_food_item = (was ? self.food_item_was : self.food_item)
 
-    return 0 unless self.food_item
+    return 0 unless z_food_item
     
-    if unit == "Grammar::Vocabulary::Serving"
-      amount *= self.food_item.serving_size
-      unit = self.food_item.serving_size_unit
+    if z_unit == "Grammar::Vocabulary::Serving"
+      z_amount *= z_food_item.serving_size
+      z_unit = z_food_item.serving_size_unit
     end
 
     # Serving size may be specified in volumetric units.
-    if unit == "Grammar::Vocabulary::Litre"
-      amount *= (self.food_item.density/1000.0)
-      unit = "Grammar::Vocabulary::Gram"
+    if z_unit == "Grammar::Vocabulary::Litre"
+      z_amount *= (z_food_item.density/1000.0)
+      z_unit = "Grammar::Vocabulary::Gram"
     end
 
     # Everything is measured in multiples of 100g.
-    return amount / 100.0
+    return z_amount / 100.0
   end
   
   def humanize_amount

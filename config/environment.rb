@@ -8,7 +8,7 @@ Rails::Initializer.run do |config|
                            #{RAILS_ROOT}/app/mailers/
                          )
 
-  config.active_record.observers = :entry_match_observer
+  config.active_record.observers = :entry_match_observer, :goal_observer
   
   config.gem 'httparty'
   config.gem 'stefanpenner-my_scaffold', :lib => false, :source => 'http://gems.github.com'
