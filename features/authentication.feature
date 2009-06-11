@@ -6,28 +6,28 @@ the user must be able to create an account and log in. The user will be
 
  Scenario: Creating an Account
    Given the user is not logged in
-   When they click "Sign Up"
+   When I follow "Sign Up"
    And fill in all the required fields
-   Then they should be logged in to their newly created account
+   Then I should be logged in to my newly created account
 
  Scenario: Logging In
    Given the user is not logged in
-   When they click "Log In"
-   And fill in their username and password
-   And click submit
-   Then they should be logged in
+   When I follow "Log In"
+   And I fill in my username and password
+   And I press "Login"
+   Then I should be logged in
 
  Scenario: Logging In with Twitter
    Given the user is not logged in
    And they have a Twitter account which is attached to an iBoflavin account
    And they are currently signed in to that Twitter account
-   When they click "Log me in with Twitter"
+   When I press "Sign in with Twitter"
    Then they should automatically be logged in
 
  Scenario: Creating an Account with Twitter
    Given the user is not logged in
    And they have a Twitter account which is not already attached to an iBoflavin account
-   When they click "Log me in with Twitter"
+   When I press "Sign in with Twitter"
    And click "Allow" on the security prompt Twitter shows them,
-   Then they should be shown a form to create an account
-   And it should have their Twitter Screen Name, email, and Time Zone prefilled.
+   Then I should be shown a form to create an account
+   And it should have my Twitter Screen Name, email, and Time Zone prefilled.

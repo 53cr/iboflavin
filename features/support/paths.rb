@@ -10,7 +10,8 @@ module NavigationHelpers
     
     when /the homepage/
       '/'
-    
+    when /my recently added entries page/
+      raise "Fill in 'recently added entries page' in features/support/paths.rb"
     # Add more mappings here.
     # Here is a more fancy example:
     #
