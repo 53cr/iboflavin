@@ -1,0 +1,795 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html;charset=utf-8"/>
+    <title>Cucumber</title>
+    <style type="text/css">
+.cucumber {
+  background: black;
+  color: white;
+  padding: 1em;
+}
+.cucumber .passed {
+  color: #008800;
+}
+.cucumber .undefined {
+  color: #888800;
+}
+.cucumber .pending {
+  color: #888800;
+}
+.cucumber .failed {
+  color: #880000;
+}
+.cucumber .skipped {
+  color: #008888;
+}
+.cucumber .outline {
+  color: #008888;
+}
+
+.cucumber .passed_param {
+  font-weight: bold;
+  color: #00ff00;
+}
+.cucumber .undefined_param {
+  font-weight: bold;
+  color: #ffff00;
+}
+.cucumber .pending_param {
+  font-weight: bold;
+  color: #ffff00;
+}
+.cucumber .failed_param {
+  font-weight: bold;
+  font-weight: bold;
+  color: #ff0000;
+}
+.cucumber .skipped_param {
+  font-weight: bold;
+  color: #00ffff;
+}
+.cucumber .outline_param {
+  font-weight: bold;
+  color: #00ffff;
+}
+
+.cucumber a {
+  text-decoration: none;
+  color: inherit;
+}
+.cucumber a:hover {
+  text-decoration: underline;
+}
+.cucumber a:visited {
+  font-weight: normal;
+}
+.cucumber ol {
+  list-style: none;
+}
+.cucumber .stats {
+  margin: 2em;
+}
+.cucumber .summary ul.features li {
+  display: inline;
+}
+.cucumber .backtrace {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 1em;
+}
+    </style>
+  </head>
+  <body>
+    <div class="cucumber">
+      <div class="feature">
+        <h2>
+          <span class="val">Feature: Authentication</span>
+        </h2>
+        <p>
+In order to provide personal nutritional information and diet tracking,          <br/>
+the user must be able to create an account and log in. The user will be          <br/>
+allowed to register or log in with a Twitter account to make the process quicker          <br/>
+and to save time later when they want to connect a Twitter account.          <br/>
+        </p>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">Creating an Account</span>
+          </h3>
+          <ol>
+            <li class="step pending" id="features_authentication_feature_8">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+the user is not logged in                </span>
+              </div>
+              <pre class="pending">TODO (Cucumber::Pending)
+features/authentication.feature:8:in `Given the user is not logged in'</pre>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_9">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I follow &quot;<span class="param">Sign Up</span>&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_10">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+fill in all the required fields                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_11">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should be logged in to my newly created account                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">Logging In</span>
+          </h3>
+          <ol>
+            <li class="step pending" id="features_authentication_feature_14">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+the user is not logged in                </span>
+              </div>
+              <pre class="pending">TODO (Cucumber::Pending)
+features/authentication.feature:14:in `Given the user is not logged in'</pre>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_15">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I follow &quot;<span class="param">Log In</span>&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_16">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I fill in my username and password                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_17">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I press &quot;<span class="param">Login</span>&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_18">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should be logged in                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">Logging In with Twitter</span>
+          </h3>
+          <ol>
+            <li class="step pending" id="features_authentication_feature_21">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+the user is not logged in                </span>
+              </div>
+              <pre class="pending">TODO (Cucumber::Pending)
+features/authentication.feature:21:in `Given the user is not logged in'</pre>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_22">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+they have a Twitter account which is attached to an iBoflavin account                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_23">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+they are currently signed in to that Twitter account                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_24">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I press &quot;<span class="param">Sign in with Twitter</span>&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_25">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+they should automatically be logged in                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">Creating an Account with Twitter</span>
+          </h3>
+          <ol>
+            <li class="step pending" id="features_authentication_feature_28">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+the user is not logged in                </span>
+              </div>
+              <pre class="pending">TODO (Cucumber::Pending)
+features/authentication.feature:28:in `Given the user is not logged in'</pre>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_29">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+they have a Twitter account which is not already attached to an iBoflavin account                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_30">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I press &quot;<span class="param">Sign in with Twitter</span>&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_31">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+click &quot;<span class="param">Allow</span>&quot; on the security prompt Twitter shows them,                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_32">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should be shown a form to create an account                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_authentication_feature_33">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+it should have my Twitter Screen Name, email, and Time Zone prefilled.                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/702061
+        </pre>
+        <h2>
+          <span class="val">Feature: Edit Recent Entries</span>
+        </h2>
+        <p>
+In order to correct recognition errors          <br/>
+And keep customers happy          <br/>
+Users will need to be able to modify recent entries          <br/>
+        </p>
+        <div class="scenario outline">
+          <h3>
+            <span class="keyword">Scenario Outline:</span>
+             <span class="val">Editing Food Just Entered</span>
+          </h3>
+          <ol>
+            <li class="step skipped" id="features_edit_recent_entry_feature_8">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+I logged in                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_edit_recent_entry_feature_9">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I am on the homepage                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_edit_recent_entry_feature_10">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I enter &quot;&lt;entry&gt;&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_edit_recent_entry_feature_11">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I press &quot;edit&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_edit_recent_entry_feature_12">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I fill in &quot;&lt;field&gt;&quot; with &quot;&lt;correction&gt;&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_edit_recent_entry_feature_13">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should see &quot;&lt;corrected&gt;&quot;                </span>
+              </div>
+            </li>
+          </ol>
+          <div class="examples">
+            <h4>
+              <span class="keyword">Examples:</span>
+               <span class="val"></span>
+            </h4>
+            <table>
+              <tr id="row_16">
+                <th class="val skipped_param" id="row_16_0">entry</th>
+                <th class="val skipped_param" id="row_16_1">field</th>
+                <th class="val skipped_param" id="row_16_2">correction</th>
+                <th class="val skipped_param" id="row_16_3">corrected</th>
+              </tr>
+              <tr id="row_17">
+                <td class="val pending" id="row_17_0">42 Hamburgers</td>
+                <td class="val skipped" id="row_17_1">amount</td>
+                <td class="val skipped" id="row_17_2">12</td>
+                <td class="val skipped" id="row_17_3">12 Hamburgers</td>
+              </tr>
+              <tr>
+                <td class="failed" colspan="4">
+                  <pre>
+TODO (Cucumber::Pending)
+features/edit_recent_entry.feature:10:in `When I enter "<entry>"'                  </pre>
+                </td>
+              </tr>
+              <tr id="row_18">
+                <td class="val pending" id="row_18_0">42 Hamburgers</td>
+                <td class="val skipped" id="row_18_1">unit</td>
+                <td class="val skipped" id="row_18_2">grams</td>
+                <td class="val skipped" id="row_18_3">42 grams of Hamburger</td>
+              </tr>
+              <tr>
+                <td class="failed" colspan="4">
+                  <pre>
+TODO (Cucumber::Pending)
+features/edit_recent_entry.feature:10:in `When I enter "<entry>"'                  </pre>
+                </td>
+              </tr>
+              <tr id="row_19">
+                <td class="val pending" id="row_19_0">42 Hamburgers</td>
+                <td class="val skipped" id="row_19_1">food</td>
+                <td class="val skipped" id="row_19_2">Hotdogs</td>
+                <td class="val skipped" id="row_19_3">42 Hotdogs</td>
+              </tr>
+              <tr>
+                <td class="failed" colspan="4">
+                  <pre>
+TODO (Cucumber::Pending)
+features/edit_recent_entry.feature:10:in `When I enter "<entry>"'                  </pre>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">Editing Food Entered One Day Ago</span>
+          </h3>
+          <ol>
+            <li class="step passed" id="features_edit_recent_entry_feature_22">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+I logged in                </span>
+              </div>
+            </li>
+            <li class="step pending" id="features_edit_recent_entry_feature_23">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I submitted &quot;<span class="param"> 42 Cramburgers</span>&quot; <span class="param">1</span> day ago                </span>
+              </div>
+              <pre class="pending">TODO (Cucumber::Pending)
+features/edit_recent_entry.feature:23:in `And I submitted &quot; 42 Cramburgers&quot; 1 day ago'</pre>
+            </li>
+            <li class="step skipped" id="features_edit_recent_entry_feature_24">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I follow &quot;<span class="param">edit</span>&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_edit_recent_entry_feature_25">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should see &quot;<span class="param">Editing</span>&quot;                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="feature">
+        <h2>
+          <span class="val">Feature: Manage things</span>
+        </h2>
+        <p>
+In order to [goal]          <br/>
+[stakeholder]          <br/>
+wants [behaviour]          <br/>
+        </p>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">Register new thing</span>
+          </h3>
+          <ol>
+            <li class="step failed" id="features_manage_things_feature_7">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+I am on <span class="param">the new thing page</span>                </span>
+              </div>
+              <pre class="failed">Can't find mapping from &quot;the new thing page&quot; to a path.
+Now, go and add a mapping in /Users/ryan/Development/53cr/iboflavin/repo/features/support/paths.rb (RuntimeError)
+/Users/ryan/Development/53cr/iboflavin/repo/features/support/paths.rb:23:in `/^I am on (.+)$/'
+features/manage_things.feature:7:in `Given I am on the new thing page'</pre>
+            </li>
+            <li class="step skipped" id="features_manage_things_feature_8">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I fill in &quot;<span class="param">Name</span>&quot; with &quot;<span class="param">name 1</span>&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_manage_things_feature_9">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I press &quot;<span class="param">Create</span>&quot;                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_manage_things_feature_10">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should see &quot;<span class="param">name 1</span>&quot;                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">Delete thing</span>
+          </h3>
+          <ol>
+            <li class="step failed" id="features_manage_things_feature_13">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+the following things:                </span>
+              </div>
+              <table>
+                <tr id="row_14">
+                  <td class="val" id="row_14_0">name</td>
+                </tr>
+                <tr id="row_15">
+                  <td class="val" id="row_15_0">name 1</td>
+                </tr>
+                <tr id="row_16">
+                  <td class="val" id="row_16_0">name 2</td>
+                </tr>
+                <tr id="row_17">
+                  <td class="val" id="row_17_0">name 3</td>
+                </tr>
+                <tr id="row_18">
+                  <td class="val" id="row_18_0">name 4</td>
+                </tr>
+              </table>
+              <pre class="failed">uninitialized constant Thing (NameError)
+features/manage_things.feature:13:in `Given the following things:'</pre>
+            </li>
+            <li class="step skipped" id="features_manage_things_feature_19">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I delete the <span class="param">3</span>rd thing                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_manage_things_feature_20">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should see the following things:                </span>
+              </div>
+              <table>
+                <tr id="row_21">
+                  <td class="val" id="row_21_0">name</td>
+                </tr>
+                <tr id="row_22">
+                  <td class="val" id="row_22_0">name 1</td>
+                </tr>
+                <tr id="row_23">
+                  <td class="val" id="row_23_0">name 2</td>
+                </tr>
+                <tr id="row_24">
+                  <td class="val" id="row_24_0">name 4</td>
+                </tr>
+              </table>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/702065
+        </pre>
+        <h2>
+          <span class="val">Feature: Custom Food Entry</span>
+        </h2>
+        <p>
+In order to make food entry quicker          <br/>
+Users should be able to create custom food entries          <br/>
+          <br/>
+#          <br/>
+        </p>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">on the fly</span>
+          </h3>
+          <ol>
+          </ol>
+        </div>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/711022
+        </pre>
+        <h2>
+          <span class="val">Feature: Fluid vs. Solid Ounce Recognition</span>
+        </h2>
+        <p>
+In order to have users feel the system is more human          <br/>
+Users will need to see their solid and fluid ounces recognized correctly          <br/>
+          <br/>
+# TODO: Scenarios          <br/>
+        </p>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/754406
+        </pre>
+        <h2>
+          <span class="val">Feature: Plural Recognition</span>
+        </h2>
+        <p>
+In order to have users feel the system is more human          <br/>
+Users will need to see their foods pluralized properly          <br/>
+        </p>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">User inputs a non-plural as plural</span>
+          </h3>
+          <ol>
+            <li class="step passed" id="features_recognition_plural_recognition_feature_7">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+I logged in                </span>
+              </div>
+            </li>
+            <li class="step passed" id="features_recognition_plural_recognition_feature_8">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I am on <span class="param">the homepage</span>                </span>
+              </div>
+            </li>
+            <li class="step pending" id="features_recognition_plural_recognition_feature_9">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I enter &quot;<span class="param">Some eggs</span>&quot;                </span>
+              </div>
+              <pre class="pending">TODO (Cucumber::Pending)
+features/recognition/plural_recognition.feature:9:in `When I enter &quot;Some eggs&quot;'</pre>
+            </li>
+            <li class="step skipped" id="features_recognition_plural_recognition_feature_10">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should see &quot;<span class="param">One serving of egg</span>&quot;                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="scenario">
+          <pre class="comment">
+# Not the best example
+
+
+          </pre>
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">User inputs a plural as non-plural</span>
+          </h3>
+          <ol>
+            <li class="step passed" id="features_recognition_plural_recognition_feature_14">
+              <div>
+                <span class="keyword">Given</span>
+                 <span class="step val">
+I logged in                </span>
+              </div>
+            </li>
+            <li class="step passed" id="features_recognition_plural_recognition_feature_15">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I am on <span class="param">the homepage</span>                </span>
+              </div>
+            </li>
+            <li class="step pending" id="features_recognition_plural_recognition_feature_16">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I enter &quot;<span class="param">fifty grape</span>&quot;                </span>
+              </div>
+              <pre class="pending">TODO (Cucumber::Pending)
+features/recognition/plural_recognition.feature:16:in `When I enter &quot;fifty grape&quot;'</pre>
+            </li>
+            <li class="step skipped" id="features_recognition_plural_recognition_feature_17">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should see &quot;<span class="param">Fifty grapes</span>&quot;                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/702064
+        </pre>
+        <h2>
+          <span class="val">Feature: Previous Entries Recognition</span>
+        </h2>
+        <p>
+In order to make the system quicker to use          <br/>
+and give the impression the system is human          <br/>
+Users will need to see the system recognize correct food based on previous choices          <br/>
+          <br/>
+# TODO: Scenarios          <br/>
+          <br/>
+          <br/>
+        </p>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/711860
+        </pre>
+        <h2>
+          <span class="val">Feature: Food Unit Recognition</span>
+        </h2>
+        <p>
+In order to have users feel the system is more human          <br/>
+Users will need need to see a food's unit recognized properly          <br/>
+          <br/>
+# TODO: Make scenarios          <br/>
+        </p>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/705891
+        </pre>
+        <h2>
+          <span class="val">Feature: Personal Attributes Entry</span>
+        </h2>
+        <p>
+In order to enrich nutritional recommendations          <br/>
+and provide more user specific output          <br/>
+Users should be able to enter their personal attributes          <br/>
+          <br/>
+          <br/>
+        </p>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/705891
+        </pre>
+        <h2>
+          <span class="val">Feature: Personal Attributes Entry</span>
+        </h2>
+        <p>
+In order to enrich nutritional recommendations          <br/>
+and provide more user specific output          <br/>
+Users should be able to enter their personal attributes          <br/>
+          <br/>
+# TODO: Scenarios          <br/>
+# TODO: enter weight + other attribs to get kcal guess or just pick your own          <br/>
+        </p>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/704516
+        </pre>
+        <h2>
+          <span class="val">Feature: User Nutrition Recommendations</span>
+        </h2>
+        <p>
+In order to provide feedback on user input          <br/>
+and provide a reason to enter food in the first place          <br/>
+Users should see daily recommendations based on their food intake          <br/>
+          <br/>
+# TODO: Scenarios          <br/>
+        </p>
+      </div>
+      <div class="feature">
+        <pre class="comment">
+# https://www.pivotaltracker.com/story/show/753703
+        </pre>
+        <h2>
+          <span class="val">Feature: Twitter Integration</span>
+        </h2>
+        <p>
+In order to simplify site use          <br/>
+And attract additional customers          <br/>
+Users will need to be able to tweet to iBoflavin          <br/>
+        </p>
+        <div class="scenario">
+          <h3>
+            <span class="keyword">Scenario:</span>
+             <span class="val">User Tweets a Food to iBoflavin</span>
+          </h3>
+          <ol>
+            <li class="step pending" id="features_twitter_integration_feature_8">
+              <div>
+                <span class="keyword">When</span>
+                 <span class="step val">
+I tweet &quot;<span class="param">200 g of Cucumber</span>&quot;                </span>
+              </div>
+              <pre class="pending">TODO (Cucumber::Pending)
+features/twitter_integration.feature:8:in `When I tweet &quot;200 g of Cucumber&quot;'</pre>
+            </li>
+            <li class="step skipped" id="features_twitter_integration_feature_9">
+              <div>
+                <span class="keyword">And</span>
+                 <span class="step val">
+I am on <span class="param">my recently added entries page</span>                </span>
+              </div>
+            </li>
+            <li class="step skipped" id="features_twitter_integration_feature_10">
+              <div>
+                <span class="keyword">Then</span>
+                 <span class="step val">
+I should see &quot;<span class="param">200 grams of Cucumber</span>&quot;                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="duration">0m2.570s</div>
+    </div>
+  </body>
+</html>
