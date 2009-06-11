@@ -8,14 +8,15 @@ the user must be able to create an account and log in. The user will be
    Given the user is not logged in
    When I follow "Sign Up"
    And fill in all the required fields
-   Then I should be logged in to my newly created account
+   And I press "Register"
+   Then I should be on the logged-in page
 
  Scenario: Logging In
    Given the user is not logged in
    When I follow "Log In"
    And I fill in my username and password
    And I press "Login"
-   Then I should be logged in
+   Then I should be on the logged-in page
 
  Scenario: Logging In with Twitter
    Given the user is not logged in

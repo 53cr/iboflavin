@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /my recently added entries page/
       raise "Fill in 'recently added entries page' in features/support/paths.rb"
+    when /the logged-in page/
+      '/entries/new'
     # Add more mappings here.
     # Here is a more fancy example:
     #
