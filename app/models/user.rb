@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   def start_of_day
     t = Time.now.utc.beginning_of_day + time_zone + 1.day
-    2.times{ (t -= 1.day) if (t > Time.now) }
+    2.times{ (t -= 1.day) if (t > Time.now.utc) }
     return t
   end
 
