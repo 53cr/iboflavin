@@ -16,7 +16,7 @@ the user must be able to create an account and log in. The user will be
    When I follow "Log In"
    And I fill in my username and password
    And I press "Login"
-   Then I should be on the logged-in page
+   Then I should be on the food entry page
 
  Scenario: Logging In with Twitter
    Given the user is not logged in

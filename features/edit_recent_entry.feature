@@ -13,10 +13,10 @@ Feature: Edit Recent Entries
     Then I should see "<corrected>"
 
     Examples:
-    | entry         | field  | correction | corrected             |
-    | 42 Hamburgers | amount | 12         | 12 Hamburgers         |
-    | 42 Hamburgers | unit   | grams      | 42 grams of Hamburger |
-    | 42 Hamburgers | food   | Hotdogs    | 42 Hotdogs            |
+      | entry         | field  | correction | corrected             |
+      | 42 Hamburgers | amount | 12         | 12 Hamburgers         |
+      | 42 Hamburgers | unit   | grams      | 42 grams of Hamburger |
+      | 42 Hamburgers | food   | Hotdogs    | 42 Hotdogs            |
 
   Scenario: Editing Food Entered One Day Ago
     Given I logged in
