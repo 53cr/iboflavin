@@ -3,33 +3,38 @@ class EntryMatchObserver < ActiveRecord::Observer
 
   def after_create(record)  
     # For each Goal, add this entryMatch's total nutrients to the tokyo data entry
-    goals = Goal.find_all_by_user_id(record.user_id)
-    goals.each do |goal|
-      total = record.amount_of_nutrient(goal.nutrient_id)
-      GoalCache.add(record.user_id, goal.nutrient_id, total)
+    change_goal_cache(record) do |nutrient|
+      record.amount_of_nutrient(nutrient)
     end
   end
 
   def after_update(record)
     # For each Goal, add the different in the previous and new values.
-    if record.is_today
-      goals = Goal.find_all_by_user_id(record.user_id)
-      goals.each do |goal|
-        difference = record.amount_of_nutrient(goal.nutrient_id) - record.amount_of_nutrient(goal.nutrient_id,true)
-        GoalCache.add(record.user_id, goal.nutrient_id, difference)
-      end
+    change_goal_cache(record) do |nutrient|
+      record.amount_of_nutrient(nutrient) - record.amount_of_nutrient(nutrient,true)
     end
   end
   
   def before_destroy(record)
     # For each Goal, remove this entryMatch's total nutrients from the tokyo data entry
+    change_goal_cache(record) do |nutrient|
+      (-1)*(record.amount_of_nutrient(nutrient))
+    end
+  end
+
+  private
+  def change_goal_cache(record)
     if record.is_today
       goals = Goal.find_all_by_user_id(record.user_id)
-      goals.each do |goal|
-        total = (-1)*(record.amount_of_nutrient(goal.nutrient_id))
-        GoalCache.add(record.user_id, goal.nutrient_id, total)
+      nutrients = goals.map(&:nutrient_id)
+      # We'll always track calories (208 -- Energy by kCal)
+      (nutrients << 208) unless nutrients.index(208)
+      nutrients.each do |nutrient|
+        change = yield nutrient
+        GoalCache.add(record.user_id, nutrient, change)
       end
     end
   end
   
 end
+
