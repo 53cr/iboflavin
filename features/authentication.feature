@@ -5,18 +5,18 @@ the user must be able to create an account and log in. The user will be
  and to save time later when they want to connect a Twitter account.
 
  Scenario: Creating an Account
-   Given the user is not logged in
+   Given I am on the homepage
    When I follow "Sign Up"
    And fill in all the required fields
    And I press "Register"
-   Then I should be on the logged-in page
+   Then I should see "Login successful!"
 
  Scenario: Logging In
    Given the user is not logged in
    When I follow "Log In"
    And I fill in my username and password
    And I press "Login"
-   Then I should be on the logged-in page
+   Then I should see "Login successful!"
 
  Scenario: Logging In with Twitter
    Given the user is not logged in

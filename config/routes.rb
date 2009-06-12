@@ -1,4 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.login   "login", :controller => "user_sessions", :action => "new"
+  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  map.register "register", :controller => 'users', :action => "new"
+  
   map.resources :goals, :collection => {:sidebar => :get}
 
   map.connect '/twitter', { :controller => 'oauth', :action => 'callback', :method => 'get' }
@@ -10,16 +15,14 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :food_items
 
-  map.resource :user_session
+  map.resource :user_session, :as => "accounts"
 
   map.resource :account, :controller => "users"
   map.resources :users
   
   map.root :controller => 'static'
 
-
-
-
+  # Default routes
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

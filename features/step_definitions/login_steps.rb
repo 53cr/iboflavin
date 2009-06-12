@@ -6,7 +6,6 @@ Given /I have a pre-existing account/ do
   When 'I fill in "Password" with "iboflavin"'
   When 'I fill in "user_password_confirmation" with "iboflavin"'
   When 'I press "Register"'
-  Then 'I should see "Login successful!"'  
 end
   
 Given /^I logged in$/ do
@@ -14,7 +13,8 @@ Given /^I logged in$/ do
 end
 
 Given /^the user is not logged in$/ do
-  Given "I am on the homepage"
+  Given "I have a pre-existing account"
+  Given 'I follow "logout"'
 end
 
 When /^fill in all the required fields$/ do
