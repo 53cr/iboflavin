@@ -111,9 +111,9 @@ $(document).bind("entry.add", function() {
 
 $(document).ready(function() {
 
-//   $('#cloud').animate({
-//     "background-position": "707px"
-//   }, 150000, "linear");
+  $('#cloud').animate({
+    "backgroundPosition": "707px"
+  }, 150000, "linear");
 
   var def = "Four Pan-Galactic Gargle Blasters";
 
