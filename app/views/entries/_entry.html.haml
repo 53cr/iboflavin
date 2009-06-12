@@ -1,5 +1,5 @@
 .entry.removeable.unevented
-  %p.name== #{h entry.input} #{delete_entry(entry.id)}
+  %p.name== (#{entry.human_time}) <strong>#{h entry.input}</strong> #{delete_entry(entry.id)}
   %ul
     - entry.entry_matches.each do |match|
       = render :partial => match

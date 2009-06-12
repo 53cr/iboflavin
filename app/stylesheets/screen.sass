@@ -101,7 +101,10 @@ body
   input.text 
     :width 575px
     :height 36px  
+    :margin-bottom 0
     :font-size 24px
+    :z-index 5
+    :position relative
 
 
 #footer
@@ -111,13 +114,15 @@ body
   :width 100%
   :background url(/images/footer.png) top left repeat
   :height 50px
+  :z-index 1000
 
 .in-place-edit *
   :display inline
 
 #recent
+  :z-index 2
+  :position relative
   p.name
-    :font-weight bold
   ul, p
     :line-height 24px
     :margin 0
@@ -127,6 +132,7 @@ body
     :list-style-type none
   input 
     :width 100px
+  
 
 label.inline
   :clear left

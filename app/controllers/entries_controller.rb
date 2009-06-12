@@ -30,8 +30,8 @@ class EntriesController < ApplicationController
   def new
     @entry = Entry.new
 
-    @recent = Entry.find(:all, :conditions => ["user_id = ? AND created_at >= ?",@current_user.id,Date.today], :order => 'id DESC')
-
+    @recent = @current_user.entries_today
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @entry }

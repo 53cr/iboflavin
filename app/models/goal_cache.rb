@@ -2,7 +2,7 @@ class GoalCache
 
   def self.find(user, nutrient)
     x = TOKYO[key_for(user,nutrient)]
-    return (x.nil? ? x : x.to_f)
+    return (x.nil? ? 0 : x.to_f)
   end
 
   def self.destroy(user,nutrient)
@@ -10,7 +10,7 @@ class GoalCache
   end
 
   def self.add(user,nutrient,amount)
-    curr = find(user,nutrient)
+    curr = find(user,nutrient) || 0
     set(user,nutrient,curr+amount)
   end
 

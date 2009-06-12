@@ -20,7 +20,29 @@ class User < ActiveRecord::Base
   def nutritional_requirements
     @nutr_reqs ||= Nutrition::Requirements.for(self)
   end
-  
+
+  def start_of_day
+    t = Time.now.utc.beginning_of_day + time_zone
+    (t -= 1.day) if (t > Time.now)
+    return t
+  end
+
+  def entries_today
+    Entry.find(:all, :conditions => 
+               ["user_id = ? AND created_at >= ?",
+                self.id,
+                self.start_of_day], 
+               :order => 'id DESC')
+  end
+
+  def entry_matches_today
+    EntryMatch.find(:all, :conditions => 
+                    ["user_id = ? AND created_at >= ?",
+                     self.id,
+                     self.start_of_day], 
+                    :order => 'id DESC')
+  end
+
   def rdi_for(nutrient)
     nutritional_requirements.for(nutrient)
   end

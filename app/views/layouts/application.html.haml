@@ -12,7 +12,7 @@
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     = javascript_include_tag 'jquery', 'cufon-yui', 'Fertigo_400.font'
     = javascript_tag 'Cufon.replace("h3");'
-    = javascript_include_tag 'facebox', 'jquery.jeditable', 'jquery-form', 'effects.core', 'effects.highlight', 'application'
+    = javascript_include_tag 'facebox', 'jquery-ui', 'jquery.jeditable', 'jquery-form', 'application'
   %body
     #page
       - if @current_user

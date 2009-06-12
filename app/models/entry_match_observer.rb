@@ -15,8 +15,7 @@ class EntryMatchObserver < ActiveRecord::Observer
     if record.is_today
       goals = Goal.find_all_by_user_id(record.user_id)
       goals.each do |goal|
-        difference = record.amount_of_nutrient(goal.nutrient_id,true) -
-          record.amount_of_nutrient(goal.nutrient_id)
+        difference = record.amount_of_nutrient(goal.nutrient_id) - record.amount_of_nutrient(goal.nutrient_id,true)
         GoalCache.add(record.user_id, goal.nutrient_id, difference)
       end
     end

@@ -111,9 +111,9 @@ $(document).bind("entry.add", function() {
 
 $(document).ready(function() {
 
-  $('#cloud').animate({
-    "background-position": "707px"
-  }, 150000, "linear");
+//   $('#cloud').animate({
+//     "background-position": "707px"
+//   }, 150000, "linear");
 
   var def = "Four Pan-Galactic Gargle Blasters";
 
@@ -121,7 +121,10 @@ $(document).ready(function() {
     clearForm: true,
     success: function(response, statusText) {
       $("#recent").prepend(response);
-      $("#recent .entry:first").effect("highlight",{},1500);
+
+      var h = $("#recent .entry:first").height();
+      $("#recent").css("margin-top","-"+h+"px");
+      $("#recent").animate({'margin-top':0},1000);
       $(document).trigger("entry.change");
     }
   });
