@@ -3,6 +3,7 @@
 
   - form_for(@entry, :position => 'top') do |f| 
     = f.error_messages
+    <img src="/images/loading.gif" class="loading" style="display:none;" alt="Loading"/>
     = f.text_field :input, :class=>"text", :value=>"Four Pan-Galactic Gargle Blasters", :style=>"color:#999"
 
 #recent

@@ -716,33 +716,37 @@ body { background: url(/images/leftpanel-top.png) top center no-repeat; }
 /* line 91, ../../app/stylesheets/screen.sass */
 #page #mainpanel #cloud div { background: url(/images/cloudfade.png) top right no-repeat; position: absolute; height: 90px; width: 707px; }
 
-/* line 98, ../../app/stylesheets/screen.sass */
+/* line 97, ../../app/stylesheets/screen.sass */
+#thequestion { position: relative; }
+/* line 99, ../../app/stylesheets/screen.sass */
+#thequestion img.loading { position: absolute; padding: 0; z-index: 4000; right: 3px; top: 42px; }
+/* line 105, ../../app/stylesheets/screen.sass */
 #thequestion h3 { text-align: right; margin-bottom: 0; }
-/* line 101, ../../app/stylesheets/screen.sass */
+/* line 108, ../../app/stylesheets/screen.sass */
 #thequestion input.text { width: 575px; height: 36px; margin-bottom: 0; font-size: 24px; z-index: 5; position: relative; }
 
-/* line 110, ../../app/stylesheets/screen.sass */
+/* line 117, ../../app/stylesheets/screen.sass */
 #footer { position: fixed; clear: both; bottom: 0; width: 100%; background: url(/images/footer.png) top left repeat; height: 50px; z-index: 1000; }
 
-/* line 119, ../../app/stylesheets/screen.sass */
+/* line 126, ../../app/stylesheets/screen.sass */
 .in-place-edit * { display: inline; }
 
-/* line 122, ../../app/stylesheets/screen.sass */
+/* line 129, ../../app/stylesheets/screen.sass */
 #recent { z-index: 2; position: relative; }
-/* line 126, ../../app/stylesheets/screen.sass */
-#recent ul, #recent p { line-height: 24px; margin: 0; padding: 0; }
-/* line 130, ../../app/stylesheets/screen.sass */
-#recent li { margin-left: 18px; list-style-type: none; }
 /* line 133, ../../app/stylesheets/screen.sass */
+#recent ul, #recent p { line-height: 24px; margin: 0; padding: 0; }
+/* line 137, ../../app/stylesheets/screen.sass */
+#recent li { margin-left: 18px; list-style-type: none; }
+/* line 140, ../../app/stylesheets/screen.sass */
 #recent input { width: 100px; }
 
-/* line 137, ../../app/stylesheets/screen.sass */
+/* line 144, ../../app/stylesheets/screen.sass */
 label.inline { clear: left; display: block; float: left; position: relative; top: 8px; text-align: right; margin-right: 6px; line-height: 18px; width: 120px; }
 
-/* line 148, ../../app/stylesheets/screen.sass */
+/* line 155, ../../app/stylesheets/screen.sass */
 .delete_x { height: 14px; width: 16px; position: relative; top: 3px; cursor: pointer; }
 
-/* line 155, ../../app/stylesheets/screen.sass */
+/* line 162, ../../app/stylesheets/screen.sass */
 .editable { background: #ccdcff; cursor: pointer; }
-/* line 158, ../../app/stylesheets/screen.sass */
+/* line 165, ../../app/stylesheets/screen.sass */
 .editable:hover { color: white; background: #014fff; }

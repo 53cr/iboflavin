@@ -119,12 +119,16 @@ $(document).ready(function() {
 
   $("#thequestion form").ajaxForm({
     clearForm: true,
+    beforeSubmit: function() {
+      $("#thequestion .loading").show();
+    },
     success: function(response, statusText) {
+      $("#thequestion .loading").hide();
       $("#recent").prepend(response);
 
       var h = $("#recent .entry:first").height();
       $("#recent").css("margin-top","-"+h+"px");
-      $("#recent").animate({'margin-top':0},1000);
+      $("#recent").animate({'marginTop':0},1000);
       $(document).trigger("entry.change");
     }
   });

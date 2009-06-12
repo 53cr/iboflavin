@@ -11,12 +11,14 @@ class EntryMatchObserver < ActiveRecord::Observer
   def after_update(record)
     # For each Goal, add the different in the previous and new values.
     change_goal_cache(record) do |nutrient|
+      # amount_of_nutrient takes an optional second argument to indicate previous values should be used.
+      # ie, CURRENT_AMOUNT - PREVIOUS_AMOUNT.
       record.amount_of_nutrient(nutrient) - record.amount_of_nutrient(nutrient,true)
     end
   end
   
   def before_destroy(record)
-    # For each Goal, remove this entryMatch's total nutrients from the tokyo data entry
+    # For each Goal, remove this EntryMatch's total nutrients from the tokyo data entry
     change_goal_cache(record) do |nutrient|
       (-1)*(record.amount_of_nutrient(nutrient))
     end
