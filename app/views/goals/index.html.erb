@@ -3,24 +3,20 @@
 <table>
   <tr>
     <th>Nutrient</th>
-    <th>User</th>
-    <th>Amount</th>
-    <th>Unit</th>
-  </tr>
+   <th>Amount</th>
+ </tr>
 
-<% @goals.each do |goals| %>
+<% @goals.each do |goal| %>
   <tr>
-    <td><%=h goals.nutrient_id %></td>
-    <td><%=h goals.user_id %></td>
-    <td><%=h goals.amount %></td>
-    <td><%=h goals.unit %></td>
-    <td><%= link_to 'Show', goals %></td>
-    <td><%= link_to 'Edit', edit_goals_path(goals) %></td>
-    <td><%= link_to 'Destroy', goals, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h goal.nutrient_id %></td>
+   <td><%=h goal.amount %></td>
+   <td><%= link_to 'Show', goal %></td>
+    <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+    <td><%= link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New goals', new_goals_path %>
+<%= link_to 'New goal', new_goal_path %>

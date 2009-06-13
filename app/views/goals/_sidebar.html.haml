@@ -1,3 +1,4 @@
-Calories Today<br/>
-<span class="dietgoal">#{GoalCache.find(@current_user.id,208)}/2000</span><br/>
+- @current_user.goals.each do |goal|
+  == #{goal.nutrient.description} Today<br/>
+  <span class="dietgoal">#{GoalCache.find(@current_user.id,goal.nutrient_id)}/#{goal.amount}</span><br/>
 <a href="/goals">Change Diet Goals</a>

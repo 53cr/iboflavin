@@ -49,8 +49,8 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
-  def require_ownership(uid, &block)
-    yield if uid==@current_user.id
+  def require_ownership(obj, &block)
+    yield if obj.user_id==@current_user.id
   end
 
 end

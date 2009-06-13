@@ -740,13 +740,22 @@ body { background: url(/images/leftpanel-top.png) top center no-repeat; }
 /* line 140, ../../app/stylesheets/screen.sass */
 #recent input { width: 100px; }
 
-/* line 144, ../../app/stylesheets/screen.sass */
+/* line 143, ../../app/stylesheets/screen.sass */
 label.inline { clear: left; display: block; float: left; position: relative; top: 8px; text-align: right; margin-right: 6px; line-height: 18px; width: 120px; }
 
-/* line 155, ../../app/stylesheets/screen.sass */
+/* line 154, ../../app/stylesheets/screen.sass */
 .delete_x { height: 14px; width: 16px; position: relative; top: 3px; cursor: pointer; }
 
-/* line 162, ../../app/stylesheets/screen.sass */
+/* line 161, ../../app/stylesheets/screen.sass */
 .editable { background: #ccdcff; cursor: pointer; }
-/* line 165, ../../app/stylesheets/screen.sass */
+/* line 164, ../../app/stylesheets/screen.sass */
 .editable:hover { color: white; background: #014fff; }
+
+/* line 168, ../../app/stylesheets/screen.sass */
+#overlay { background-image: url(/images/overlay-transparent.png); color: #efefef; width: 600px; height: 470px; width: 400px; display: none; padding: 55px; }
+/* line 176, ../../app/stylesheets/screen.sass */
+#overlay a { color: white; }
+/* line 178, ../../app/stylesheets/screen.sass */
+#overlay .close { background-image: url(/images/overlay-close.png); position: absolute; right: 5px; top: 5px; cursor: pointer; height: 35px; width: 35px; }
+/* line 186, ../../app/stylesheets/screen.sass */
+#overlay .wrap { height: 441px; overflow-y: auto; }

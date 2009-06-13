@@ -8,11 +8,10 @@
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'facebox.css', :media => 'screen, projection'
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     = javascript_include_tag 'jquery', 'cufon-yui', 'Fertigo_400.font'
     = javascript_tag 'Cufon.replace("h3");'
-    = javascript_include_tag 'facebox', 'jquery-ui', 'jquery.jeditable', 'jquery-form', 'application'
+    = javascript_include_tag 'jquery.tools', 'jquery-ui', 'jquery.jeditable', 'jquery-form', 'application'
   %body
     #page
       - if @current_user
@@ -28,6 +27,8 @@
           - flash.each do |key, value|
             %div{:class => key}= h(value)
           = yield
+    #overlay.overlay
+      .wrap
     #footer
     = javascript_include_tag "http://www.google-analytics.com/ga.js"
     = javascript_tag 'try {_gat._getTracker("UA-5149541-6")._trackPageview();} catch(err) {}'

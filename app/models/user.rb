@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   acts_as_authentic
 
   has_many :entry_matches
+  has_many :entries
+  has_many :goals
   attr_accessible :birthday, :sex, :pregnant, :lactating,
                   :password_confirmation, :password, :age, :login, :email
 
