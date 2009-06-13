@@ -14,7 +14,6 @@ class Entry < ActiveRecord::Base
   
   private
   def create_entry_matches
-          
     items = Grammar::parse(self.input)
 
     items.each do |item|

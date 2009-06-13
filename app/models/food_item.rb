@@ -47,11 +47,8 @@ class FoodItem < ActiveRecord::Base
       "ORDER BY count(*) DESC "+
       "LIMIT #{number_of_results}"
 
-    query = ActiveRecord::Base.replace_bind_variables(query,[uid, sigtext])
+    food_item_ids = FoodItem.most_common_query_to_food_item_ids(query,sigtext,uid)
     
-    sql_result = ActiveRecord::Base.connection.execute(query)
-    food_item_ids = sql_result.all_hashes.map{|e|e['food_item_id']}
-    food_item_ids = food_item_ids.reject(&:nil?).map(&:to_i)
     return FoodItem.find(food_item_ids)
   end
 
@@ -63,11 +60,8 @@ class FoodItem < ActiveRecord::Base
       "ORDER BY count(*) DESC "+
       "LIMIT #{number_of_results}"
 
-    query = ActiveRecord::Base.replace_bind_variables(query,[sigtext])
+    food_item_ids = FoodItem.most_common_query_to_food_item_ids(query,sigtext)
     
-    sql_result = ActiveRecord::Base.connection.execute(query)
-    food_item_ids = sql_result.all_hashes.map{|e|e['food_item_id']}
-    food_item_ids = food_item_ids.reject(&:nil?).map(&:to_i)
     return FoodItem.find(food_item_ids)
   end
 
@@ -87,4 +81,18 @@ class FoodItem < ActiveRecord::Base
 
   end
   
+  private 
+  
+  def self.most_common_query_to_food_item_ids(query,sigtext,uid=nil)
+    vars = [uid,sigtext].compact
+    query = ActiveRecord::Base.replace_bind_variables(query,vars)
+    sql_result = ActiveRecord::Base.connection.execute(query)
+    if !sql_result.empty?
+      food_item_ids = sql_result.all_hashes.map{|e|e['food_item_id']}
+      food_item_ids = food_item_ids.reject(&:nil?).map(&:to_i)
+    else
+      food_item_ids = []
+    end
+    return food_item_ids
+  end
 end
