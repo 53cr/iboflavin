@@ -1,23 +1,23 @@
 <p>
   <b>Nutrient:</b>
-  <%=h @goals.nutrient_id %>
+  <%=h @goal.nutrient_id %>
 </p>
 
 <p>
   <b>User:</b>
-  <%=h @goals.user_id %>
+  <%=h @goal.user_id %>
 </p>
 
 <p>
   <b>Amount:</b>
-  <%=h @goals.amount %>
+  <%=h @goal.amount %>
 </p>
 
 <p>
   <b>Unit:</b>
-  <%=h @goals.unit %>
+  <%=h @goal.unit %>
 </p>
 
 
-<%= link_to 'Edit', edit_goals_path(@goals) %> |
+<%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>

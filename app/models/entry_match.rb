@@ -27,7 +27,7 @@ class EntryMatch < ActiveRecord::Base
   def standard_mass_multiples(was=false)
     z_unit   = (was ? self.unit_was : self.unit)
     z_amount = (was ? self.amount_was : self.amount)
-    z_food_item = (was ? self.food_item_was : self.food_item)
+    z_food_item = (was ? FoodItem.find(self.food_item_id_was) : self.food_item)
 
     return 0 unless z_food_item
     

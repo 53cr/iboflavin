@@ -19,6 +19,7 @@ Rails::Initializer.run do |config|
   config.gem 'oauth'
   config.gem 'rufus-tokyo'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
+
   config.time_zone = 'UTC'
 
 end

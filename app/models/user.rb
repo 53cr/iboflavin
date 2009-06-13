@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   acts_as_authentic
 
   has_many :entry_matches
+  has_many :entries
+  has_many :goals
   attr_accessible :birthday, :sex, :pregnant, :lactating,
                   :password_confirmation, :password, :age, :login, :email
 
@@ -20,7 +22,29 @@ class User < ActiveRecord::Base
   def nutritional_requirements
     @nutr_reqs ||= Nutrition::Requirements.for(self)
   end
-  
+
+  def start_of_day
+    t = Time.now.utc.beginning_of_day + time_zone + 1.day
+    2.times{ (t -= 1.day) if (t > Time.now.utc) }
+    return t
+  end
+
+  def entries_today
+    Entry.find(:all, :conditions => 
+               ["user_id = ? AND created_at >= ?",
+                self.id,
+                self.start_of_day], 
+               :order => 'id DESC')
+  end
+
+  def entry_matches_today
+    EntryMatch.find(:all, :conditions => 
+                    ["user_id = ? AND created_at >= ?",
+                     self.id,
+                     self.start_of_day], 
+                    :order => 'id DESC')
+  end
+
   def rdi_for(nutrient)
     nutritional_requirements.for(nutrient)
   end

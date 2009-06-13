@@ -11,6 +11,11 @@ class Entry < ActiveRecord::Base
   def amount_of_nutrient(nut)
     self.entry_matches.map{|em|em.amount_of_nutrient(nut)}.inject(&:+)
   end
+
+  def human_time
+    t = self.created_at + self.user.time_zone
+    t.strftime("%H:%M")
+  end
   
   private
   def create_entry_matches

@@ -1,21 +1,11 @@
 class GoalsController < ApplicationController
 
   def sidebar
-
-    @recent = Entry.find(:all, :conditions => ["user_id = ? AND created_at >= ?",@current_user.id,Date.today], :order => 'id DESC')
-    riboflavin,calories = 405,208
-    @calories_today = @recent.map{|e|e.amount_of_nutrient(calories)}.compact.inject(&:+)
-    @b2_today = @recent.map{|e|e.amount_of_nutrient(riboflavin)}.compact.inject(&:+)
-    @b2_total = @current_user.rdi_for(Nutrient.find(405))
-    
     render :partial => 'sidebar', :layout => false
   end
 
-
-  # GET /goals
-  # GET /goals.xml
   def index
-    @goals = Goals.all
+    @goals = @current_user.goals
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,76 +13,71 @@ class GoalsController < ApplicationController
     end
   end
 
-  # GET /goals/1
-  # GET /goals/1.xml
   def show
-    @goals = Goals.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @goals }
+    @goal = Goal.find(params[:id])
+    require_ownership(@goal) do
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @goal }
+      end
     end
   end
 
-  # GET /goals/new
-  # GET /goals/new.xml
   def new
-    @goals = Goals.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @goals }
+    @goal = Goal.new
+    require_ownership(@goal) do
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @goal }
+      end
     end
   end
 
-  # GET /goals/1/edit
   def edit
-    @goals = Goals.find(params[:id])
+    @goal = Goal.find(params[:id])
+    require_ownership(@goal)
   end
 
-  # POST /goals
-  # POST /goals.xml
   def create
-    @goals = Goals.new(params[:goals])
-
+    @goal = Goal.new(params[:goal])
+    @goal.user_id=@current_user.id
     respond_to do |format|
-      if @goals.save
-        flash[:notice] = 'Goals was successfully created.'
-        format.html { redirect_to(@goals) }
-        format.xml  { render :xml => @goals, :status => :created, :location => @goals }
+      if @goal.save
+        flash[:notice] = 'Goal was successfully created.'
+        format.html { redirect_to(@goal) }
+        format.xml  { render :xml => @goal, :status => :created, :location => @goal }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @goals.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @goal.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /goals/1
-  # PUT /goals/1.xml
   def update
-    @goals = Goals.find(params[:id])
-
-    respond_to do |format|
-      if @goals.update_attributes(params[:goals])
-        flash[:notice] = 'Goals was successfully updated.'
-        format.html { redirect_to(@goals) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @goals.errors, :status => :unprocessable_entity }
+    @goal = Goal.find(params[:id])
+    require_ownership(@goal) do
+      respond_to do |format|
+        if @goals.update_attributes(params[:goals])
+          flash[:notice] = 'Goals was successfully updated.'
+          format.html { redirect_to(@goal) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @goal.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
 
-  # DELETE /goals/1
-  # DELETE /goals/1.xml
   def destroy
-    @goals = Goals.find(params[:id])
-    @goals.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(goals_url) }
-      format.xml  { head :ok }
+    @goal = Goal.find(params[:id])
+    require_ownership(@goal) do
+      @goal.destroy
+      
+      respond_to do |format|
+        format.html { redirect_to(goals_url) }
+        format.xml  { head :ok }
+      end
     end
   end
 end
