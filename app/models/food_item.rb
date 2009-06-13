@@ -87,12 +87,13 @@ class FoodItem < ActiveRecord::Base
     vars = [uid,sigtext].compact
     query = ActiveRecord::Base.replace_bind_variables(query,vars)
     sql_result = ActiveRecord::Base.connection.execute(query)
-#    if !sql_result.empty?
+    if sql_result != []
+    debugger
       food_item_ids = sql_result.all_hashes.map{|e|e['food_item_id']}
       food_item_ids = food_item_ids.reject(&:nil?).map(&:to_i)
-#    else
-#      food_item_ids = []
-#    end
+    else
+      food_item_ids = []
+    end
     return food_item_ids
   end
 end
