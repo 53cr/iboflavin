@@ -1,5 +1,5 @@
 class FoodItem < ActiveRecord::Base
-  
+
   belongs_to :food_group
 
   has_many :food_item_nutrients
@@ -20,16 +20,16 @@ class FoodItem < ActiveRecord::Base
   def serving_size_unit
     read_attribute(:serving_size_unit) || "Grammar::Vocabulary::Gram"
   end
-  
+
   def self.awesome_search(uid,text)
     sigtext = ::SearchUtils.signaturize(text)
 
     matches = []
-    matches << user_most_recent(uid,sigtext) 
+    matches << user_most_recent(uid,sigtext)
     matches << user_most_common(uid,sigtext, 5)
     matches << global_most_common(sigtext, 5)
     matches << text_search(text)
-    
+
     return matches.flatten.uniq.reject(&:nil?)
   end
 
@@ -48,7 +48,7 @@ class FoodItem < ActiveRecord::Base
       "LIMIT #{number_of_results}"
 
     food_item_ids = FoodItem.most_common_query_to_food_item_ids(query,sigtext,uid)
-    
+
     return FoodItem.find(food_item_ids)
   end
 
@@ -61,12 +61,12 @@ class FoodItem < ActiveRecord::Base
       "LIMIT #{number_of_results}"
 
     food_item_ids = FoodItem.most_common_query_to_food_item_ids(query,sigtext)
-    
+
     return FoodItem.find(food_item_ids)
   end
 
   def self.text_search(text, limit=15)
-    
+
     # all else fails, fire it off the the god-awful full-text search.
     # if we're running in development, don't freak out when sphinx isn't available.
     if RAILS_ENV=='development'
@@ -75,24 +75,24 @@ class FoodItem < ActiveRecord::Base
       rescue
         return self.find(:all,:conditions=>['name LIKE ?',"%#{text}%"],:limit=>limit) rescue nil
       end
-    else 
+    else
       return self.search(text,:limit=>limit)
     end
 
   end
-  
-  private 
-  
+
+  private
+
   def self.most_common_query_to_food_item_ids(query,sigtext,uid=nil)
     vars = [uid,sigtext].compact
     query = ActiveRecord::Base.replace_bind_variables(query,vars)
     sql_result = ActiveRecord::Base.connection.execute(query)
-    if !sql_result.empty?
+#    if !sql_result.empty?
       food_item_ids = sql_result.all_hashes.map{|e|e['food_item_id']}
       food_item_ids = food_item_ids.reject(&:nil?).map(&:to_i)
-    else
-      food_item_ids = []
-    end
+#    else
+#      food_item_ids = []
+#    end
     return food_item_ids
   end
 end
