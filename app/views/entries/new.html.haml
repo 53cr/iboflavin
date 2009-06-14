@@ -6,8 +6,8 @@
     <img src="/images/loading.gif" class="loading" style="display:none;" alt="Loading"/>
     = f.text_field :input, :class=>"text", :value=>"Four Pan-Galactic Gargle Blasters", :style=>"color:#999"
 
+%br
 %h3 Recent Entries
-  #recent
-    %br
-    - @recent.each do |entry|
-      = render :partial => entry
+#recent
+  - @recent.each do |entry|
+    = render :partial => entry
