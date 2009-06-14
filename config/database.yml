@@ -14,8 +14,13 @@ development:
   socket: /tmp/mysql.sock
   
 test: &TEST
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: mysql
+  database: iboflavin_test
+  host: localhost
+  username: iboflavin
+  password: hap5ut8och
+  encoding: utf8
+  socket: /tmp/mysql.sock
   pool: 5
   timeout: 5000
 

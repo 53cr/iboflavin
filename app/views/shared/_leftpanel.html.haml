@@ -2,7 +2,7 @@
   #leftpanel-inner
     = link_to(image_tag(gravatar(@current_user.email), :class => 'gravatar'), account_url)
     <span class="username">#{link_to @current_user.login, account_url}</span>
-    == #{link_to '53mg', account_url} / #{link_to 'Settings', account_url} / #{link_to 'Logout', user_session_path, :method => :delete}<br/>
+    == #{link_to '53mg', account_url} | #{link_to 'Profile', account_url} | #{link_to 'Logout', user_session_path, :method => :delete}<br/>
     <hr/>
     #goals
       = render 'goals/sidebar'

@@ -10,7 +10,9 @@
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     = javascript_include_tag 'jquery', 'cufon-yui', 'Fertigo_400.font'
+    = javascript_tag 'Cufon.replace("h2");'
     = javascript_tag 'Cufon.replace("h3");'
+    = javascript_tag 'Cufon.replace("h4");'
     = javascript_include_tag 'jquery.tools', 'jquery-ui', 'jquery.jeditable', 'jquery-form', 'application'
   %body
     #page

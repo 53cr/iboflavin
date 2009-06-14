@@ -38,12 +38,13 @@ class UsersController < ApplicationController
   end
 
   def update
+
     @user = @current_user # makes our views "cleaner" and more consistent
-    if @user.save
-      flash[:notice] = "Login successful!"
+    if @user and @user.update_attributes(params[:user])
+      flash[:notice] = "Changes successful!"
       redirect_back_or_default account_url
     else
-      render :action => :new
+      render :action => :edit
     end
   end
 end

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :entries
   has_many :goals
   attr_accessible :birthday, :sex, :pregnant, :lactating,
-                  :password_confirmation, :password, :age, :login, :email
+                  :password_confirmation, :password, :age, :login, :email, :lifestyle
 
   #TODO We don't want to force users to register with this. Run a custom validation that validates only if they're defined.
 
