@@ -8,11 +8,11 @@
   =h @user.email
 %p
   %b Birthday:
-  =h @user.birthday.strftime("%B %d, %Y")
+  = @user.birthday ? h( @user.birthday.strftime("%B %d, %Y")) : link_to('Set Yours', edit_account_path)
 
 %p 
   %b Lifestyle:
-  =h @user.lifestyle.capitalize
+  = @user.lifestyle ? h(@user.lifestyle.capitalize) : link_to('Set Yours', edit_account_path)
 / 
 / %p
 /   %b Login count:
