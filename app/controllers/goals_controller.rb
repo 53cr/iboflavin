@@ -69,6 +69,7 @@ class GoalsController < ApplicationController
   end
 
   def destroy
+    @goal = Goal.find(params[:id])
     require_ownership(@goal) do
       @goal.destroy
 

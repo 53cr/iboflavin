@@ -5,7 +5,7 @@
   %p
     = f.label :nutrient_id
     %br
-    = f.self Nutrient.select_options
+    = f.select :nutrient_id, Nutrient.select_options
   %p
     = f.label :amount
     %br
