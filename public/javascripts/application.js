@@ -159,6 +159,8 @@ $(document).ready(function() {
         css('color', '#999');
     });
 
+  setTimeout($('.notice').hide('slow'),4000);
+
   $(document).trigger("entry");
 
 });
