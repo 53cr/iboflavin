@@ -159,7 +159,16 @@ $(document).ready(function() {
         css('color', '#999');
     });
 
-  setTimeout(eval("$('.notice').hide('slow')"),4000);
+
+  var e = $('.notice');
+  e.hide().fadeIn("slow");
+  e.queue(function(){
+    setTimeout(function(){
+      e.dequeue();
+    }, 4000 );
+  });
+  e.fadeOut('slow');
+
 
   $(document).trigger("entry");
 

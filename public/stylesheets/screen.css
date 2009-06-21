@@ -756,3 +756,6 @@ label.inline { clear: left; display: block; float: left; position: relative; top
 #overlay .close { background-image: url(/images/overlay-close.png); position: absolute; right: 5px; top: 5px; cursor: pointer; height: 35px; width: 35px; }
 /* line 185, ../../app/stylesheets/screen.sass */
 #overlay .wrap { height: 441px; overflow-y: auto; }
+
+/* line 189, ../../app/stylesheets/screen.sass */
+.notice { position: absolute; }
