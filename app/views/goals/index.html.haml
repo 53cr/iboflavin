@@ -1,0 +1,26 @@
+%h1
+  Listing goals
+%table
+  %tr
+    %th
+      Nutrient
+    %th
+      Unit
+    %th
+      Amount
+  - @goals.each do |goal|
+    %tr
+      %td
+        = h goal.nutrient.description
+      %td
+        = h goal.nutrient.unit
+      %td
+        = h goal.amount
+      %td
+        = link_to 'Show', goal
+      %td
+        = link_to 'Edit', edit_goal_path(goal)
+      %td
+        = link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete
+%br
+= link_to 'New goal', new_goal_path

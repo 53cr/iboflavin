@@ -1,0 +1,17 @@
+%h1
+  Editing goal
+- form_for(@goal) do |f|
+  = f.error_messages
+  %p
+    = f.label :nutrient_id
+    %br
+    = f.self Nutrient.select_options
+  %p
+    = f.label :amount
+    %br
+    = f.text_field :amount
+  %p
+    = f.submit 'Update'
+= link_to 'Show', @goal
+|
+= link_to 'Back', goals_path

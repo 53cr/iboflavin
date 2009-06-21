@@ -1,5 +1,4 @@
 class GoalsController < ApplicationController
-
   def sidebar
     render :partial => 'sidebar', :layout => false
   end
@@ -14,7 +13,7 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @goal = Goal.find(params[:id])
+    @goal = Goal.find(params[:id], :include => :nutrient)
     require_ownership(@goal) do
       respond_to do |format|
         format.html # show.html.erb
@@ -34,7 +33,7 @@ class GoalsController < ApplicationController
   end
 
   def edit
-    @goal = Goal.find(params[:id])
+    @goal = Goal.find(params[:id],:include => :nutrient)
     require_ownership(@goal)
   end
 
@@ -70,10 +69,9 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-    @goal = Goal.find(params[:id])
     require_ownership(@goal) do
       @goal.destroy
-      
+
       respond_to do |format|
         format.html { redirect_to(goals_url) }
         format.xml  { head :ok }
@@ -81,3 +79,5 @@ class GoalsController < ApplicationController
     end
   end
 end
+
+
