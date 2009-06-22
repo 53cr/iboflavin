@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       @user.oauth_token = session[:twitter_token]
       @user.oauth_secret = session[:twitter_secret]
     end
-    
+
     if @user.save
       flash[:notice] = "Login successful!"
       redirect_back_or_default new_entry_url
@@ -46,5 +46,14 @@ class UsersController < ApplicationController
     else
       render :action => :edit
     end
+  end
+
+  def disable_sidebar_prompt
+    @user = @current_user
+    if @user
+      @user.update_attributes( :sidebar_prompt_off => true )
+      flash[:notice] = "Sorry about that. We'll leave you alone."
+    end
+    redirect_to new_entry_path
   end
 end

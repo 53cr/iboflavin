@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
   end
 
   def filled_in?
-    self[:birthday] and self[:sex] and self[:lifestyle]
+    !sidebar_prompt_off or (self[:birthday] and self[:sex] and self[:lifestyle])
   end
 
   def infant?; (0...1) === self.age; end
