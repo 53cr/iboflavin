@@ -12,7 +12,7 @@
 
 %p 
   %b Lifestyle:
-  = @user.lifestyle ? h(@user.lifestyle.capitalize) : link_to('Set Yours', edit_account_path)
+  = !@user.lifestyle.empty? ? h(@user.lifestyle.capitalize) : link_to('Set Yours', edit_account_path)
 / 
 / %p
 /   %b Login count:

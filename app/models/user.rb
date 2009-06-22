@@ -15,10 +15,10 @@ class User < ActiveRecord::Base
   #TODO We don't want to force users to register with this. Run a custom validation that validates only if they're defined.
 
   validates_inclusion_of :sex, :in => [:male, 'male', :female, 'female', nil, '']
-  validates_inclusion_of :lifestyle, :in => ['sedentary', 'active', 'low active', nil]
+  validates_inclusion_of :lifestyle, :in => ['sedentary', 'active', 'low active', nil, '']
   validate :age_between_0_and_999
   validates_uniqueness_of :twitter_screen_name, :oauth_token, :oauth_secret, :allow_nil => true
-  
+
   def nutritional_requirements
     @nutr_reqs ||= Nutrition::Requirements.for(self)
   end
@@ -30,25 +30,25 @@ class User < ActiveRecord::Base
   end
 
   def entries_today
-    Entry.find(:all, :conditions => 
+    Entry.find(:all, :conditions =>
                ["user_id = ? AND created_at >= ?",
                 self.id,
-                self.start_of_day], 
+                self.start_of_day],
                :order => 'id DESC')
   end
 
   def entry_matches_today
-    EntryMatch.find(:all, :conditions => 
+    EntryMatch.find(:all, :conditions =>
                     ["user_id = ? AND created_at >= ?",
                      self.id,
-                     self.start_of_day], 
+                     self.start_of_day],
                     :order => 'id DESC')
   end
 
   def rdi_for(nutrient)
     nutritional_requirements.for(nutrient)
   end
-  
+
   def age
     if self.birthday
       ((Date.today - self.birthday) / 365).to_f
@@ -61,13 +61,17 @@ class User < ActiveRecord::Base
     end
   end
 
+  def filled_in?
+    !sidebar_prompt_off or (self[:birthday] and self[:sex] and self[:lifestyle])
+  end
+
   def infant?; (0...1) === self.age; end
 
   def child?; (1...9) === self.age; end
-  
+
   def male?; self.sex.to_sym == :male; end
   def female?; self.sex.to_sym == :female; end
-  
+
   def report_for(opts = {:date => lambda {Date.today}.call })
   end
 
