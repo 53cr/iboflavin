@@ -4,6 +4,21 @@ require 'nutrition/requirements'
 #TODO: add columns: lifestyle
 class User < ActiveRecord::Base
 
+  # Invitation Stuff
+  has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
+  belongs_to :invitation
+
+  def invitation_token
+    invitation.token if invitation
+  end
+
+  def invitation_token=(token)
+    self.invitation = Invitation.find_by_token(token)
+  end
+
+  attr_accessible :invitation_token
+  # End Invitation Stuff
+
   acts_as_authentic
 
   has_many :entry_matches

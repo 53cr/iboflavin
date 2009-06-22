@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     if @from_twitter and !User.find_by_login(session[:twitter_screen_name])
       @ok_to_use_screen_name = true
     end
-    @user = User.new
+    @user = User.new(:invitation_token => params[:invitation_token])
+    @user.email = @user.invitation.recipient_email if @user.invitation
   end
 
   def create
