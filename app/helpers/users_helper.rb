@@ -1,6 +1,6 @@
 module UsersHelper
   def lifestyle_select_options
-    [["--Select--",''],
+    [["--Select--",nil],
      ['Sedentary','sedentary'],
      ['Low Active', 'low active'],
      ['Active','active']]
