@@ -759,3 +759,10 @@ label.inline { clear: left; display: block; float: left; position: relative; top
 
 /* line 189, ../../app/stylesheets/screen.sass */
 .notice { position: absolute; }
+
+/* line 192, ../../app/stylesheets/screen.sass */
+.frontbox { float: left; width: 49%; }
+/* line 193, ../../app/stylesheets/screen.sass */
+.frontbox h4 { margin-bottom: 2px; }
+/* line 195, ../../app/stylesheets/screen.sass */
+.frontbox img { margin: 12px 6px 6px 6px; }

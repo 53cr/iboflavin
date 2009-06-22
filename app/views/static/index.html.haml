@@ -1,25 +1,30 @@
 %h4
   iBoflavin is the easy way to keep track of what you eat. 
 
-%h4 Simple
-%p 
-  [pic]
-  Tell iBoflavin what you ate, using whatever words come to mind, and we'll figure the rest out.
+.frontbox
+  = image_tag 'front-icons/simple.png', :style=>'float:left'
+   
+  %h4 Simple
+  %p 
+    == Tell iBoflavin what you ate, using whatever words come to mind, and we'll figure the rest out.
+   
+.frontbox
+  = image_tag 'front-icons/quick.png', :style=>'float:left'
+  %h4 Quick
+  %p 
+    == Posting something you ate is as simple as one text box. iBoflavin can usually guess what you mean.
+   
+.frontbox
+  = image_tag 'front-icons/intelligent.png', :style=>'float:left'
+  %h4 Intelligent
+  %p
+    == If iBoflavin makes a mistake, you can teach it by correcting it, and it won't do the same thing again.
 
-%h4 Quick
-%p 
-  [pic]
-  Posting something you ate is as simple as one text box. iBoflavin can usually guess what you mean.
-
-%h4 Intelligent
-%p
-  [pic]
-  If iBoflavin makes a mistake, you can teach it by correcting it, and it won't do the same thing again.
-
-%h4 Mobile
-%p
-  [pic]
-  Posting on-the-go is easy too! Just download the iPhone app, install a dashboard widget, or tweet @iboflavin.
+.frontbox   
+  = image_tag 'front-icons/mobile.png', :style=>'float:left'
+  %h4 Mobile
+  %p
+    == Posting on-the-go is easy too! Just download the iPhone app, install a dashboard widget, or tweet @iboflavin.
 
 %br/
 = link_to((image_tag 'twitter-auth.png'), twitter_login_url)
