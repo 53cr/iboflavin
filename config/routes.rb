@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.disable_sidebar_prompt '/user/disable_prompt', :controller => 'users', :action => 'disable_sidebar_prompt'
   map.resource :account, :controller => "users"
-
+  map.resources :users
 
   map.root :controller => 'static'
 
