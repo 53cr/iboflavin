@@ -1,10 +1,12 @@
-#sidebar_profile_fill
-  %p 
-    Want goals tailored to you? [Style]
-    %br
-    = link_to "Fill in your profile", edit_account_path
-    |
-    = link_to "Leave me alone [todo]", '/' 
+#sidebar_profile_prompt
+  - if not current_user.filled_in?
+    %p 
+      Want goals tailored to you?
+      %br
+      = link_to "Fill in your profile", edit_account_path
+      |
+      = link_to "Leave me alone", disable_sidebar_prompt_path
+
 - @current_user.goals.each do |goal|
   == #{goal.nutrient.description} Today<br/>
   %span.dietgoal== #{GoalCache.find(@current_user.id,goal.nutrient_id)}/#{goal.amount}

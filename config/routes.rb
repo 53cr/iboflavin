@@ -1,9 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :invitations
+
 
   map.login   "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
-  map.register "register", :controller => 'users', :action => "new"
-  
+  map.register "/register/:invitation_token", :controller => 'users', :action => "new"
+  map.register "/register", :controller => 'users', :action => "new"
+
   map.resources :goals, :collection => {:sidebar => :get}
 
   map.connect '/twitter', { :controller => 'oauth', :action => 'callback', :method => 'get' }
@@ -17,9 +20,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :user_session, :as => "accounts"
 
+  map.disable_sidebar_prompt '/user/disable_prompt', :controller => 'users', :action => 'disable_sidebar_prompt'
   map.resource :account, :controller => "users"
   map.resources :users
-  
+
   map.root :controller => 'static'
 
   # Default routes

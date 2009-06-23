@@ -28,6 +28,7 @@
   %br/
   = form.label :password_confirmation, "Password (again)", :class => 'inline'
   = form.password_field :password_confirmation, :class => 'text'
+  = form.hidden_field :invitation_token
   %br/
 
   = form.submit "Register"

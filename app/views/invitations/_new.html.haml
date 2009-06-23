@@ -1,0 +1,8 @@
+- form_for(Invitation.new) do |f|
+  = f.error_messages
+  %p 
+    Invite People
+    %br
+    = f.text_field :recipient_email, :class => 'text', :style =>'width: 205px'
+
+

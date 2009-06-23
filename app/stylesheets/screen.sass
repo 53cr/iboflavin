@@ -26,9 +26,6 @@ html
 body
   :background url(/images/leftpanel-top.png) top center no-repeat
 
-#footer
-  :clear both
-
 #page
   +container
   :padding-bottom 54px
@@ -129,6 +126,8 @@ body
 #recent
   :z-index 2
   :position relative
+  :top -18px
+  :margin-top 0
   p.name
   ul, p
     :line-height 24px
@@ -186,3 +185,26 @@ label.inline
   .wrap
     :height 441px
     :overflow-y auto
+
+.notice
+  :position absolute
+
+.frontbox
+  h4 
+    :margin-bottom 2px
+  img
+    :margin 12px 6px 6px 6px
+  :float left
+  :width 49%
+
+#sidebar_profile_prompt
+  :padding-left 8px
+  :padding-right 8px
+  :text-align center
+
+#profile_float_right
+  :float right
+  :width 100
+  :border 1px solid #333
+  :background-color #efe
+  :padding 8px

@@ -7,7 +7,6 @@
     = f.text_field :input, :class=>"text", :value=>"Four Pan-Galactic Gargle Blasters", :style=>"color:#999"
 
 %br
-%h3 Recent Entries
 #recent
   - @recent.each do |entry|
     = render :partial => entry

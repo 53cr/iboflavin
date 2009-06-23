@@ -1,7 +1,7 @@
 module UsersHelper
   def lifestyle_select_options
     [["--Select--",nil],
-     ['Sedentary','sedentary'], 
+     ['Sedentary','sedentary'],
      ['Low Active', 'low active'],
      ['Active','active']]
   end
@@ -9,10 +9,12 @@ module UsersHelper
     [["--Select--",nil],['Male','male'],['Female','female']]
   end
   def birthday_select_settings
-    { :start_year => 1900, 
-      :end_year => Time.now.year, 
+    {
+      :start_year => 1900,
+      :end_year => Time.now.year,
       :order => [:month, :day, :year],
-      :default => Date.today - 25.years
+      :allow_blank => true,
+      :prompt => { :day => "Day", :month => "Month", :year => "Year" }
     }
   end
 end
