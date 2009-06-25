@@ -14,7 +14,7 @@ module Nutrition
       elsif user.pregnant?
         DATA[:pregnant].with_keys_as_ranges(user.age)
       else
-        DATA[user.sex || :male].with_keys_as_ranges(user.age)
+        DATA[user.sex.to_sym || :male].with_keys_as_ranges(user.age)
       end
     end
     

@@ -9,6 +9,6 @@
 
 - @current_user.goals.each do |goal|
   == #{goal.nutrient.description} Today<br/>
-  %span.dietgoal== #{GoalCache.find(@current_user.id,goal.nutrient_id)}/#{goal.amount}
+  %span.dietgoal== #{"%.2f" % GoalCache.find(@current_user.id,goal.nutrient_id)}/#{goal.amount}
   %br
 %a{ :href=>"/goals" } Change Diet Goals

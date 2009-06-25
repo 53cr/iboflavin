@@ -3,6 +3,8 @@ class Invitation < ActiveRecord::Base
   has_one :recipient, :class_name => 'User'
 
   validates_presence_of :recipient_email
+
+  validates_format_of :recipient_email, :with => RFC822::EmailAddress, :on => :create, :message => "is invalid"
   validate :recipient_is_not_registered
   #validate :sender_has_invitations, :if => :sender
 

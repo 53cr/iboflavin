@@ -2,6 +2,8 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
 require File.join(File.dirname(__FILE__), 'boot')
 
+INVITATION_REQUIRED_FOR_SIGNUP = false
+
 Rails::Initializer.run do |config|
   config.load_paths += %W( #{RAILS_ROOT}/app/sweepers/
                            #{RAILS_ROOT}/app/observers/

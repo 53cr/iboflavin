@@ -56,7 +56,7 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
     require_ownership(@goal) do
       respond_to do |format|
-        if @goals.update_attributes(params[:goals])
+        if @goal.update_attributes(params[:goal])
           flash[:notice] = 'Goals was successfully updated.'
           format.html { redirect_to(@goal) }
           format.xml  { head :ok }

@@ -17,6 +17,12 @@ class User < ActiveRecord::Base
   end
 
   attr_accessible :invitation_token
+  
+  # uncomment if you want to restrict signup  - see railscast on betas
+  if INVITATION_REQUIRED_FOR_SIGNUP
+    validates_presence_of :invitation, :on => :create, :message => "can't be blank. We're sorry we aren't ready for our big debut yet!"
+  end
+  
   # End Invitation Stuff
 
   acts_as_authentic
