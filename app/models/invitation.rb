@@ -11,6 +11,8 @@ class Invitation < ActiveRecord::Base
   before_create :generate_token
   #before_create :decrement_sender_count
 
+  named_scope :requests, :conditions => {:sender_id => nil }
+  
   private
 
   def recipient_is_not_registered
