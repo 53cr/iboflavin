@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
                   :password_confirmation, :password, :age, :login, :email, :lifestyle
 
   #TODO We don't want to force users to register with this. Run a custom validation that validates only if they're defined.
+  # RN: Largely solved by allowing nil and prompting on goal sidebar
 
   validates_inclusion_of :sex, :in => [:male, 'male', :female, 'female', nil, '']
   validates_inclusion_of :lifestyle, :in => ['sedentary', 'active', 'low active', nil, '']
