@@ -6,5 +6,5 @@ class Goal < ActiveRecord::Base
   def amount
     read_attribute(:amount) || self.user.rdi_for(self.nutrient)
   end
-  
+
 end
