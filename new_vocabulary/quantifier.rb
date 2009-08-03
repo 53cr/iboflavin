@@ -7,13 +7,19 @@ module Vocabulary
 
     module Generic
       
+      # given a whole input phrase, return the generic quantity implied,
+      # and the rest of the input that should be used to determine the FoodItem.
       def self.parse(words)
-        rest = []
-        gq = []
+        rest = [] # rest of input (foodItem search phrase)
+        gq = [] # generic quantifier
         
         # this is a really ugly way to do it. 
         # I couldn't think of anything slick. Sorry. :/
-        gq_over = false
+
+        # the quantifier _always_ leads input, so once we encounter a word that
+        # isn't allowed in the quantifier, we read it and the rest of `words` 
+        # into `rest`.
+        gq_over = false 
         words.each do |word|
           if gq_over
             rest << word
@@ -26,7 +32,8 @@ module Vocabulary
             end
           end
         end
-        
+
+        # parse all of the tokens to get their numerical (and unit) values
         gq.map!{|e|parse_token(e)}
         
         # now, we sort of have a poor-man's AST...
@@ -38,7 +45,9 @@ module Vocabulary
         
         # we COULD deal with stuff like "one and a half"... but we won't.
         gq.reject!{|e|e==:+}
-        
+
+        # multiply the whole shebang together. 
+        # note that if nothing specifies a unit, we'll be returning [nil, x]
         total = [nil, 1]
         gq.each do |term|
           if term.kind_of?(Array)
@@ -52,6 +61,9 @@ module Vocabulary
         return [total, rest]
       end
 
+      # parse a single word as part of a quantifier.
+      # return [:unit_name, value], eg. [:litre, 3.5], or just 2.5 if purely numerical.
+      # also possible: `true` for "filler" words, and :+ for "and". Maybe others /shrug.
       def self.parse_token(token)
         number_part, word_part = nil
         # allow integers, real numbers, and fractions. We'll do this naively.

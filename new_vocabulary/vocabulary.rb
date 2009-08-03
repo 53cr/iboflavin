@@ -13,7 +13,7 @@ require 'quantifier'
 module Vocabulary
   
   def self.parse(phrase)
-    # terminology:
+    # Terminology I might get lazy and use:
     #  - generic quantifier (GQ): a phrase describing an amount of food, 
     #      applicable to any specific food, eg. "three", "2 litres", or "1.5lb"
     #  - specific quantifier (SQ): a phrase describing an amount of food,
