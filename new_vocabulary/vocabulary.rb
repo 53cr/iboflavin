@@ -25,7 +25,7 @@ module Vocabulary
     #  - food search (FS): The string we'll use to search the DB for FIs.
 
     # split on whitespace and hyphens.
-    words = phrase.split(/[\s-]+/)
+    words = phrase.split(/[\s-]+/).map(&:downcase)
     
     # First we look for a GQ. If it's given, it'll be at the start of the phrase.
     # I can't think of a scenario where it would be given after an SQ / FS anyway.
