@@ -1,0 +1,28 @@
+=content_for :sidebar do
+  - link_to new_admin_user_url do
+    = image_tag 'add_new_tuser.png'
+  - link_to admin_users_url + ".csv" do
+    = image_tag 'users_to_csv.png'
+
+.inner-header
+  %h2 Listing Teams
+%table
+  %tr
+    %th Position
+    %th Login
+    %th Email
+    %th Login count
+    %th Failed login count
+    %th
+    %th
+    %th
+  - for user in @users
+    %tr
+      %td= h user.admin? ? 'Admin' : ''
+      %td= h user.username
+      %td= h user.email
+      %td.green= h user.login_count
+      %td.red= h user.failed_login_count
+      %td= link_to 'Show', [:admin,user]
+      %td= link_to 'Edit', [:edit,:admin,user]
+      %td= link_to 'Destroy',[:admin,user], :confirm => 'Are you sure?', :method => :delete

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title><%%= "#{controller.controller_name}: #{controller.action_name}" %></title>
+    <%%= stylesheet_link_tag 'style', :media => 'screen, projection' %>
+    <%%= stylesheet_link_tag 'print', :media => 'print' %>
+    <%%= "<!--[if IE]>#{stylesheet_link_tag 'compiled/ie', :media => 'screen'}<![endif]-->" %>
+  </head>
+  <body>
+    <div id="header">
+      <div class="container">
+        <%%= render :partial => '/shared/header' %>
+      </div>
+    </div>
+    <div id='body'>
+      <div class="container"> 
+        <%% flash.each do |key,value| %>
+          <div class='<%%=key %>'><%%=value%></div>
+        <%% end %>
+        <div id="sidebar">
+          <%%= yield :sidebar %>
+        </div>
+        <div id="main">
+          <div id="content-header">
+            <%% render :partial => "/dashboard/menu" %>
+          </div>
+          <div id="content">
+            <%%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

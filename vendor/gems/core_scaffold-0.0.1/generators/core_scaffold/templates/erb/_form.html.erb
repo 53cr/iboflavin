@@ -1,0 +1,6 @@
+<% for attribute in attributes -%>
+<div class='text_field'>
+  <%%= form.label :<%= attribute.name %>%>
+  <%%= form.<%= attribute.field_type %> :<%= attribute.name %> , :class => 'text' %>
+</div>
+<% end -%>

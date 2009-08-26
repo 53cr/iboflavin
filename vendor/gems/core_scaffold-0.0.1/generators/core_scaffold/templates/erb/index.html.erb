@@ -1,0 +1,25 @@
+<%% content_for :sidebar do %>
+  <%%= link_to 'New <%= singular_name.humanize %>', new_<%= singular_name %>_path %>
+<%% end %>
+<div class='inner-header'>
+  <h2> Listing <%= plural_name.humanize %> </h2>
+</div>
+<table>
+  <tr>
+<% for attribute in attributes -%>
+    <th> <%= attribute.column.human_name %></th>
+<% end -%>
+    <th></th>
+    <th></th>
+    <th></th>
+  <%% for <%= singular_name %> in @<%= plural_name %> %>
+    <tr>
+<% for attribute in attributes -%>
+      <td><%%= h <%= singular_name %>.<%= attribute.name %>%></td>
+<% end -%>
+      <td><%%= link_to 'Show', <%= singular_name %> %></td>
+      <td><%%= link_to 'Edit', edit_<%= singular_name %>_path(<%= singular_name %>) %></td>
+      <td><%%= link_to 'Destroy', <%= singular_name %>, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <%% end %>
+</table>

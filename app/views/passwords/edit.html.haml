@@ -1,0 +1,12 @@
+.inner-header
+  %h2 Change Password
+.inner-container
+  - form_for(@user,:url => password_path,:html => { :method => :put }) do |form| 
+    .text_field
+      = form.label :password, 'Choose password' 
+      = form.password_field :password , :class => 'text'
+    .text_field
+      = form.label :password_confirmation, 'Verify password' 
+      = form.password_field :password_confirmation, :class => 'text'
+    .submit_field
+      = form.submit 'Change your password',:disable_with => 'Please wait...' 

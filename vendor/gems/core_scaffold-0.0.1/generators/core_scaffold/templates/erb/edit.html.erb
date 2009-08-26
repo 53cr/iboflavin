@@ -1,0 +1,13 @@
+<%% content_for :sidebar do %>
+  <%%= link_to 'Show', @<%= singular_name %> %>
+  <%%= link_to 'Back', <%= plural_name %>_path %>
+<%% end %>
+<div class='inner-header'>
+  <h2> Editing <%= singular_name.humanize %> <h2/>
+</div>
+<div class='inner-container'>
+  <%% form_for(@<%= singular_name %>) do |form| %>
+    <%%= render :partial => 'form', :locals => {:form => form} %>
+    <p><%%= form.submit 'Update' %></p>
+  <%% end %>
+</div>

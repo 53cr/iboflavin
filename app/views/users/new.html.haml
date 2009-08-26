@@ -1,0 +1,5 @@
+%h1 Signup Soon...
+-# form_for @user, :html => { :multipart => true } do |form| 
+  = render :partial => '/users/form', :object => form 
+  = form.submit 'Sign up', :disable_with => 'Please wait...'
+

@@ -1,0 +1,7 @@
+-if current_user.admin?
+  - link_to admin_url do
+    =image_tag 'administration.png'
+- if current_user
+  - link_to logout_url do
+    =image_tag 'logout.png'
+

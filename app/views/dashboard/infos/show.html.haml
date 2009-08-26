@@ -1,0 +1,9 @@
+= content_for :sidebar do
+  - link_to edit_dashboard_info_url do
+    = image_tag 'edit_information.png'
+.inner-header 
+  %h1= @user.username
+.inner-container
+  = image_tag @user.picture.url(:medium), :class => :picture
+  %p= @user.description
+

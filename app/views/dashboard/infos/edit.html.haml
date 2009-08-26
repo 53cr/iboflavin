@@ -1,0 +1,21 @@
+.inner-header
+  %h2 Edit Information
+.inner-container
+  - form_for(@user, :url => dashboard_info_path, :html => { :method => :put, :multipart => true }) do |form| 
+    .text_field
+      = form.label :username
+      = form.text_field :username, :class => 'text'
+    .text_field
+      = form.label :email, 'Email/Login'
+      = form.text_field :email,:class => 'text'
+    .text_field
+      = form.label :phone
+      = form.text_field :phone, :class => 'text'
+    .text_field
+      = form.label :picture
+      = form.file_field :picture, :class => 'picture_field'
+    .text_field
+      = form.label :description
+      = form.text_area :description, :class => 'text_area'
+    %p= form.submit 'Update', :disable_with => 'Please wait...' 
+ 

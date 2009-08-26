@@ -1,0 +1,4 @@
+.team{ :style => "height:400px"}
+  =image_tag user.picture.url(:medium), :class => 'picture'
+  %h2{:style =>'padding-top:1em;'}= user.username
+  %p= user.description

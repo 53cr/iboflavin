@@ -1,0 +1,86 @@
+--- !ruby/object:Gem::Specification 
+name: core_scaffold
+version: !ruby/object:Gem::Version 
+  version: 0.0.1
+platform: ruby
+authors: 
+- Stefan Penner
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-02-15 00:00:00 -06:00
+default_executable: 
+dependencies: []
+
+description: scaffold
+email: stefan.penner@gmail.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- VERSION.yml
+- generators/core_model/core_model_generator.rb
+- generators/core_model/templates/factory.rb
+- generators/core_model/templates/migration.rb
+- generators/core_model/templates/model.rb
+- generators/core_model/templates/unit_test.rb
+- generators/core_model/USAGE
+- generators/core_scaffold/core_scaffold_generator.rb
+- generators/core_scaffold/templates/blueprint/ie.css
+- generators/core_scaffold/templates/blueprint/print.css
+- generators/core_scaffold/templates/blueprint/screen.css
+- generators/core_scaffold/templates/controller.rb
+- generators/core_scaffold/templates/functional_test/basic.rb
+- generators/core_scaffold/templates/haml/_form.html.haml
+- generators/core_scaffold/templates/haml/edit.html.haml
+- generators/core_scaffold/templates/haml/index.html.haml
+- generators/core_scaffold/templates/haml/layout.html.haml
+- generators/core_scaffold/templates/haml/new.html.haml
+- generators/core_scaffold/templates/haml/show.html.haml
+- generators/core_scaffold/templates/erb/_form.html.erb
+- generators/core_scaffold/templates/erb/edit.html.erb
+- generators/core_scaffold/templates/erb/index.html.erb
+- generators/core_scaffold/templates/erb/layout.html.erb
+- generators/core_scaffold/templates/erb/new.html.erb
+- generators/core_scaffold/templates/erb/show.html.erb
+- generators/core_scaffold/templates/helper.rb
+- generators/core_scaffold/USAGE
+- lib/core_scaffold.rb
+- test/environment.rb
+- test/core_scaffold_test.rb
+- test/test_helper.rb
+has_rdoc: true
+homepage: http://github.com/stefanpenner/core_scaffold
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --inline-source
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 2
+summary: scaffold
+test_files: []
+

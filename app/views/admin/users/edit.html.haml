@@ -1,0 +1,9 @@
+=content_for :sidebar do
+  -link_to admin_user_url(@user) do
+    = image_tag 'show_team.png'
+.inner-header
+  %h2 Editing User
+.inner-container
+  - form_for([:admin,@user],:html => { :multipart => true }) do |form|
+    = render :partial => 'form', :locals => {:form => form}
+    %p= form.submit 'Update'

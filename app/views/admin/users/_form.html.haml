@@ -1,0 +1,24 @@
+.text_field
+  = form.label :username
+  = form.text_field :username , :class => 'text'
+.text_field
+  = form.label :admin
+  = form.check_box :admin, :class => 'checkbox'
+.text_field
+  = form.label :email
+  = form.text_field :email , :class => 'text'
+.text_field
+  = form.label :phone
+  = form.text_field :phone, :class => 'text'
+.text_field
+  = form.label :password
+  = form.password_field :password , :class => 'text'
+.text_field
+  = form.label :password_confirmation, 'Verify Password'
+  = form.password_field :password_confirmation , :class => 'text'
+.text_field
+  = form.label :description
+  = form.text_area :description, :class => 'text_area'
+.text_field
+  = form.label :picture
+  = form.file_field :picture, :class => 'picture_field'

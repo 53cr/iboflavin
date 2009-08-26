@@ -13,6 +13,7 @@ class Weight
   include MongoMapper::EmbeddedDocument
 
   key :description, String
+  key :amount,      Integer
   key :grams,       Float
 
 end

@@ -1,0 +1,249 @@
+@import base.sass
+html
+  :height 100%
+  :min-width 900px
+  :background black url('/images/header.png') fixed no-repeat center
+a
+  &:active
+    :outline none
+  &:focus 
+    :-moz-outline-style none
+body
+  :height 100%
+  :font-size 75%
+  :font-family "Helvetica Neue", Helvetica, Arial, sans-serif
+  .thumb
+    :width 50px
+    :height 50px
+h1,h2,h3,h4,h5,h6
+  :font-weight bold
+  :font-style "Lucida Grande"
+small
+  :font-size 14px
+  :color #898989
+  :clear left
+  :padding-bottom 2em
+p
+  :padding-top 1em
+  :padding-bottom 1em
+  :font-style "Lucida Grande"
+  :font-size 12px
+  :line-height 18px
+  :color #777777
+span.date
+  :padding-right 1em
+  :padding-bottom 1em
+  :float left
+  :background url("/images/day.gif") no-repeat
+  :height 53px
+  :width 49px
+  :line-height 7px
+  :font-size 24px
+  :font-weight bold
+  :text-align center
+  :display block
+
+#logo
+  :margin-left 3em
+  :margin-top 2em
+  :text-indent -999em
+  :background url('/images/logo.png') no-repeat
+  :height 200px
+  :width 500px
+
+.blog_header
+  :padding-bottom 3em
+h1
+  :font-size 30px
+h2
+  :font-size 24px
+.green
+  :color green
+.red
+  :color red
+.container
+  :padding-top 2em
+  :height 100%
+  :margin 0 auto
+  :min-width 900px
+  :max-width 1200px
+  :width 80%
+#header
+  :background #eeeeee
+#body
+  :height 100%
+  :padding-top 3em
+  :background #eeeeee
+  .content
+    :background white url("/images/content_top.png") repeat-x
+    :position relative
+    :width 100%
+    :min-height 100px
+  .content_bottom
+    :display block
+    :position relative
+    :background white url("/images/content_bottom.png") repeat-x bottom
+    :width 100%
+    :height 10px
+ul
+  :padding 0em 2em
+  li
+    :font-style "Lucida Grande"
+    :font-size 12px
+    :line-height 18px
+    :color #777777
+ul#menu
+  :margin 0 auto
+  :float left
+  :width 100%
+  :position relative
+  :color blue
+  :height 63px
+  :margin-top -1.5em
+  li
+    :list-style none
+    :float left
+  a
+    :text-indent -9999em
+    :display block
+    :height 63px
+    :width 100px
+    :background url("/images/menu.png") repeat-y
+    :position relative
+    .hover 
+      :display none
+      :position absolute
+      :top 0
+      :left 0
+      :height 100%
+      :width 100%
+      :background url("/images/menu.png") repeat-y
+      :background-position 0 -60px
+    &#news
+      :width 121px
+      span.hover 
+        :background-position 0 -60px
+  
+    &#competition
+      :width 134px
+      :background-position -120px 0 
+      span.hover
+        :background-position -120px -119px
+    &#teams
+      :background-position -253px 0
+      :width 91px
+      span.hover 
+        :background-position -253px -178px
+    &#get_involved
+      :background-position -345px 0
+      :width 135px
+      span.hover 
+        :background-position -345px -238px
+    &#contact
+      :background-position -481px 0
+      :width 115px
+      span.hover 
+        :background-position -481px -298px
+  .login_box
+    :float left
+  .signup_box
+    :float right
+#signup
+  +top-radius
+  :width 650px
+  :margin 0 auto
+  :background white
+#sidebar
+  :float right
+  :width 280px
+  :padding 2em 0
+  :text-align center
+  +top-radius
+  :background white
+#main
+  :float left
+  :width 65%
+  :min-width 620px
+  :background white
+  +top-radius
+#content-header
+  :background #616161
+  :color white
+  h1,h2,h3
+    :text-align center
+    :line-height 30px
+    :font-weight bold
+    :font-size 18px
+  :height 30px
+  +top-radius
+  ul
+    :float left
+    li
+      :list-style none
+      :float left
+      :line-height 30px
+      a
+        :float left
+        :font-weight bold
+        :height 30px
+        :padding 0 2em
+        :display block
+        :color white
+        :text-decoration none
+        &:hover
+          +top-radius
+          :background #0176b9
+        &:active, .selected
+          :background #5d9bd4
+.inner-header
+  :height 30px
+  :color white
+  :background #999999
+  h1,h2
+    :font-weight bold
+    :font-size 18px
+    :line-height 30px
+    :text-align center
+.inner-container
+  :margin 3em
+  :padding-bottom 2em
+  p
+    :margin 3em 0
+img.picture
+  :float left
+  :margin 1em 3em 1em 3em
+  :padding 0.5em
+  :background white
+  :border 1px solid #EEEEEE
+#footer
+  :float left
+  +container
+table
+  :border-spacing 0
+  tbody 
+    tr
+      :height 30px
+      :line-height 160%
+      &:hover 
+        :background #fafafa
+      td, th
+        :line-height 160%
+        :padding 0 1em
+        :vertical-align middle
+        :border-bottom 1px solid #EEEEEE
+        :line-height 160%
+        :padding 0 1em
+        :vertical-align middle
+      th
+        :background #f6f6f6
+.contact
+  :height 300px
+  img
+    :float left
+    :padding-right 2em
+    :padding-bottom 2em
+.post
+  :min-width 400px
+  :max-width 1200px
+  :width 60%
+  :padding-bottom 2em

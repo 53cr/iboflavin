@@ -1,0 +1,15 @@
+first_name:string
+last_name:string
+birtday:date
+position:string
+email:string
+bio:text
+cell:string
+emergency_phone:string
+dietary_concers:string
+shirt_size:string
+gender:string
+arrival:datetime
+departure:datetime
+flight_number:string
+user_id:integer

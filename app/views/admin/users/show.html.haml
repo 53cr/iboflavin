@@ -1,0 +1,36 @@
+= content_for :sidebar do
+  - link_to edit_admin_user_url do
+    = image_tag 'edit_user.png'
+.inner-header 
+  %h1= @user.username
+.inner-container{ :style => 'min-height:300px'}
+  = image_tag @user.picture.url(:medium), :class => :picture
+  %li
+    Email
+    = h @user.email
+  %li
+    Type
+    = h @user.type
+  %li
+    Login count
+    = h @user.login_count
+  %li
+    Failed login count
+    = h @user.failed_login_count
+  %li
+    Last request at
+    = h @user.last_request_at
+  %li
+    Current login at
+    = h @user.current_login_at
+  %li
+    Last login at
+    = h @user.last_login_at
+  %li
+    Current login ip
+    = h @user.current_login_ip
+  %li
+    Last login ip
+    = h @user.last_login_ip 
+  %p= @user.description
+
