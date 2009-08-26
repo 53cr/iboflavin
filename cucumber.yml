@@ -1,2 +1,0 @@
-default: --format profile features
-html: --format progress --format html --out=features/features_report.html features

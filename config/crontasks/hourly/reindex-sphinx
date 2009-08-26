@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-config = File.join(File.dirname(__FILE__),"/../../config/development.sphinx.conf")
-
-system("/usr/bin/indexer --config #{config} --all --rotate")
